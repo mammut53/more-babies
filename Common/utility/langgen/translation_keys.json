@@ -1,0 +1,47 @@
+[
+  {
+    "key_old": {
+      "prefix": "entity",
+      "namespace": "minecraft",
+      "suffix": ""
+    },
+    "key_new": {
+      "prefix": "entity",
+      "namespace": "more_babies",
+      "suffix": ""
+    },
+    "key_names": [
+      "bat",
+      "blaze",
+      "cave_spider",
+      "creeper",
+      "dolphin",
+      "elder_guardian",
+      "ender_dragon",
+      "enderman",
+      "evoker",
+      "ghast",
+      "giant",
+      "glow_squid",
+      "guardian",
+      "illusioner",
+      "iron_golem",
+      "parrot",
+      "piglin_brute",
+      "pillager",
+      "ravager",
+      "salmon",
+      "shulker",
+      "skeleton",
+      "snow_golem",
+      "spider",
+      "squid",
+      "stray",
+      "vindicator",
+      "wandering_trader",
+      "witch",
+      "wither",
+      "wither_skeleton"
+    ]
+  }
+]

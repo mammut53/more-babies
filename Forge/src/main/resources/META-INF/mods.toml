@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[41,)"
+license="All rights reserved"
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+
+[[mods]]
+modId="more_babies"
+version="${file.jarVersion}"
+displayName="More Babies"
+#updateJSONURL="https://change.me.example.invalid/updates.json"
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+logoFile="assets/more_babies/icon.png" #optional
+credits=""
+authors="mammut53"
+description='''Adds more babies!'''
+
+[[dependencies.more_babies]]
+    modId="forge"
+    mandatory=true
+    versionRange="[41,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.more_babies]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19,)"
+    ordering="NONE"
+    side="BOTH"

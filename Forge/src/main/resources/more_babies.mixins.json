@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.mammut53.more_babies.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "more_babies.refmap.json",
+  "mixins": [
+    "world.entity.animal.GlowSquidMixin",
+    "world.entity.monster.BlazeMixin",
+    "world.entity.monster.EnderManMixin",
+
+
+    "world.level.levelgen.structure.EndCityPiecesMixin",
+    "world.entity.monster.ShulkerAccessor",
+    "world.item.SpawnEggItemMixin"
+  ],
+  "client": [
+    "client.renderer.entity.layers.ParrotOnShoulderLayerMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
