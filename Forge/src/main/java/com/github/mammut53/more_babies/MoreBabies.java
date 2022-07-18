@@ -3,7 +3,6 @@ package com.github.mammut53.more_babies;
 import com.github.mammut53.more_babies.event.NaturalSpawning;
 import com.github.mammut53.more_babies.registry.MoreBabiesForgeRegistry;
 import com.github.mammut53.more_babies.world.entity.*;
-import com.github.mammut53.more_babies.world.entity.boss.BabyEnderDragon;
 import com.github.mammut53.more_babies.world.entity.boss.BabyWitherBoss;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,7 +18,7 @@ public class MoreBabies {
 
     public MoreBabies() {
 
-        MoreBabiesForgeRegistry.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        MoreBabiesForgeRegistry.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     @SubscribeEvent

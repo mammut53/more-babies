@@ -17,7 +17,7 @@ description='''Adds more babies!'''
 [[dependencies.more_babies]]
     modId="forge"
     mandatory=true
-    versionRange="[41,)"
+    versionRange="[41.0.94,)"
     ordering="NONE"
     side="BOTH"
 
