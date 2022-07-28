@@ -17,13 +17,13 @@ description='''Adds more babies!'''
 [[dependencies.more_babies]]
     modId="forge"
     mandatory=true
-    versionRange="[41.0.94,)"
+    versionRange="[42.0.0,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.more_babies]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19,)"
+    versionRange="[1.19.1,)"
     ordering="NONE"
     side="BOTH"
