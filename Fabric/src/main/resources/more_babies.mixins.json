@@ -10,6 +10,7 @@
 
     "world.level.NaturalSpawnerMixin",
     "world.level.levelgen.structure.EndCityPiecesMixin",
+    "world.level.levelgen.structure.SwampHutPieceMixin",
     "world.entity.monster.ShulkerAccessor",
     "world.item.SpawnEggItemMixin"
   ],
