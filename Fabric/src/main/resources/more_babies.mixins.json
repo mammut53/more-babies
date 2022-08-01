@@ -10,6 +10,7 @@
     "world.entity.monster.EnderManMixin",
     "world.entity.monster.ShulkerAccessor",
     "world.entity.monster.ShulkerMixin",
+    "world.entity.npc.WanderingTraderSpawnerMixin",
 
     "world.level.NaturalSpawnerMixin",
     "world.level.levelgen.structure.EndCityPiecesMixin",
