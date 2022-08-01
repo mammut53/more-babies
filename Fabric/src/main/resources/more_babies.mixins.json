@@ -11,6 +11,7 @@
     "world.entity.monster.ShulkerAccessor",
     "world.entity.monster.ShulkerMixin",
     "world.entity.npc.WanderingTraderSpawnerMixin",
+    "world.entity.raid.RaidMixin",
 
     "world.level.NaturalSpawnerMixin",
     "world.level.levelgen.PatrolSpawnerMixin",
