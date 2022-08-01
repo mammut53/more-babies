@@ -13,6 +13,7 @@
 
     "world.level.NaturalSpawnerMixin",
     "world.level.levelgen.structure.EndCityPiecesMixin",
+    "world.level.levelgen.structure.OceanMonumentPieceMixin",
     "world.level.levelgen.structure.SwampHutPieceMixin",
     "world.level.levelgen.structure.WoodlandMansionPieceMixin",
 
