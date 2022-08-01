@@ -5,14 +5,17 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "more_babies.refmap.json",
   "mixins": [
+    "world.entity.EntityAccessor",
     "world.entity.animal.GlowSquidMixin",
     "world.entity.monster.BlazeMixin",
     "world.entity.monster.EnderManMixin",
+    "world.entity.monster.ShulkerAccessor",
+    "world.entity.monster.ShulkerMixin",
 
 
     "world.level.levelgen.structure.EndCityPiecesMixin",
     "world.level.levelgen.structure.SwampHutPieceMixin",
-    "world.entity.monster.ShulkerAccessor",
+
     "world.item.SpawnEggItemMixin"
   ],
   "client": [
