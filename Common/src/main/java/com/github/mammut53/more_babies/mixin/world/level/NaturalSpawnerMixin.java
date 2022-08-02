@@ -4,10 +4,8 @@ import com.github.mammut53.more_babies.MoreBabiesCommon;
 import com.github.mammut53.more_babies.MoreBabiesConstants;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NaturalSpawner;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -29,7 +27,6 @@ public abstract class NaturalSpawnerMixin {
 
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mob.getType());
         if (babyType == null) return mob.getMaxSpawnClusterSize();
-
         Mob babyMob;
         if (mob instanceof AgeableMob ageableMob) {
             babyMob = ageableMob.getBreedOffspring((ServerLevel) mob.level, ageableMob);
@@ -46,6 +43,24 @@ public abstract class NaturalSpawnerMixin {
         mob.discard();
 
         return mob.getMaxSpawnClusterSize();
+    }
+
+    @Redirect(
+            method = "spawnMobsForChunkGeneration",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/entity/EntityType;create(Lnet/minecraft/world/level/Level;)Lnet/minecraft/world/entity/Entity;"
+            )
+    )
+    private static Entity create(EntityType<Entity> entityType, Level level) {
+        if (!(level instanceof ServerLevel serverLevel && (serverLevel.getRandom().nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE))) return entityType.create(level);
+
+        EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(entityType);
+        if (babyType == null) {
+            return entityType.create(level);
+        }
+
+        return babyType.create(level);
     }
 
 }
