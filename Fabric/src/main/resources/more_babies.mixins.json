@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "world.entity.EntityAccessor",
+    "world.entity.ai.sensing.GolemSensorMixin",
     "world.entity.animal.GlowSquidMixin",
     "world.entity.monster.BlazeMixin",
     "world.entity.monster.CreeperAccessor",
