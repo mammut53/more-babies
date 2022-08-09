@@ -4,6 +4,8 @@
   "package": "com.github.mammut53.more_babies.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "data.worldgen.BastionSharedPoolsMixin",
+
     "world.entity.EntityAccessor",
     "world.entity.ai.sensing.GolemSensorMixin",
     "world.entity.animal.GlowSquidMixin",
