@@ -10,15 +10,14 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.EnderEyesLayer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Random;
-
 public class BabyEndermanRenderer extends MobRenderer<EnderMan, EndermanModel<EnderMan>> {
     private static final ResourceLocation ENDERMAN_LOCATION = new ResourceLocation("textures/entity/enderman/enderman.png");
-    private final Random random = new Random();
+    private final RandomSource random = RandomSource.create();
 
     public BabyEndermanRenderer(EntityRendererProvider.Context context) {
         super(context, new BabyEndermanModel(context.bakeLayer(ModelLayers.ENDERMAN)), 0.5F);
