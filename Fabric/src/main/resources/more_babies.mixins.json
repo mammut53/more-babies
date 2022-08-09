@@ -17,6 +17,7 @@
     "world.entity.raid.RaidMixin",
 
     "world.level.NaturalSpawnerMixin",
+    "world.level.NaturalSpawnerMixinSpawnCategoryForPosition",
     "world.level.levelgen.PatrolSpawnerMixin",
     "world.level.levelgen.structure.EndCityPiecesMixin",
     "world.level.levelgen.structure.MineShaftCorridorMixin",

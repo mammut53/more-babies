@@ -17,7 +17,7 @@
     "world.entity.npc.WanderingTraderSpawnerMixin",
     "world.entity.raid.RaidMixin",
 
-
+    "world.level.NaturalSpawnerMixin",
     "world.level.levelgen.PatrolSpawnerMixin",
     "world.level.levelgen.structure.EndCityPiecesMixin",
     "world.level.levelgen.structure.MineShaftCorridorMixin",
