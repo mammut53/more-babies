@@ -6,6 +6,7 @@
   "refmap": "more_babies.refmap.json",
   "mixins": [
     "data.worldgen.BastionSharedPoolsMixin",
+    "data.worldgen.PillagerOutpostPoolsMixin",
 
     "world.entity.EntityAccessor",
     "world.entity.ai.sensing.GolemSensorMixin",

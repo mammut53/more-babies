@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "data.worldgen.BastionSharedPoolsMixin",
+    "data.worldgen.PillagerOutpostPoolsMixin",
 
     "world.entity.EntityAccessor",
     "world.entity.ai.sensing.GolemSensorMixin",
