@@ -6,6 +6,7 @@
   "mixins": [
     "data.worldgen.BastionSharedPoolsMixin",
     "data.worldgen.PillagerOutpostPoolsMixin",
+    "data.worldgen.PlainVillagePoolsMixin",
 
     "world.entity.EntityAccessor",
     "world.entity.ai.sensing.GolemSensorMixin",
