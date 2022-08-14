@@ -17,6 +17,7 @@
     "world.entity.monster.EnderManMixin",
     "world.entity.monster.ShulkerAccessor",
     "world.entity.monster.ShulkerMixin",
+    "world.entity.monster.SpellcasterIllagerMixin",
     "world.entity.npc.VillagerMixin",
     "world.entity.npc.WanderingTraderSpawnerMixin",
     "world.entity.raid.RaidMixin",
