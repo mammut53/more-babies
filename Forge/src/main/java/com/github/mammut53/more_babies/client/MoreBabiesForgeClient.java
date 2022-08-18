@@ -2,17 +2,30 @@ package com.github.mammut53.more_babies.client;
 
 import com.github.mammut53.more_babies.MoreBabiesConstants;
 import com.github.mammut53.more_babies.client.renderer.entity.*;
+import com.github.mammut53.more_babies.client.renderer.item.MoreBabiesItemProperties;
 import com.github.mammut53.more_babies.registry.MoreBabiesForgeRegistry;
+import com.github.mammut53.more_babies.registry.MoreBabiesItems;
 import net.minecraft.client.model.SquidModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Mod.EventBusSubscriber(modid = MoreBabiesConstants.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MoreBabiesForgeClient {
+
+    @SubscribeEvent
+    public static void setupClient(final FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            ItemProperties.register(MoreBabiesItems.CURSED_CLOCK.get(), new ResourceLocation("time"), MoreBabiesItemProperties.CURSED_CLOCK_ITEM_PROPERTY_FUNCTION);
+            ItemProperties.register(MoreBabiesItems.CURSED_CLOCK_ON_A_STICK.get(), new ResourceLocation("time"), MoreBabiesItemProperties.CURSED_CLOCK_ITEM_PROPERTY_FUNCTION);
+        });
+    }
 
     @SubscribeEvent
     public static void onRegisterRenderers(final EntityRenderersEvent.RegisterRenderers event) {

@@ -1,6 +1,7 @@
 package com.github.mammut53.more_babies;
 
 import com.github.mammut53.more_babies.registry.MoreBabiesFabricRegistry;
+import com.github.mammut53.more_babies.registry.MoreBabiesItems;
 import com.github.mammut53.more_babies.world.entity.*;
 import com.github.mammut53.more_babies.world.entity.boss.BabyEnderDragon;
 import com.github.mammut53.more_babies.world.entity.boss.BabyWitherBoss;
@@ -14,6 +15,8 @@ public class MoreBabies implements ModInitializer {
     public void onInitialize() {
 
         MoreBabiesCommon.init(MoreBabiesFabricRegistry.PARENT_BABY_RELATION);
+
+        MoreBabiesItems.register();
 
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_BAT, BabyBat.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.7 * 1.5));
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_BLAZE, BabyBlaze.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.23 * 1.5));
@@ -43,6 +46,7 @@ public class MoreBabies implements ModInitializer {
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_STRAY, BabyStray.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.25 * 1.5));
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_VINDICATOR, BabyVindicator.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.20000000298023224 * 1.5));
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_WANDERING_TRADER, BabyWanderingTrader.createMobAttributes().add(Attributes.MOVEMENT_SPEED, 0.5 * 1.5));
+        FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_WARDEN, BabyWarden.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.30000001192092896 * 1.5));
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_WITCH, BabyWitch.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.25 * 1.5));
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_WITHER, BabyWitherBoss.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.6000000238418579 * 1.5));
         FabricDefaultAttributeRegistry.register(MoreBabiesFabricRegistry.BABY_WITHER_SKELETON, BabyWitherSkeleton.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.25 * 1.5));

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "X": {
+      "item": "more_babies:cursed_clock"
+    }
+  },
+  "pattern": [
+    "  X",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "item": "more_babies:cursed_clock_on_a_stick"
+  }
+}

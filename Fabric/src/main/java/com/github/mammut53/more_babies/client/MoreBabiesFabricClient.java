@@ -1,7 +1,9 @@
 package com.github.mammut53.more_babies.client;
 
 import com.github.mammut53.more_babies.client.renderer.entity.*;
+import com.github.mammut53.more_babies.client.renderer.item.MoreBabiesItemProperties;
 import com.github.mammut53.more_babies.registry.MoreBabiesFabricRegistry;
+import com.github.mammut53.more_babies.registry.MoreBabiesItems;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,6 +11,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.model.SquidModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
 
 @Environment(EnvType.CLIENT)
 public class MoreBabiesFabricClient implements ClientModInitializer {
@@ -48,5 +52,7 @@ public class MoreBabiesFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WITHER, BabyWitherBossRenderer::new);
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WITHER_SKELETON, WitherSkeletonRenderer::new);
 
+        ItemProperties.register(MoreBabiesItems.CURSED_CLOCK, new ResourceLocation( "time"), MoreBabiesItemProperties.CURSED_CLOCK_ITEM_PROPERTY_FUNCTION);
+        ItemProperties.register(MoreBabiesItems.CURSED_CLOCK_ON_A_STICK, new ResourceLocation( "time"), MoreBabiesItemProperties.CURSED_CLOCK_ITEM_PROPERTY_FUNCTION);
     }
 }

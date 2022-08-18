@@ -2,11 +2,13 @@ package com.github.mammut53.more_babies;
 
 import com.github.mammut53.more_babies.event.NaturalSpawning;
 import com.github.mammut53.more_babies.registry.MoreBabiesForgeRegistry;
+import com.github.mammut53.more_babies.registry.MoreBabiesItems;
 import com.github.mammut53.more_babies.world.entity.*;
 import com.github.mammut53.more_babies.world.entity.boss.BabyWitherBoss;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
@@ -17,8 +19,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class MoreBabies {
 
     public MoreBabies() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        MoreBabiesForgeRegistry.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        MoreBabiesItems.ITEMS.register(modEventBus);
+        MoreBabiesForgeRegistry.ENTITY_TYPES.register(modEventBus);
     }
 
     @SubscribeEvent

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:copper_ingot"
+    },
+    "X": {
+      "item": "minecraft:clock"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "D#D",
+    "#X#",
+    "D#D"
+  ],
+  "result": {
+    "item": "more_babies:cursed_clock"
+  }
+}
