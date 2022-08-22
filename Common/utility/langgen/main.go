@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"flag"
 	"io"
 	"io/ioutil"
@@ -12,14 +13,16 @@ import (
 )
 
 var (
-	translationKeysPath string
-	enUsPath            string
-	assetsUrl           string
-	outputPath          string
+	translationKeysPath              string
+	preExistingTranslationsDirectory string
+	enUsPath                         string
+	assetsUrl                        string
+	outputPath                       string
 )
 
 func init() {
 	flag.StringVar(&translationKeysPath, "translationKeysPath", "", "path to the translation keys file")
+	flag.StringVar(&preExistingTranslationsDirectory, "preExistingTranslationsDirectory", "", "path to the pre-existing translations directory")
 	flag.StringVar(&enUsPath, "enUs", "", "path to the en_us language file")
 	flag.StringVar(&assetsUrl, "assetsUrl", "", "url to the Mojang assets object")
 	flag.StringVar(&outputPath, "outputPath", "", "path to the language resource directory")
@@ -97,6 +100,16 @@ func main() {
 		log.Print("Processing: " + name)
 
 		var outputTranslationMap = make(map[string]string)
+
+		if _, err := os.Stat(preExistingTranslationsDirectory + name + ".json"); !errors.Is(err, os.ErrNotExist) {
+			log.Print("Adding pre-existing translations")
+
+			err := readJsonFile(preExistingTranslationsDirectory+name+".json", &outputTranslationMap)
+			if err != nil {
+				log.Fatalf("failed to read pre-existing translations: %s", err)
+			}
+		}
+
 		for _, translationKey := range translationKeys {
 
 			for _, translationName := range translationKey.KeyNames {

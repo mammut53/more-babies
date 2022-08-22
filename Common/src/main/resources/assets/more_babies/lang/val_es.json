@@ -5,7 +5,7 @@
   "entity.more_babies.creeper": "Creeper",
   "entity.more_babies.dolphin": "Dofí",
   "entity.more_babies.elder_guardian": "Gran guardià de les profunditats",
-  "entity.more_babies.ender_dragon": "Drac de la Fi",
+  "entity.more_babies.ender_dragon": "Drac d'Ender",
   "entity.more_babies.enderman": "Enderman",
   "entity.more_babies.evoker": "Evocador",
   "entity.more_babies.ghast": "Ghast",
@@ -29,5 +29,5 @@
   "entity.more_babies.wandering_trader": "Comerciant",
   "entity.more_babies.witch": "Bruixa",
   "entity.more_babies.wither": "Wither",
-  "entity.more_babies.wither_skeleton": "Esquelet de l'Infern"
+  "entity.more_babies.wither_skeleton": "Esquelet wither"
 }

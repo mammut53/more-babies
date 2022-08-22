@@ -10,7 +10,7 @@
   "entity.more_babies.evoker": "Summoner",
   "entity.more_babies.ghast": "Ghast",
   "entity.more_babies.giant": "Ten-fathoms-tall sailor",
-  "entity.more_babies.glow_squid": "Glowin' kraken",
+  "entity.more_babies.glow_squid": "Glowin' Kraken",
   "entity.more_babies.guardian": "Sea lurker",
   "entity.more_babies.illusioner": "Warlock",
   "entity.more_babies.iron_golem": "Golem o' steel",
@@ -29,5 +29,5 @@
   "entity.more_babies.wandering_trader": "Nomad",
   "entity.more_babies.witch": "Wizard",
   "entity.more_babies.wither": "Wither",
-  "entity.more_babies.wither_skeleton": "Corrupted bag o' bones"
+  "entity.more_babies.wither_skeleton": "Wither bag o' bones"
 }

@@ -29,5 +29,8 @@
   "entity.more_babies.wandering_trader": "Fahrender Händler",
   "entity.more_babies.witch": "Hexe",
   "entity.more_babies.wither": "Wither",
-  "entity.more_babies.wither_skeleton": "Witherskelett"
+  "entity.more_babies.wither_skeleton": "Witherskelett",
+  "item.more_babies.cursed_clock": "Verfluchte Uhr",
+  "item.more_babies.cursed_clock_on_a_stick": "Verfluchte Uhr Auf Einem Stock",
+  "item.more_babies.cursed_clock_on_a_stick.desc": "Kann verwendet werden, um erwachsene Kreaturen in Babys umzuwandeln und umgekehrt."
 }

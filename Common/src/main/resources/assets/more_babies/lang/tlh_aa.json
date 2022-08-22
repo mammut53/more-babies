@@ -1,11 +1,11 @@
 {
-  "entity.more_babies.bat": "puvbogh lIS'ab",
+  "entity.more_babies.bat": "valqe'",
   "entity.more_babies.blaze": "qul yagh",
   "entity.more_babies.cave_spider": "DIS voDchuch",
   "entity.more_babies.creeper": "tambogh tlha'wI'",
   "entity.more_babies.dolphin": "SolbIS",
   "entity.more_babies.elder_guardian": "'avwI' qan",
-  "entity.more_babies.ender_dragon": "puvbogh ender lung'a'",
+  "entity.more_babies.ender_dragon": "ender lung'a'",
   "entity.more_babies.enderman": "enderman",
   "entity.more_babies.evoker": "reSwI'",
   "entity.more_babies.ghast": "qa''a'",
@@ -18,7 +18,7 @@
   "entity.more_babies.piglin_brute": "piglin mang",
   "entity.more_babies.pillager": "weHwI'",
   "entity.more_babies.ravager": "Ha'DIbaH Qaw'bogh",
-  "entity.more_babies.salmon": "bIQtIq ghotI'",
+  "entity.more_babies.salmon": "SamIn ghotI'",
   "entity.more_babies.shulker": "shulker",
   "entity.more_babies.skeleton": "Hom loD",
   "entity.more_babies.snow_golem": "chal chuch velqa' nuv",
@@ -28,6 +28,6 @@
   "entity.more_babies.vindicator": "'obmaQ ghajbogh weHwI'",
   "entity.more_babies.wandering_trader": "Suy lengbogh",
   "entity.more_babies.witch": "'IDnar pIn'a'",
-  "entity.more_babies.wither": "tlhapragh QaD",
+  "entity.more_babies.wither": "wither",
   "entity.more_babies.wither_skeleton": "wither nobmeD"
 }
