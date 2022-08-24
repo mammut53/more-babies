@@ -1,5 +1,16 @@
 {
+  "advancements.more_babies.root.title": "More Babies",
+  "advancements.more_babies.root.description": "Es gibt die auch in kleiner?!",
+  "advancements.more_babies.cursed_clock.title": "Verfluchte Uhr",
+  "advancements.more_babies.cursed_clock.description": "Schmiede eine Verfluchte Uhr",
+  "advancements.more_babies.cursed_clock_on_a_stick.title": "Verfluchte Uhr Auf Einem Stock",
+  "advancements.more_babies.cursed_clock_on_a_stick.description": "Setze eine Verfluchte Uhr auf einen Stock",
+  "advancements.more_babies.cursed_clock_on_a_stick_use.title": "Wandle eine Kreatur um",
+  "advancements.more_babies.cursed_clock_on_a_stick_use.description": "Benutze eine Verfluchte Uhr Auf Einem Stock an einer Kreatur",
+  "advancements.more_babies.out_played.title": "Ausgespielt!",
+  "advancements.more_babies.out_played.description": "Werden von einem Baby getötet",
+
   "item.more_babies.cursed_clock": "Verfluchte Uhr",
   "item.more_babies.cursed_clock_on_a_stick": "Verfluchte Uhr Auf Einem Stock",
-  "item.more_babies.cursed_clock_on_a_stick.desc": "Kann verwendet werden, um erwachsene Kreaturen in Babys umzuwandeln und umgekehrt."
+  "item.more_babies.cursed_clock_on_a_stick.desc": "Kann verwendet werden, um erwachsene Kreaturen in Babys umzuwandeln und umgekehrt"
 }

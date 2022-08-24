@@ -1,5 +1,16 @@
 {
+  "advancements.more_babies.root.title": "More Babies",
+  "advancements.more_babies.root.description": "They also come in smaller sizes?!",
+  "advancements.more_babies.cursed_clock.title": "Cursed Clock",
+  "advancements.more_babies.cursed_clock.description": "Forge a Cursed Clock",
+  "advancements.more_babies.cursed_clock_on_a_stick.title": "Cursed Clock On A Stick",
+  "advancements.more_babies.cursed_clock_on_a_stick.description": "Put a Cursed Clock on a Stick",
+  "advancements.more_babies.cursed_clock_on_a_stick_use.title": "Convert A Mob",
+  "advancements.more_babies.cursed_clock_on_a_stick_use.description": "Use a Cursed Clock On A Stick on a mob",
+  "advancements.more_babies.out_played.title": "Out Played!",
+  "advancements.more_babies.out_played.description": "Get killed by a baby",
+
   "item.more_babies.cursed_clock": "Cursed Clock",
   "item.more_babies.cursed_clock_on_a_stick": "Cursed Clock On A Stick",
-  "item.more_babies.cursed_clock_on_a_stick.desc": "Can be used to convert adult mobs to babies and vice versa."
+  "item.more_babies.cursed_clock_on_a_stick.desc": "Can be used to convert adult mobs to babies and vice versa"
 }

@@ -1,0 +1,35 @@
+{
+  "parent": "more_babies:more_babies/cursed_clock",
+  "display": {
+    "icon": {
+      "item": "more_babies:cursed_clock_on_a_stick"
+    },
+    "title": {
+      "translate": "advancements.more_babies.cursed_clock_on_a_stick.title"
+    },
+    "description": {
+      "translate": "advancements.more_babies.cursed_clock_on_a_stick.description"
+    },
+    "frame": "task",
+    "hidden": false
+  },
+  "criteria": {
+    "cursed_clock_on_a_stick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "more_babies:cursed_clock_on_a_stick"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cursed_clock_on_a_stick"
+    ]
+  ]
+}

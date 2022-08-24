@@ -1,0 +1,31 @@
+{
+  "parent": "more_babies:more_babies/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:stone"
+    },
+    "title": {
+      "translate": "advancements.more_babies.out_played.title"
+    },
+    "description": {
+      "translate": "advancements.more_babies.out_played.description"
+    },
+    "frame": "task",
+    "hidden": false
+  },
+  "criteria": {
+    "entity_killed_player": {
+      "trigger": "minecraft:entity_killed_player",
+      "conditions": {
+        "entity": {
+          "type": "#more_babies:babies"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "entity_killed_player"
+    ]
+  ]
+}
