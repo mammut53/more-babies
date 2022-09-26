@@ -10,7 +10,7 @@
       "translate": "advancements.more_babies.root.description"
     },
     "hidden": false,
-    "background": "minecraft:textures/block/yellow_concrete.png"
+    "background": "minecraft:textures/block/red_sandstone_bottom.png"
   },
   "criteria": {
     "player_hurt_entity": {
