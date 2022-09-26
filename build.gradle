@@ -45,6 +45,12 @@ subprojects {
         it.options.release = 17
     }
 
+    tasks.withType(Jar).configureEach {
+        from(rootDir){
+            include 'LICENSE'
+        }
+    }
+
     // Disables Gradle's custom module metadata from being published to maven. The
     // metadata includes mapped dependencies which are not reasonably consumable by
     // other mod developers.

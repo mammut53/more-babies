@@ -89,10 +89,16 @@ minecraft {
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
 
+repositories {
+    maven {
+        url = "https://cursemaven.com"
+    }
+}
+
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version_forge}-${forge_version}"
     compileOnly project(":Common")
-    annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
+    annotationProcessor "org.spongepowered:mixin:0.8.5-SNAPSHOT:processor"
 }
 
 tasks.withType(JavaCompile) {

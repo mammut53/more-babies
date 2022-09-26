@@ -6,11 +6,25 @@ plugins {
 
 archivesBaseName = "${mod_name}-fabric-${minecraft_version}"
 
+repositories {
+    maven {
+        url = "https://cursemaven.com"
+    }
+}
+
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
     mappings loom.officialMojangMappings()
+
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    modImplementation "curse.maven:modmenu-308702:3920481"
+
+    modImplementation "curse.maven:forgeconfigfabric-547434:3946675"
+    implementation "com.electronwill.night-config:core:3.6.5"
+    implementation "com.electronwill.night-config:toml:3.6.5"
+
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 }

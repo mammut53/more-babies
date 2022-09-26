@@ -21,10 +21,20 @@ minecraft {
     }
 }
 
+repositories {
+    maven {
+        url = "https://cursemaven.com"
+    }
+}
+
 dependencies {
     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
     compileOnly group:'org.jetbrains', name:'annotations', version:'16.0.2'
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+
+    compileOnly "curse.maven:forgeconfigfabric-547434:3946675"
+    implementation "com.electronwill.night-config:core:3.6.5"
+    implementation "com.electronwill.night-config:toml:3.6.5"
 }
 
 processResources {
