@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyGiant extends Giant {
+public class BabyGiant extends Giant implements MoreBabiesBaby {
 
     public BabyGiant(EntityType<? extends Giant> entityType, Level level) {
         super(entityType, level);

@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyGlowSquid extends GlowSquid {
+public class BabyGlowSquid extends GlowSquid implements MoreBabiesBaby {
 
     public BabyGlowSquid(EntityType<? extends GlowSquid> entityType, Level level) {
         super(entityType, level);

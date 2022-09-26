@@ -9,7 +9,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyWitherSkeleton extends WitherSkeleton implements EquipedBaby {
+public class BabyWitherSkeleton extends WitherSkeleton implements EquipedBaby, MoreBabiesBaby {
 
     public BabyWitherSkeleton(EntityType<? extends WitherSkeleton> entityType, Level level) {
         super(entityType, level);

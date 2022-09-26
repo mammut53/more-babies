@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyEvoker extends Evoker {
+public class BabyEvoker extends Evoker implements MoreBabiesBaby {
 
     public BabyEvoker(EntityType<? extends Evoker> entityType, Level level) {
         super(entityType, level);

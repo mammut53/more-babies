@@ -14,7 +14,7 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
-public class BabyShulker extends Shulker {
+public class BabyShulker extends Shulker implements MoreBabiesBaby {
 
     public BabyShulker(EntityType<? extends Shulker> entityType, Level level) {
         super(entityType, level);

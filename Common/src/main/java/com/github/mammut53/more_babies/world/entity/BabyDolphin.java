@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyDolphin extends Dolphin {
+public class BabyDolphin extends Dolphin implements MoreBabiesBaby {
 
     public BabyDolphin(EntityType<? extends Dolphin> entityType, Level level) {
         super(entityType, level);

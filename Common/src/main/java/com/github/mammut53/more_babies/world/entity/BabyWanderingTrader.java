@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyWanderingTrader extends WanderingTrader {
+public class BabyWanderingTrader extends WanderingTrader implements MoreBabiesBaby {
 
     public BabyWanderingTrader(EntityType<? extends WanderingTrader> entityType, Level level) {
         super(entityType, level);

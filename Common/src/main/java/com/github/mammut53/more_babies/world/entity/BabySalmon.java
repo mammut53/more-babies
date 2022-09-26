@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabySalmon extends Salmon {
+public class BabySalmon extends Salmon implements MoreBabiesBaby {
 
     public BabySalmon(EntityType<? extends Salmon> entityType, Level level) {
         super(entityType, level);

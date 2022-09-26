@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyBlaze extends Blaze {
+public class BabyBlaze extends Blaze implements MoreBabiesBaby {
 
     public BabyBlaze(EntityType<? extends Blaze> entityType, Level level) {
         super(entityType, level);

@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyEnderMan extends EnderMan {
+public class BabyEnderMan extends EnderMan implements MoreBabiesBaby {
 
     public static final float STANDING_EYE_HEIGHT = 1.275F;
 

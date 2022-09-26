@@ -1,12 +1,13 @@
 package com.github.mammut53.more_babies.world.entity.boss;
 
+import com.github.mammut53.more_babies.world.entity.MoreBabiesBaby;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyWitherBoss extends WitherBoss {
+public class BabyWitherBoss extends WitherBoss implements MoreBabiesBaby {
 
     public BabyWitherBoss(EntityType<? extends WitherBoss> entityType, Level level) {
         super(entityType, level);

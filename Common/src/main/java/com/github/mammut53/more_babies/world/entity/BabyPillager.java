@@ -12,7 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyPillager extends Pillager implements EquipedBaby {
+public class BabyPillager extends Pillager implements EquipedBaby, MoreBabiesBaby {
 
     public BabyPillager(EntityType<? extends Pillager> entityType, Level level) {
         super(entityType, level);

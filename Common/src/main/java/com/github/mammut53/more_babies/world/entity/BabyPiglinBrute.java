@@ -10,7 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyPiglinBrute extends PiglinBrute implements EquipedBaby {
+public class BabyPiglinBrute extends PiglinBrute implements EquipedBaby, MoreBabiesBaby {
 
     public BabyPiglinBrute(EntityType<? extends PiglinBrute> entityType, Level level) {
         super(entityType, level);

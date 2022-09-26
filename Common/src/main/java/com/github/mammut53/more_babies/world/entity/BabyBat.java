@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyBat extends Bat {
+public class BabyBat extends Bat implements MoreBabiesBaby {
 
     public BabyBat(EntityType<? extends Bat> entityType, Level level) {
         super(entityType, level);

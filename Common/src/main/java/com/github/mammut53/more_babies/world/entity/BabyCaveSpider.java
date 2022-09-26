@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabyCaveSpider extends CaveSpider {
+public class BabyCaveSpider extends CaveSpider implements MoreBabiesBaby {
 
     public BabyCaveSpider(EntityType<? extends CaveSpider> entityType, Level level) {
         super(entityType, level);

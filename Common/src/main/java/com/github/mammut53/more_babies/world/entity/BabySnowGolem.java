@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.level.Level;
 
-public class BabySnowGolem extends SnowGolem {
+public class BabySnowGolem extends SnowGolem implements MoreBabiesBaby {
 
     public BabySnowGolem(EntityType<? extends SnowGolem> entityType, Level level) {
         super(entityType, level);
