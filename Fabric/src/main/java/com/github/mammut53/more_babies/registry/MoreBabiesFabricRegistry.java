@@ -55,7 +55,9 @@ public class MoreBabiesFabricRegistry {
             FabricEntityTypeBuilder.create(MobCategory.MONSTER, BabyElderGuardian::new).dimensions(EntityDimensions.fixed(0.99875F, 0.99875F)).trackRangeChunks(10).build()
     );
 
-    /*public static final EntityType<BabyEnderDragon> BABY_ENDER_DRAGON = Registry.register(
+    /*
+    TODO ADD TO TAGS
+    public static final EntityType<BabyEnderDragon> BABY_ENDER_DRAGON = Registry.register(
             Registry.ENTITY_TYPE,
             new ResourceLocation(MoreBabiesConstants.MOD_ID, "ender_dragon"),
             FabricEntityTypeBuilder.create(MobCategory.MONSTER, BabyEnderDragon::new).fireImmune().dimensions(EntityDimensions.fixed(8.0F, 4.0F)).trackRangeChunks(10).build()
@@ -187,6 +189,13 @@ public class MoreBabiesFabricRegistry {
             FabricEntityTypeBuilder.create(MobCategory.CREATURE, BabyWanderingTrader::new).dimensions(EntityDimensions.fixed(0.3F, 0.975F)).trackRangeChunks(10).build()
     );
 
+    // TODO ADD TO TAGS
+    /*public static final EntityType<BabyWarden> BABY_WARDEN = Registry.register(
+            Registry.ENTITY_TYPE,
+            new ResourceLocation(MoreBabiesConstants.MOD_ID, "warden"),
+            FabricEntityTypeBuilder.create(MobCategory.MONSTER, BabyWarden::new).dimensions(EntityDimensions.fixed(0.45F, 1.45F)).trackRangeChunks(16).fireImmune().build()
+    );*/
+
     public static final EntityType<BabyWitch> BABY_WITCH = Registry.register(
             Registry.ENTITY_TYPE,
             new ResourceLocation(MoreBabiesConstants.MOD_ID, "witch"),
@@ -234,6 +243,7 @@ public class MoreBabiesFabricRegistry {
         PARENT_BABY_RELATION.put(EntityType.STRAY, BABY_STRAY);
         PARENT_BABY_RELATION.put(EntityType.VINDICATOR, BABY_VINDICATOR);
         PARENT_BABY_RELATION.put(EntityType.WANDERING_TRADER, BABY_WANDERING_TRADER);
+        //PARENT_BABY_RELATION.put(EntityType.WARDEN, BABY_WARDEN);
         PARENT_BABY_RELATION.put(EntityType.WITCH, BABY_WITCH);
         PARENT_BABY_RELATION.put(EntityType.WITHER, BABY_WITHER);
         PARENT_BABY_RELATION.put(EntityType.WITHER_SKELETON, BABY_WITHER_SKELETON);

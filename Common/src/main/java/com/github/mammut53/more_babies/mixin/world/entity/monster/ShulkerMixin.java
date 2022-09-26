@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.entity.monster;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import com.github.mammut53.more_babies.mixin.world.entity.EntityAccessor;
 import com.github.mammut53.more_babies.world.entity.BabyShulker;
 import net.minecraft.world.entity.EntityType;
@@ -37,7 +37,8 @@ public abstract class ShulkerMixin extends AbstractGolem {
             cancellable = true
     )
     private void spawnShulker(CallbackInfo ci) {
-        if (!(this.random.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        MoreBabiesConfig.BabySwSmEntry shulkerEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("shulker");
+        if (!(level.random.nextFloat() < shulkerEntry.getSpawnWeight().get())) {
             return;
         }
 

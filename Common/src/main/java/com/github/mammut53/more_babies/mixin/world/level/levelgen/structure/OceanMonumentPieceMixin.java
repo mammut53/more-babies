@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.level.levelgen.structure;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -21,7 +21,8 @@ public abstract class OceanMonumentPieceMixin {
             )
     )
     private Entity createElderGuardian(EntityType<Entity> entityType, Level level) {
-        if (!(level.random.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        MoreBabiesConfig.BabySwSmEntry elderGuardianEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("elder_guardian");
+        if (!(level.random.nextFloat() < elderGuardianEntry.getSpawnWeight().get())) {
             return entityType.create(level);
         }
 

@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.entity.npc;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -16,6 +16,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import java.util.Objects;
+
 @Mixin(WanderingTraderSpawner.class)
 public abstract class WanderingTraderSpawnerMixin {
 
@@ -27,16 +29,17 @@ public abstract class WanderingTraderSpawnerMixin {
             )
     )
     private Entity spawnWanderingTrader(EntityType<Entity> entityType, ServerLevel serverLevel, CompoundTag compoundTag, Component component, Player player, BlockPos blockPos, MobSpawnType mobSpawnType, boolean bl, boolean bl2) {
-        if (!(serverLevel.random.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        if (!EntityType.WANDERING_TRADER.equals(entityType)) {
+            return entityType.spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
+        }
+
+        MoreBabiesConfig.BabySpawnWeight spawnWeightEntry = (MoreBabiesConfig.BabySpawnWeight) MoreBabiesConfig.BABIES.get("wandering_trader");
+        if (!(serverLevel.random.nextFloat() < spawnWeightEntry.getSpawnWeight().get())) {
             return entityType.spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
         }
 
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(entityType);
-        if (babyType == null) {
-            return entityType.spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
-        }
-
-        return babyType.spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
+        return Objects.requireNonNullElse(babyType, entityType).spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
     }
 
 }

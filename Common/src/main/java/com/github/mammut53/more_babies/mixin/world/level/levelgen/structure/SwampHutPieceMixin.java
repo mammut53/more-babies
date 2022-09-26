@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.level.levelgen.structure;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import com.github.mammut53.more_babies.world.entity.BabyWitch;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -43,7 +43,8 @@ public abstract class SwampHutPieceMixin extends ScatteredFeaturePiece {
             cancellable = true
     )
     private void spawnWitch(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos, CallbackInfo ci) {
-        if (!(randomSource.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        MoreBabiesConfig.BabySwSmEntry witchEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("witch");
+        if (!(randomSource.nextFloat() < witchEntry.getSpawnWeight().get())) {
             return;
         }
 

@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.entity.raid;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
@@ -14,6 +14,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import java.util.Objects;
+
 @Mixin(Raid.class)
 public abstract class RaidMixin {
 
@@ -25,16 +27,17 @@ public abstract class RaidMixin {
             )
     )
     private Entity create(EntityType<Entity> entityType, Level level) {
-        if (!(level.random.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        if (!EntityType.PILLAGER.equals(entityType) && !EntityType.EVOKER.equals(entityType) && !EntityType.VINDICATOR.equals(entityType) && !EntityType.RAVAGER.equals(entityType)) {
+            return entityType.create(level);
+        }
+
+        MoreBabiesConfig.BabySpawnWeight spawnWeightEntry = (MoreBabiesConfig.BabySpawnWeight) MoreBabiesConfig.BABIES.get(entityType.toShortString());
+        if (!(level.getRandom().nextFloat() < spawnWeightEntry.getSpawnWeight().get())) {
             return entityType.create(level);
         }
 
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(entityType);
-        if (babyType == null) {
-            return entityType.create(level);
-        }
-
-        return babyType.create(level);
+        return Objects.requireNonNullElse(babyType, entityType).create(level);
     }
 
     @Redirect(

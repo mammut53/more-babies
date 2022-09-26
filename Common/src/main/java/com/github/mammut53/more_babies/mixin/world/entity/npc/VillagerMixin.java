@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.entity.npc;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.SpawnUtil;
@@ -43,11 +43,12 @@ public abstract class VillagerMixin {
             )
     )
     private <T extends Mob> Optional<T> trySpawnMob(EntityType<T> entityType, MobSpawnType mobSpawnType, ServerLevel serverLevel, BlockPos blockPos, int i, int j, int k, SpawnUtil.Strategy strategy) {
-        if (!(serverLevel.random.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        MoreBabiesConfig.BabySwSmEntry ironGolemEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("iron_golem");
+        if (!(serverLevel.random.nextFloat() < ironGolemEntry.getSpawnWeight().get())) {
             return SpawnUtil.trySpawnMob(entityType, mobSpawnType, serverLevel, blockPos, i, j, k, strategy);
         }
 
-        EntityType<T> babyType = (EntityType<T>) MoreBabiesCommon.PARENT_BABY_RELATION.get(entityType);
+        EntityType<T> babyType = (EntityType<T>) MoreBabiesCommon.PARENT_BABY_RELATION.get(EntityType.IRON_GOLEM);
         if (babyType == null) {
             return SpawnUtil.trySpawnMob(entityType, mobSpawnType, serverLevel, blockPos, i, j, k, strategy);
         }

@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.level.levelgen.structure;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -23,6 +23,11 @@ public abstract class WoodlandMansionPieceMixin {
             )
     )
     private Entity createEvoker(EntityType<Entity> entityType, Level level) {
+        MoreBabiesConfig.BabySwSmEntry evokerEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("evoker");
+        if (!(level.random.nextFloat() < evokerEntry.getSpawnWeight().get())) {
+            return entityType.create(level);
+        }
+
         return create(entityType, level);
     }
 
@@ -35,14 +40,15 @@ public abstract class WoodlandMansionPieceMixin {
             )
     )
     private Entity createVindicator(EntityType<Entity> entityType, Level level) {
+        MoreBabiesConfig.BabySwSmEntry vindicatorEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("vindicator");
+        if (!(level.random.nextFloat() < vindicatorEntry.getSpawnWeight().get())) {
+            return entityType.create(level);
+        }
+
         return create(entityType, level);
     }
 
     private Entity create(EntityType<Entity> entityType, Level level) {
-        if (!(level.random.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
-            return entityType.create(level);
-        }
-
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(entityType);
         if (babyType == null) {
             return entityType.create(level);

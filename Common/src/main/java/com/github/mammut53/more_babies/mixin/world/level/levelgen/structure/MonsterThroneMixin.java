@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.level.levelgen.structure;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -33,7 +33,8 @@ public abstract class MonsterThroneMixin {
             locals = LocalCapture.CAPTURE_FAILSOFT
     )
     private void setEntityId(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos, CallbackInfo ci, BlockState $$7, BlockState $$8, BlockPos $$9, BlockEntity blockEntity) {
-        if (!(randomSource.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        MoreBabiesConfig.BabySwSmRsEntry blazeEntry = (MoreBabiesConfig.BabySwSmRsEntry) MoreBabiesConfig.BABIES.get("blaze");
+        if (!blazeEntry.getReplaceSpawners().get() || !(randomSource.nextFloat() < blazeEntry.getSpawnWeight().get())) {
             return;
         }
 

@@ -48,6 +48,7 @@ public class MoreBabiesFabricClient implements ClientModInitializer {
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_STRAY, StrayRenderer::new);
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_VINDICATOR, BabyVindicatorRenderer::new);
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WANDERING_TRADER, BabyWanderingTraderRenderer::new);
+        //EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WARDEN, BabyWardenRenderer::new);
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WITCH, BabyWitchRenderer::new);
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WITHER, BabyWitherBossRenderer::new);
         EntityRendererRegistry.register(MoreBabiesFabricRegistry.BABY_WITHER_SKELETON, WitherSkeletonRenderer::new);

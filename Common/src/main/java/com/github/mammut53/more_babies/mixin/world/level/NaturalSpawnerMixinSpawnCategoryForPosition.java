@@ -2,6 +2,7 @@ package com.github.mammut53.more_babies.mixin.world.level;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
 import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.AgeableMob;
@@ -25,9 +26,19 @@ public abstract class NaturalSpawnerMixinSpawnCategoryForPosition {
             )
     )
     private static int getMaxSpawnClusterSize(Mob mob) {
-        if (!(mob.level instanceof ServerLevel serverLevel && (serverLevel.getRandom().nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE))) return mob.getMaxSpawnClusterSize();
+        if (!(mob.level instanceof ServerLevel serverLevel)) return mob.getMaxSpawnClusterSize();
 
-        EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mob.getType());
+        EntityType<?> mobType = mob.getType();
+        if (!mobType.getDescriptionId().startsWith("entity.minecraft.")) return mob.getMaxSpawnClusterSize();
+        if (!MoreBabiesConstants.BABY_IDS.contains((mobType.toShortString()))) return mob.getMaxSpawnClusterSize();
+
+        MoreBabiesConfig.BabyEntry babyEntry = MoreBabiesConfig.BABIES.get(mobType.toShortString());
+        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnWeight)) return mob.getMaxSpawnClusterSize();
+
+        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnWeight) babyEntry).getSpawnWeight().get();
+        if (!(serverLevel.getRandom().nextFloat() < babySpawnWeight)) return mob.getMaxSpawnClusterSize();
+
+        EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mobType);
         if (babyType == null) return mob.getMaxSpawnClusterSize();
         Mob babyMob;
         if (mob instanceof AgeableMob ageableMob) {

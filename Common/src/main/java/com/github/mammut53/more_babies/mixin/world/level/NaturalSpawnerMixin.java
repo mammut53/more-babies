@@ -2,6 +2,7 @@ package com.github.mammut53.more_babies.mixin.world.level;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
 import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedRandomList;
 import net.minecraft.world.entity.EntityType;
@@ -29,10 +30,19 @@ public abstract class NaturalSpawnerMixin {
         Optional<MobSpawnSettings.SpawnerData> optional = weightedRandomList.getRandom(randomSource);
         if (optional.isEmpty()) return optional;
 
-        if (!(randomSource.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) return optional;
-
         MobSpawnSettings.SpawnerData spawnerData = optional.get();
-        EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(spawnerData.type);
+
+        EntityType<?> mobType = spawnerData.type;
+        if (!mobType.getDescriptionId().startsWith("entity.minecraft.")) return optional;
+        if (!MoreBabiesConstants.BABY_IDS.contains((mobType.toShortString()))) return optional;
+
+        MoreBabiesConfig.BabyEntry babyEntry = MoreBabiesConfig.BABIES.get(mobType.toShortString());
+        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnWeight)) return optional;
+
+        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnWeight) babyEntry).getSpawnWeight().get();
+        if (!(randomSource.nextFloat() < babySpawnWeight)) return optional;
+
+        EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mobType);
         if (babyType == null) return optional;
 
         return Optional.of(new MobSpawnSettings.SpawnerData(babyType, spawnerData.getWeight(), spawnerData.minCount, spawnerData.maxCount));

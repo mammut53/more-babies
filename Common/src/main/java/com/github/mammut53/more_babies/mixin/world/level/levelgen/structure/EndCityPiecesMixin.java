@@ -1,7 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.level.levelgen.structure;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
-import com.github.mammut53.more_babies.MoreBabiesConstants;
+import com.github.mammut53.more_babies.config.MoreBabiesConfig;
 import com.github.mammut53.more_babies.world.entity.BabyShulker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -31,7 +31,8 @@ public abstract class EndCityPiecesMixin {
             return;
         }
 
-        if (!(randomSource.nextFloat() < MoreBabiesConstants.BABY_SPAWN_CHANCE)) {
+        MoreBabiesConfig.BabySwSmEntry shulkerEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("shulker");
+        if (!(randomSource.nextFloat() < shulkerEntry.getSpawnWeight().get())) {
             return;
         }
 
