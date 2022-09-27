@@ -14,7 +14,7 @@
     },
   
     "license": "All rights reserved",
-    "icon": "assets/more_babies/icon.png",
+    "icon": "icon.png",
   
     "environment": "*",
     "entrypoints": {
