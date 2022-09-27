@@ -19,9 +19,9 @@ public class NaturalSpawning {
         if (!MoreBabiesConstants.BABY_IDS.contains((mobType.toShortString()))) return;
 
         MoreBabiesConfig.BabyEntry babyEntry = MoreBabiesConfig.BABIES.get(mobType.toShortString());
-        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnWeight)) return;
+        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnChance)) return;
 
-        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnWeight) babyEntry).getSpawnWeight().get();
+        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnChance) babyEntry).getSpawnChance().get();
         if (!(serverLevel.getRandom().nextFloat() < babySpawnWeight)) return;
 
         EntityType<? extends Mob> babyType = MoreBabiesForgeRegistry.PARENT_BABY_RELATION.get(mobType);

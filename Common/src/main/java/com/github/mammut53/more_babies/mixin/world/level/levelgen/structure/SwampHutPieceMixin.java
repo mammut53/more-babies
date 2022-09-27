@@ -43,8 +43,8 @@ public abstract class SwampHutPieceMixin extends ScatteredFeaturePiece {
             cancellable = true
     )
     private void spawnWitch(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos, CallbackInfo ci) {
-        MoreBabiesConfig.BabySwSmEntry witchEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("witch");
-        if (!(randomSource.nextFloat() < witchEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry witchEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("witch");
+        if (!(randomSource.nextFloat() < witchEntry.getSpawnChance().get())) {
             return;
         }
 

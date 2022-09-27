@@ -43,8 +43,8 @@ public abstract class VillagerMixin {
             )
     )
     private <T extends Mob> Optional<T> trySpawnMob(EntityType<T> entityType, MobSpawnType mobSpawnType, ServerLevel serverLevel, BlockPos blockPos, int i, int j, int k, SpawnUtil.Strategy strategy) {
-        MoreBabiesConfig.BabySwSmEntry ironGolemEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("iron_golem");
-        if (!(serverLevel.random.nextFloat() < ironGolemEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry ironGolemEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("iron_golem");
+        if (!(serverLevel.random.nextFloat() < ironGolemEntry.getSpawnChance().get())) {
             return SpawnUtil.trySpawnMob(entityType, mobSpawnType, serverLevel, blockPos, i, j, k, strategy);
         }
 

@@ -33,9 +33,9 @@ public abstract class NaturalSpawnerMixinSpawnCategoryForPosition {
         if (!MoreBabiesConstants.BABY_IDS.contains((mobType.toShortString()))) return mob.getMaxSpawnClusterSize();
 
         MoreBabiesConfig.BabyEntry babyEntry = MoreBabiesConfig.BABIES.get(mobType.toShortString());
-        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnWeight)) return mob.getMaxSpawnClusterSize();
+        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnChance)) return mob.getMaxSpawnClusterSize();
 
-        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnWeight) babyEntry).getSpawnWeight().get();
+        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnChance) babyEntry).getSpawnChance().get();
         if (!(serverLevel.getRandom().nextFloat() < babySpawnWeight)) return mob.getMaxSpawnClusterSize();
 
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mobType);

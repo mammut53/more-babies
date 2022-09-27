@@ -23,8 +23,8 @@ public abstract class WoodlandMansionPieceMixin {
             )
     )
     private Entity createEvoker(EntityType<Entity> entityType, Level level) {
-        MoreBabiesConfig.BabySwSmEntry evokerEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("evoker");
-        if (!(level.random.nextFloat() < evokerEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry evokerEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("evoker");
+        if (!(level.random.nextFloat() < evokerEntry.getSpawnChance().get())) {
             return entityType.create(level);
         }
 
@@ -40,8 +40,8 @@ public abstract class WoodlandMansionPieceMixin {
             )
     )
     private Entity createVindicator(EntityType<Entity> entityType, Level level) {
-        MoreBabiesConfig.BabySwSmEntry vindicatorEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("vindicator");
-        if (!(level.random.nextFloat() < vindicatorEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry vindicatorEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("vindicator");
+        if (!(level.random.nextFloat() < vindicatorEntry.getSpawnChance().get())) {
             return entityType.create(level);
         }
 

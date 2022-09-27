@@ -1,6 +1,7 @@
 package com.github.mammut53.more_babies.mixin.world.item;
 
 import com.github.mammut53.more_babies.MoreBabiesCommon;
+import com.github.mammut53.more_babies.MoreBabiesConstants;
 import com.github.mammut53.more_babies.world.entity.EquipedBaby;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -44,7 +45,7 @@ public abstract class SpawnEggItemMixin extends Item {
             cancellable = true
     )
     private void unknownBaby(Player player, Mob mob, EntityType<? extends Mob> entityType, ServerLevel serverLevel, Vec3 vec3, ItemStack itemStack, CallbackInfoReturnable<Optional<Mob>> cir) {
-
+        MoreBabiesConstants.LOG.info("unknownBaby");
         EntityType<? extends Mob> newEntityType;
         if (!mob.isBaby()) {
             newEntityType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mob.getType());
@@ -81,17 +82,20 @@ public abstract class SpawnEggItemMixin extends Item {
             cancellable = true
     )
     private void spawnsEntitys(CompoundTag compoundTag, EntityType<?> entityType, CallbackInfoReturnable<Boolean> cir) {
+        MoreBabiesConstants.LOG.info("spawnsEntitys");
         if (Objects.equals(this.getType(compoundTag), entityType)) {
+            MoreBabiesConstants.LOG.info("true 1");
             cir.setReturnValue(true);
             return;
         }
 
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(this.getType(compoundTag));
         if (babyType != null && Objects.equals(babyType, entityType)) {
+            MoreBabiesConstants.LOG.info("true 2");
             cir.setReturnValue(true);
             return;
         }
-
+        MoreBabiesConstants.LOG.info("false");
         cir.setReturnValue(false);
     }
 }

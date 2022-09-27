@@ -28,8 +28,8 @@ public abstract class PatrolSpawnerMixin {
             return entityType.create(level);
         }
 
-        MoreBabiesConfig.BabySpawnWeight spawnWeightEntry = (MoreBabiesConfig.BabySpawnWeight) MoreBabiesConfig.BABIES.get("pillager");
-        if (!(level.getRandom().nextFloat() < spawnWeightEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabySpawnChance spawnWeightEntry = (MoreBabiesConfig.BabySpawnChance) MoreBabiesConfig.BABIES.get("pillager");
+        if (!(level.getRandom().nextFloat() < spawnWeightEntry.getSpawnChance().get())) {
             return entityType.create(level);
         }
 

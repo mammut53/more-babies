@@ -37,8 +37,8 @@ public abstract class ShulkerMixin extends AbstractGolem {
             cancellable = true
     )
     private void spawnShulker(CallbackInfo ci) {
-        MoreBabiesConfig.BabySwSmEntry shulkerEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("shulker");
-        if (!(level.random.nextFloat() < shulkerEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry shulkerEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("shulker");
+        if (!(level.random.nextFloat() < shulkerEntry.getSpawnChance().get())) {
             return;
         }
 

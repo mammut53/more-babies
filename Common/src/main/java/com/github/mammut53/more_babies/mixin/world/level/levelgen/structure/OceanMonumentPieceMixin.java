@@ -21,8 +21,8 @@ public abstract class OceanMonumentPieceMixin {
             )
     )
     private Entity createElderGuardian(EntityType<Entity> entityType, Level level) {
-        MoreBabiesConfig.BabySwSmEntry elderGuardianEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("elder_guardian");
-        if (!(level.random.nextFloat() < elderGuardianEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry elderGuardianEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("elder_guardian");
+        if (!(level.random.nextFloat() < elderGuardianEntry.getSpawnChance().get())) {
             return entityType.create(level);
         }
 

@@ -37,9 +37,9 @@ public abstract class NaturalSpawnerMixin {
         if (!MoreBabiesConstants.BABY_IDS.contains((mobType.toShortString()))) return optional;
 
         MoreBabiesConfig.BabyEntry babyEntry = MoreBabiesConfig.BABIES.get(mobType.toShortString());
-        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnWeight)) return optional;
+        if (!(babyEntry instanceof MoreBabiesConfig.BabySpawnChance)) return optional;
 
-        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnWeight) babyEntry).getSpawnWeight().get();
+        double babySpawnWeight = ((MoreBabiesConfig.BabySpawnChance) babyEntry).getSpawnChance().get();
         if (!(randomSource.nextFloat() < babySpawnWeight)) return optional;
 
         EntityType<? extends Mob> babyType = MoreBabiesCommon.PARENT_BABY_RELATION.get(mobType);

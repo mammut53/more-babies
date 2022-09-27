@@ -33,8 +33,8 @@ public abstract class MineShaftCorridorMixin {
             locals = LocalCapture.CAPTURE_FAILSOFT
     )
     private void setEntityId(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos, CallbackInfo ci, int $$7, int $$8, int $$9, int $$10, int $$11, BlockState $$12, int $$13, int $$14, int $$15, int $$16, BlockPos $$17, BlockEntity blockEntity) {
-        MoreBabiesConfig.BabySwSmRsEntry caveSpiderEntry = (MoreBabiesConfig.BabySwSmRsEntry) MoreBabiesConfig.BABIES.get("cave_spider");
-        if (!caveSpiderEntry.getReplaceSpawners().get() || !(randomSource.nextFloat() < caveSpiderEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmRsEntry caveSpiderEntry = (MoreBabiesConfig.BabyScSmRsEntry) MoreBabiesConfig.BABIES.get("cave_spider");
+        if (!caveSpiderEntry.getReplaceSpawners().get() || !(randomSource.nextFloat() < caveSpiderEntry.getSpawnChance().get())) {
             return;
         }
 

@@ -33,8 +33,8 @@ public abstract class MonsterThroneMixin {
             locals = LocalCapture.CAPTURE_FAILSOFT
     )
     private void setEntityId(WorldGenLevel worldGenLevel, StructureManager structureManager, ChunkGenerator chunkGenerator, RandomSource randomSource, BoundingBox boundingBox, ChunkPos chunkPos, BlockPos blockPos, CallbackInfo ci, BlockState $$7, BlockState $$8, BlockPos $$9, BlockEntity blockEntity) {
-        MoreBabiesConfig.BabySwSmRsEntry blazeEntry = (MoreBabiesConfig.BabySwSmRsEntry) MoreBabiesConfig.BABIES.get("blaze");
-        if (!blazeEntry.getReplaceSpawners().get() || !(randomSource.nextFloat() < blazeEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmRsEntry blazeEntry = (MoreBabiesConfig.BabyScSmRsEntry) MoreBabiesConfig.BABIES.get("blaze");
+        if (!blazeEntry.getReplaceSpawners().get() || !(randomSource.nextFloat() < blazeEntry.getSpawnChance().get())) {
             return;
         }
 

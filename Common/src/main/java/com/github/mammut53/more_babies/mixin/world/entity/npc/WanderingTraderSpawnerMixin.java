@@ -33,8 +33,8 @@ public abstract class WanderingTraderSpawnerMixin {
             return entityType.spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
         }
 
-        MoreBabiesConfig.BabySpawnWeight spawnWeightEntry = (MoreBabiesConfig.BabySpawnWeight) MoreBabiesConfig.BABIES.get("wandering_trader");
-        if (!(serverLevel.random.nextFloat() < spawnWeightEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabySpawnChance spawnWeightEntry = (MoreBabiesConfig.BabySpawnChance) MoreBabiesConfig.BABIES.get("wandering_trader");
+        if (!(serverLevel.random.nextFloat() < spawnWeightEntry.getSpawnChance().get())) {
             return entityType.spawn(serverLevel, null, null, null, blockPos, MobSpawnType.EVENT, false, false);
         }
 

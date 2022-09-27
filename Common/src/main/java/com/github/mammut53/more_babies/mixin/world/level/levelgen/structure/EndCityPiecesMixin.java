@@ -31,8 +31,8 @@ public abstract class EndCityPiecesMixin {
             return;
         }
 
-        MoreBabiesConfig.BabySwSmEntry shulkerEntry = (MoreBabiesConfig.BabySwSmEntry) MoreBabiesConfig.BABIES.get("shulker");
-        if (!(randomSource.nextFloat() < shulkerEntry.getSpawnWeight().get())) {
+        MoreBabiesConfig.BabyScSmEntry shulkerEntry = (MoreBabiesConfig.BabyScSmEntry) MoreBabiesConfig.BABIES.get("shulker");
+        if (!(randomSource.nextFloat() < shulkerEntry.getSpawnChance().get())) {
             return;
         }
 

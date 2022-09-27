@@ -33,12 +33,12 @@ public class MoreBabiesConfig {
             BabyEntry babyEntry = switch (baby) {
                 case "blaze":
                 case "cave_spider":
-                    yield new BabySwSmRsEntry(builder);
+                    yield new BabyScSmRsEntry(builder);
 
                 case "creeper":
-                    yield new BabySwSmErEntry(builder);
+                    yield new BabyScSmErEntry(builder);
                 default:
-                    yield new BabySwSmEntry(builder);
+                    yield new BabyScSmEntry(builder);
             };
             BABIES.put(baby, babyEntry);
 
@@ -48,8 +48,8 @@ public class MoreBabiesConfig {
 
     public interface BabyEntry {}
 
-    public interface BabySpawnWeight extends BabyEntry {
-        ForgeConfigSpec.DoubleValue getSpawnWeight();
+    public interface BabySpawnChance extends BabyEntry {
+        ForgeConfigSpec.DoubleValue getSpawnChance();
     }
 
     public interface BabySpeedModifier extends BabyEntry {
@@ -64,10 +64,10 @@ public class MoreBabiesConfig {
         ForgeConfigSpec.BooleanValue getReplaceSpawners();
     }
 
-    public static class BabySwSmErEntry extends BabySwSmEntry implements BabyExplosionRadius {
+    public static class BabyScSmErEntry extends BabyScSmEntry implements BabyExplosionRadius {
         public final BabyExplosionRadiusEntry babyExplosionRadiusEntry;
 
-        public BabySwSmErEntry(ForgeConfigSpec.Builder builder) {
+        public BabyScSmErEntry(ForgeConfigSpec.Builder builder) {
             super(builder);
             babyExplosionRadiusEntry = new BabyExplosionRadiusEntry(builder);
         }
@@ -78,11 +78,11 @@ public class MoreBabiesConfig {
         }
     }
 
-    public static class BabySwSmRsEntry extends BabySwSmEntry implements BabyReplaceSpawners {
+    public static class BabyScSmRsEntry extends BabyScSmEntry implements BabyReplaceSpawners {
 
         public final BabyReplaceSpawnersEntry babyReplaceSpawnersEntry;
 
-        public BabySwSmRsEntry(ForgeConfigSpec.Builder builder) {
+        public BabyScSmRsEntry(ForgeConfigSpec.Builder builder) {
             super(builder);
             babyReplaceSpawnersEntry = new BabyReplaceSpawnersEntry(builder);
         }
@@ -93,18 +93,18 @@ public class MoreBabiesConfig {
         }
     }
 
-    public static class BabySpawnWeightEntry implements BabySpawnWeight {
-        public final ForgeConfigSpec.DoubleValue spawnWeight;
+    public static class BabySpawnChanceEntry implements BabySpawnChance {
+        public final ForgeConfigSpec.DoubleValue spawnChance;
 
-        public BabySpawnWeightEntry(ForgeConfigSpec.Builder builder) {
-            this.spawnWeight = builder
+        public BabySpawnChanceEntry(ForgeConfigSpec.Builder builder) {
+            this.spawnChance = builder
                     .comment("Percentage of mobs that will be replaced with babies")
-                    .defineInRange("spawnWeight", 0.05, 0, 1);
+                    .defineInRange("spawnChance", 0.05, 0, 1);
         }
 
         @Override
-        public ForgeConfigSpec.DoubleValue getSpawnWeight() {
-            return spawnWeight;
+        public ForgeConfigSpec.DoubleValue getSpawnChance() {
+            return spawnChance;
         }
     }
 
@@ -156,18 +156,18 @@ public class MoreBabiesConfig {
         }
     }
 
-    public static class BabySwSmEntry implements BabySpawnWeight, BabySpeedModifier {
-        public final BabySpawnWeightEntry babySpawnWeight;
+    public static class BabyScSmEntry implements BabySpawnChance, BabySpeedModifier {
+        public final BabySpawnChanceEntry babySpawnChance;
         public final BabySpeedModifierEntry babySpeedModifier;
 
-        public BabySwSmEntry(ForgeConfigSpec.Builder builder) {
-            this.babySpawnWeight = new BabySpawnWeightEntry(builder);
+        public BabyScSmEntry(ForgeConfigSpec.Builder builder) {
+            this.babySpawnChance = new BabySpawnChanceEntry(builder);
             this.babySpeedModifier = new BabySpeedModifierEntry(builder);
         }
 
         @Override
-        public ForgeConfigSpec.DoubleValue getSpawnWeight() {
-            return this.babySpawnWeight.getSpawnWeight();
+        public ForgeConfigSpec.DoubleValue getSpawnChance() {
+            return this.babySpawnChance.getSpawnChance();
         }
 
         @Override
