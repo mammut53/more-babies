@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "xyz.wagyourtail.unimined" version "1.3.13"
+    id "xyz.wagyourtail.unimined" version "1.4.2-SNAPSHOT"
 }
 
 group group
@@ -12,14 +12,11 @@ base {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
 
     withSourcesJar()
 }
-
-// TODO this is just here so we can test the outputs easier and clean between tests
-unimined.useGlobalCache = false
 
 sourceSets {
     fabric
@@ -33,16 +30,10 @@ repositories {
     unimined.wagYourMaven("releases")
 }
 
-unimined.minecraft {
+unimined.minecraft(sourceSets.main) {
     version minecraft_version
 
-    mappings {
-        mojmap()
-        officialMappingsFromJar()
-
-        devNamespace "mojmap"
-        devFallbackNamespace "official"
-    }
+    mappings {}
 
     accessWidener {
         accessWidener "${projectDir}/src/main/resources/${mod_id}.accesswidener"
@@ -93,7 +84,7 @@ unimined.minecraft(sourceSets.fabric) {
         }
     }
 }
-
+/*
 unimined.minecraft(sourceSets.neoforge) {
     combineWith(sourceSets.main)
 
@@ -130,7 +121,7 @@ unimined.minecraft(sourceSets.neoforge) {
             workingDir = file("$projectDir/run/neoforge/server")
         }
     }
-}
+}*/
 
 configurations {
     mainImplementation
@@ -158,14 +149,14 @@ processFabricResources {
         expand project.properties
     }
 }
-
+/*
 processNeoforgeResources {
     inputs.property "version", version
 
     filesMatching("META-INF/neoforge.mods.toml") {
         expand project.properties
     }
-}
+}*/
 
 tasks.withType(Jar).configureEach {
     from("LICENSE") {}
@@ -174,7 +165,7 @@ tasks.withType(Jar).configureEach {
 tasks.named("remapFabricJar") {
     archiveFileName = "${mod_name}-${version}-fabric+mc${minecraft_version}.jar"
 }
-
+/*
 tasks.named("remapNeoforgeJar") {
     archiveFileName = "${mod_name}-${version}-neoforge+mc${minecraft_version}.jar"
-}
+}*/

@@ -1,4 +1,4 @@
-package io.github.mammut53.example.platform;
+package io.github.mammut53.more_babies.platform;
 
 import net.fabricmc.loader.api.FabricLoader;
 
