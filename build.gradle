@@ -36,7 +36,7 @@ unimined.minecraft(sourceSets.main) {
     mappings {}
 
     accessWidener {
-        accessWidener "${projectDir}/src/main/resources/${mod_id}.accesswidener"
+        accessWidener "${projectDir}/src/main/resources/${mod_id}.classtweaker"
     }
 
     if (sourceSet == sourceSets.main) {
@@ -53,7 +53,7 @@ unimined.minecraft(sourceSets.fabric) {
 
     fabric {
         loader fabric_loader
-        accessWidener "${projectDir}/src/main/resources/${mod_id}.accesswidener"
+        accessWidener "${projectDir}/src/main/resources/${mod_id}.classtweaker"
     }
 
     defaultRemapJar = true
@@ -91,7 +91,7 @@ unimined.minecraft(sourceSets.neoforge) {
     neoForge() {
         loader neoforge_version
         mixinConfig("${mod_id}.mixins.json", "${mod_id}-neoforge.mixins.json")
-        accessTransformer aw2at("${projectDir}/src/main/resources/${mod_id}.accesswidener")
+        accessTransformer aw2at("${projectDir}/src/main/resources/${mod_id}.classtweaker")
     }
 
     defaultRemapJar = true

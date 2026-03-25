@@ -16,7 +16,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.mammut53.more_babies.MoreBabies"
+      "io.github.mammut53.more_babies.MoreBabiesFabric"
     ]
   },
   "mixins": [
@@ -32,5 +32,5 @@
   "custom": {
     "loom:injected_interfaces": {}
   },
-  "accessWidener" : "more_babies.accesswidener"
+  "accessWidener" : "more_babies.classtweaker"
 }

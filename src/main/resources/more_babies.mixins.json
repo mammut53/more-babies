@@ -5,9 +5,12 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "example.mixins.refmap.json",
   "mixins": [
-    "TickMixin"
+    "client.model.monster.blaze.BlazeModelMixin",
+    "world.entity.monster.BlazeMixin"
   ],
-  "client": [],
+  "client": [
+    "client.renderer.entity.BlazeRendererMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1
