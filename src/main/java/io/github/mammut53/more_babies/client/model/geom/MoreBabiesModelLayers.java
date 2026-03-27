@@ -1,9 +1,15 @@
 package io.github.mammut53.more_babies.client.model.geom;
 
+import com.google.common.collect.ImmutableMap;
 import io.github.mammut53.more_babies.MoreBabies;
+import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
+import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.resources.Identifier;
+
+import java.util.Map;
 
 public class MoreBabiesModelLayers {
 
@@ -12,6 +18,12 @@ public class MoreBabiesModelLayers {
     }
 
     public static final ModelLayerLocation BLAZE_BABY = register("blaze_baby");
+    public static final ModelLayerLocation WITCH_BABY = register("witch_baby");
+
+    public static final Map<ModelLayerLocation, LayerDefinition> LAYERS = ImmutableMap.<ModelLayerLocation, LayerDefinition>builder()
+            .put(BLAZE_BABY, BabyBlazeModel.createBodyLayer())
+            .put(WITCH_BABY, BabyWitchModel.createBodyLayer())
+            .build();
 
     private static ModelLayerLocation register(final String model) {
         return register(model, "main");

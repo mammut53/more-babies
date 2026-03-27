@@ -1,8 +1,11 @@
 package io.github.mammut53.more_babies.registry;
 
 import io.github.mammut53.more_babies.client.model.geom.MoreBabiesModelLayers;
-import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+
+import java.util.Map;
 
 public class MoreBabiesRegistry {
 
@@ -11,7 +14,9 @@ public class MoreBabiesRegistry {
     }
 
     public static void registerModelLayers() {
-        ModelLayerRegistry.registerModelLayer(MoreBabiesModelLayers.BLAZE_BABY, BabyBlazeModel::createBodyLayer);
+        for (final Map.Entry<ModelLayerLocation, LayerDefinition> entry : MoreBabiesModelLayers.LAYERS.entrySet()) {
+            ModelLayerRegistry.registerModelLayer(entry.getKey(), entry::getValue);
+        }
     }
 
 }
