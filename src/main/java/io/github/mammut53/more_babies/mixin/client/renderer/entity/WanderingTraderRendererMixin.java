@@ -23,12 +23,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class WanderingTraderRendererMixin extends MobRenderer<WanderingTrader, VillagerRenderState, VillagerModel> {
 
     @Shadow
-    @Final
     private static final Identifier VILLAGER_BASE_SKIN = Identifier.withDefaultNamespace("textures/entity/wandering_trader/wandering_trader.png");;
     @Unique
     private static final Identifier more_babies$VILLAGER_BASE_SKIN = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/wandering_trader/wandering_trader_baby.png");
 
     @Unique
+    @Final
+    @Mutable
     private VillagerModel more_babies$adultModel;
     @Unique
     @Final

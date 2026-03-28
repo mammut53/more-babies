@@ -24,12 +24,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class BlazeRendererMixin extends MobRenderer<Blaze, LivingEntityRenderState, BlazeModel> {
 
     @Shadow
-    @Final
     private static final Identifier BLAZE_LOCATION = Identifier.withDefaultNamespace("textures/entity/blaze/blaze.png");
     @Unique
     private static final Identifier more_babies$BABY_BLAZE_LOCATION = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/blaze/blaze_baby.png");
 
     @Unique
+    @Final
+    @Mutable
     private BlazeModel more_babies$adultModel;
     @Unique
     @Final

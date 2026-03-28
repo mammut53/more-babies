@@ -24,7 +24,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class VindicatorRendererMixin extends IllagerRenderer<Vindicator, IllagerRenderState> {
 
     @Shadow
-    @Final
     private static final Identifier VINDICATOR = Identifier.withDefaultNamespace("textures/entity/illager/vindicator.png");;
     @Unique
     private static final Identifier more_babies$BABY_VINDICATOR = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/illager/vindicator_baby.png");

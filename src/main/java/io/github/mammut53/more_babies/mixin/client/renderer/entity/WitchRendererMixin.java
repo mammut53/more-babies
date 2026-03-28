@@ -24,12 +24,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class WitchRendererMixin extends MobRenderer<Witch, WitchRenderState, WitchModel> {
 
     @Shadow
-    @Final
     private static final Identifier WITCH_LOCATION = Identifier.withDefaultNamespace("textures/entity/witch/witch.png");
     @Unique
     private static final Identifier more_babies$WITCH_LOCATION = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/witch/witch_baby.png");
 
     @Unique
+    @Final
+    @Mutable
     private WitchModel more_babies$adultModel;
     @Unique
     @Final
