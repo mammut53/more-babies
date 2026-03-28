@@ -6,8 +6,10 @@
   "refmap": "example.mixins.refmap.json",
   "mixins": [
     "client.model.monster.blaze.BlazeModelMixin",
+    "client.renderer.entity.VindicatorRendererMixin",
     "client.renderer.entity.WitchRendererMixin",
     "world.entity.monster.BlazeMixin",
+    "world.entity.monster.VindicatorMixin",
     "world.entity.monster.WanderingTraderMixin",
     "world.entity.monster.WitchMixin"
   ],
