@@ -9,24 +9,24 @@ import net.minecraft.client.model.monster.illager.IllagerModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.IllagerRenderer;
-import net.minecraft.client.renderer.entity.VindicatorRenderer;
+import net.minecraft.client.renderer.entity.PillagerRenderer;
 import net.minecraft.client.renderer.entity.state.IllagerRenderState;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.monster.illager.Vindicator;
+import net.minecraft.world.entity.monster.illager.Pillager;
 import org.jspecify.annotations.NonNull;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(VindicatorRenderer.class)
-public abstract class VindicatorRendererMixin extends IllagerRenderer<Vindicator, IllagerRenderState> {
+@Mixin(PillagerRenderer.class)
+public abstract class PillagerRendererMixin extends IllagerRenderer<Pillager, IllagerRenderState> {
 
     @Shadow
-    private static final Identifier VINDICATOR = Identifier.withDefaultNamespace("textures/entity/illager/vindicator.png");;
+    private static final Identifier PILLAGER = Identifier.withDefaultNamespace("textures/entity/illager/pillager.png");;
     @Unique
-    private static final Identifier more_babies$BABY_VINDICATOR = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/illager/vindicator_baby.png");
+    private static final Identifier more_babies$BABY_PILLAGER = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/illager/pillager_baby.png");
 
     @Unique
     @Final
@@ -37,7 +37,7 @@ public abstract class VindicatorRendererMixin extends IllagerRenderer<Vindicator
     @Mutable
     private IllagerModel<IllagerRenderState> more_babies$babyModel;
 
-    protected VindicatorRendererMixin(final EntityRendererProvider.Context context, final IllagerModel<IllagerRenderState> model, final float shadow) {
+    protected PillagerRendererMixin(final EntityRendererProvider.Context context, final IllagerModel<IllagerRenderState> model, final float shadow) {
         super(context, model, shadow);
     }
 
@@ -46,13 +46,13 @@ public abstract class VindicatorRendererMixin extends IllagerRenderer<Vindicator
             at = @At("TAIL")
     )
     private void injectConstructor(final EntityRendererProvider.Context context, CallbackInfo ci) {
-        this.more_babies$adultModel = new IllagerModel<>(context.bakeLayer(ModelLayers.VINDICATOR));
-        this.more_babies$babyModel = new BabyIllagerModel<>(context.bakeLayer(MoreBabiesModelLayers.VINDICATOR_BABY));
+        this.more_babies$adultModel = new IllagerModel<>(context.bakeLayer(ModelLayers.PILLAGER));
+        this.more_babies$babyModel = new BabyIllagerModel<>(context.bakeLayer(MoreBabiesModelLayers.PILLAGER_BABY));
     }
 
     @Override
     public @NonNull Identifier getTextureLocation(final IllagerRenderState state) {
-        return state.isBaby ? more_babies$BABY_VINDICATOR : VINDICATOR;
+        return state.isBaby ? more_babies$BABY_PILLAGER : PILLAGER;
     }
 
     @Override
