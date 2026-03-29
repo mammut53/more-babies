@@ -1,6 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster;
 
-import io.github.mammut53.more_babies.world.entity.monster.blaze.VindicatorGroupData;
+import io.github.mammut53.more_babies.world.entity.monster.illager.VindicatorGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,7 +21,6 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(Vindicator.class)
 public abstract class VindicatorMixin extends AbstractIllager {

@@ -1,6 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster;
 
-import io.github.mammut53.more_babies.world.entity.monster.blaze.IllusionerGroupData;
+import io.github.mammut53.more_babies.world.entity.monster.illager.IllusionerGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
