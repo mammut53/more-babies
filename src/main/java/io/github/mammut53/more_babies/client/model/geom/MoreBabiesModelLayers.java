@@ -15,12 +15,14 @@ import java.util.Map;
 public class MoreBabiesModelLayers {
 
     public static final ModelLayerLocation BLAZE_BABY = register("blaze_baby");
+    public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation PILLAGER_BABY = register("pillager_baby");
     public static final ModelLayerLocation VINDICATOR_BABY = register("vindicator_baby");
     public static final ModelLayerLocation WITCH_BABY = register("witch_baby");
 
     public static final Map<ModelLayerLocation, LayerDefinition> LAYERS = ImmutableMap.<ModelLayerLocation, LayerDefinition>builder()
             .put(BLAZE_BABY, BabyBlazeModel.createBodyLayer())
+            .put(EVOKER_BABY, BabyIllagerModel.createBodyLayer())
             .put(PILLAGER_BABY, BabyIllagerModel.createBodyLayer())
             .put(VINDICATOR_BABY, BabyIllagerModel.createBodyLayer())
             .put(WITCH_BABY, BabyWitchModel.createBodyLayer())
