@@ -2,6 +2,7 @@ package io.github.mammut53.more_babies.client.model.geom;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.mammut53.more_babies.MoreBabies;
+import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
 import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
 import io.github.mammut53.more_babies.client.model.monster.illager.BabyIllagerModel;
 import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
@@ -18,6 +19,7 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
     public static final ModelLayerLocation PILLAGER_BABY = register("pillager_baby");
+    public static final ModelLayerLocation SNOW_GOLEM_BABY = register("snow_golem_baby");
     public static final ModelLayerLocation VINDICATOR_BABY = register("vindicator_baby");
     public static final ModelLayerLocation WITCH_BABY = register("witch_baby");
 
@@ -26,6 +28,7 @@ public class MoreBabiesModelLayers {
             .put(EVOKER_BABY, BabyIllagerModel.createBodyLayer())
             .put(ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer())
             .put(PILLAGER_BABY, BabyIllagerModel.createBodyLayer())
+            .put(SNOW_GOLEM_BABY, BabySnowGolemModel.createBodyLayer())
             .put(VINDICATOR_BABY, BabyIllagerModel.createBodyLayer())
             .put(WITCH_BABY, BabyWitchModel.createBodyLayer())
             .build();
