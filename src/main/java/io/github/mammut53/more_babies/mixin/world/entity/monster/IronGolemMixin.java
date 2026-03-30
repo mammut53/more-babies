@@ -35,7 +35,7 @@ public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(IronGolemMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.7F, 1.35F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.7F, 1.6F);
 
     protected IronGolemMixin(final EntityType<? extends AbstractGolem> type, final Level level) {
         super(type, level);
