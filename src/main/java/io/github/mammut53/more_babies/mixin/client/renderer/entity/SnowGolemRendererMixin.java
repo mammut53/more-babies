@@ -2,6 +2,7 @@ package io.github.mammut53.more_babies.mixin.client.renderer.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.mammut53.more_babies.MoreBabies;
+import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
 import io.github.mammut53.more_babies.client.model.geom.MoreBabiesModelLayers;
 import net.minecraft.client.model.animal.golem.SnowGolemModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -46,7 +47,7 @@ public abstract class SnowGolemRendererMixin extends MobRenderer<SnowGolem, Snow
     )
     private void injectConstructor(final EntityRendererProvider.Context context, CallbackInfo ci) {
         this.more_babies$adultModel = new SnowGolemModel(context.bakeLayer(ModelLayers.SNOW_GOLEM));
-        this.more_babies$babyModel = new SnowGolemModel(context.bakeLayer(MoreBabiesModelLayers.SNOW_GOLEM_BABY));
+        this.more_babies$babyModel = new BabySnowGolemModel(context.bakeLayer(MoreBabiesModelLayers.SNOW_GOLEM_BABY));
     }
 
     @Override
