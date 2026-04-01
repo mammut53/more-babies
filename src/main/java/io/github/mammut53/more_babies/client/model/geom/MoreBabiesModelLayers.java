@@ -5,6 +5,7 @@ import io.github.mammut53.more_babies.MoreBabies;
 import io.github.mammut53.more_babies.client.model.animal.golem.BabyIronGolemModel;
 import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
 import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
+import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
 import io.github.mammut53.more_babies.client.model.monster.illager.BabyIllagerModel;
 import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -17,6 +18,7 @@ import java.util.Map;
 public class MoreBabiesModelLayers {
 
     public static final ModelLayerLocation BLAZE_BABY = register("blaze_baby");
+    public static final ModelLayerLocation ENDERMAN_BABY = register("enderman");
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
     public static final ModelLayerLocation IRON_GOLEM_BABY = register("iron_golem_baby");
@@ -27,6 +29,7 @@ public class MoreBabiesModelLayers {
 
     public static final Map<ModelLayerLocation, LayerDefinition> LAYERS = ImmutableMap.<ModelLayerLocation, LayerDefinition>builder()
             .put(BLAZE_BABY, BabyBlazeModel.createBodyLayer())
+            .put(ENDERMAN_BABY, BabyEndermanModel.createBodyLayer())
             .put(EVOKER_BABY, BabyIllagerModel.createBodyLayer())
             .put(ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer())
             .put(IRON_GOLEM_BABY, BabyIronGolemModel.createBodyLayer())
