@@ -1,6 +1,6 @@
-package io.github.mammut53.more_babies.mixin.world.entity.monster;
+package io.github.mammut53.more_babies.mixin.world.entity.monster.illager;
 
-import io.github.mammut53.more_babies.world.entity.monster.illager.PillagerGroupData;
+import io.github.mammut53.more_babies.world.entity.monster.illager.EvokerGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraft.world.entity.monster.illager.Pillager;
+import net.minecraft.world.entity.monster.illager.Evoker;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
@@ -21,32 +21,27 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Pillager.class)
-public abstract class PillagerMixin extends AbstractIllager {
+@Mixin(Evoker.class)
+public abstract class EvokerMixin extends AbstractIllager {
 
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
     private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
-    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(PillagerMixin.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(EvokerMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.99F);
 
-    protected PillagerMixin(final EntityType<? extends AbstractIllager> type, final Level level) {
+    protected EvokerMixin(final EntityType<? extends AbstractIllager> type, final Level level) {
         super(type, level);
     }
 
-    @Inject(
-            method = "defineSynchedData",
-            at = @At("TAIL")
-    )
-    private void injectDefineSynchedData(final SynchedEntityData.Builder entityData, final CallbackInfo ci) {
+    @Override
+    public void defineSynchedData(final SynchedEntityData.@NonNull Builder entityData) {
+        super.defineSynchedData(entityData);
         entityData.define(more_babies$DATA_BABY_ID, false);
     }
 
@@ -78,19 +73,15 @@ public abstract class PillagerMixin extends AbstractIllager {
         super.onSyncedDataUpdated(accessor);
     }
 
-    @Inject(
-            method = "addAdditionalSaveData",
-            at = @At("TAIL")
-    )
-    private void injectAddAdditionalSaveData(final ValueOutput output, final CallbackInfo ci) {
+    @Override
+    protected void addAdditionalSaveData(final @NonNull ValueOutput output) {
+        super.addAdditionalSaveData(output);
         output.putBoolean("IsBaby", this.isBaby());
     }
 
-    @Inject(
-            method = "readAdditionalSaveData",
-            at = @At("TAIL")
-    )
-    private void readAdditionalSaveData(final ValueInput input, final CallbackInfo ci) {
+    @Override
+    protected void readAdditionalSaveData(final @NonNull ValueInput input) {
+        super.readAdditionalSaveData(input);
         this.setBaby(input.getBooleanOr("IsBaby", false));
     }
 
@@ -107,10 +98,10 @@ public abstract class PillagerMixin extends AbstractIllager {
 
         SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
         if (groupData == null) {
-            groupData = new PillagerGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new EvokerGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof PillagerGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof EvokerGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 

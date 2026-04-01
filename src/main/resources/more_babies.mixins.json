@@ -5,17 +5,17 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "example.mixins.refmap.json",
   "mixins": [
+    "world.entity.animal.golem.IronGolemMixin",
+    "world.entity.animal.golem.SnowGolemMixin",
     "world.entity.monster.BlazeMixin",
     "world.entity.monster.EnderManMixin",
-    "world.entity.monster.EvokerMixin",
-    "world.entity.monster.IllusionerMixin",
-    "world.entity.monster.IronGolemMixin",
-    "world.entity.monster.PillagerMixin",
-    "world.entity.monster.SnowGolemMixin",
-    "world.entity.monster.SpellcasterIllagerMixin",
-    "world.entity.monster.VindicatorMixin",
-    "world.entity.monster.WanderingTraderMixin",
-    "world.entity.monster.WitchMixin"
+    "world.entity.monster.WitchMixin",
+    "world.entity.monster.illager.EvokerMixin",
+    "world.entity.monster.illager.IllusionerMixin",
+    "world.entity.monster.illager.PillagerMixin",
+    "world.entity.monster.illager.SpellcasterIllagerMixin",
+    "world.entity.monster.illager.VindicatorMixin",
+    "world.entity.npc.wanderingtrader.WanderingTraderMixin"
   ],
   "client": [
     "client.model.animal.golem.SnowGolemModelMixin",

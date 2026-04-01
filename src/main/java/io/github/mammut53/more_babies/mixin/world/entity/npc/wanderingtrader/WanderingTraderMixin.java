@@ -1,6 +1,8 @@
-package io.github.mammut53.more_babies.mixin.world.entity.monster;
+package io.github.mammut53.more_babies.mixin.world.entity.npc.wanderingtrader;
 
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
 import net.minecraft.world.item.component.Consumable;

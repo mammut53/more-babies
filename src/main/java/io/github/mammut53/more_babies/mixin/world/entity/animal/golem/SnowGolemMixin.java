@@ -1,6 +1,6 @@
-package io.github.mammut53.more_babies.mixin.world.entity.monster;
+package io.github.mammut53.more_babies.mixin.world.entity.animal.golem;
 
-import io.github.mammut53.more_babies.world.entity.animal.golem.IronGolemGroupData;
+import io.github.mammut53.more_babies.world.entity.animal.golem.SnowGolemGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,7 +12,8 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.golem.AbstractGolem;
-import net.minecraft.world.entity.animal.golem.IronGolem;
+import net.minecraft.world.entity.animal.golem.SnowGolem;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
@@ -25,19 +26,19 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(IronGolem.class)
-public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob {
+@Mixin(SnowGolem.class)
+public abstract class SnowGolemMixin extends AbstractGolem implements RangedAttackMob, Shearable {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
     private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
-    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(IronGolemMixin.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(SnowGolemMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.7F, 1.6F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 1.1F);
 
-    protected IronGolemMixin(final EntityType<? extends AbstractGolem> type, final Level level) {
+    protected SnowGolemMixin(final EntityType<? extends AbstractGolem> type, final Level level) {
         super(type, level);
     }
 
@@ -108,10 +109,10 @@ public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob
 
         SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
         if (groupData == null) {
-            groupData = new IronGolemGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new SnowGolemGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof IronGolemGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof SnowGolemGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 

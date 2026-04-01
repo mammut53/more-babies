@@ -1,6 +1,6 @@
-package io.github.mammut53.more_babies.mixin.world.entity.monster;
+package io.github.mammut53.more_babies.mixin.world.entity.animal.golem;
 
-import io.github.mammut53.more_babies.world.entity.monster.illager.IllusionerGroupData;
+import io.github.mammut53.more_babies.world.entity.animal.golem.IronGolemGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -11,9 +11,8 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.monster.RangedAttackMob;
-import net.minecraft.world.entity.monster.illager.AbstractIllager;
-import net.minecraft.world.entity.monster.illager.Illusioner;
+import net.minecraft.world.entity.animal.golem.AbstractGolem;
+import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
@@ -22,27 +21,31 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(Illusioner.class)
-public abstract class IllusionerMixin extends AbstractIllager implements RangedAttackMob {
-
+@Mixin(IronGolem.class)
+public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
     private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
-    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(IllusionerMixin.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(IronGolemMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.99F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.7F, 1.6F);
 
-    protected IllusionerMixin(final EntityType<? extends AbstractIllager> type, final Level level) {
+    protected IronGolemMixin(final EntityType<? extends AbstractGolem> type, final Level level) {
         super(type, level);
     }
 
-    @Override
-    public void defineSynchedData(final SynchedEntityData.@NonNull Builder entityData) {
-        super.defineSynchedData(entityData);
+    @Inject(
+            method = "defineSynchedData",
+            at = @At("TAIL")
+    )
+    private void injectDefineSynchedData(final SynchedEntityData.Builder entityData, final CallbackInfo ci) {
         entityData.define(more_babies$DATA_BABY_ID, false);
     }
 
@@ -74,14 +77,20 @@ public abstract class IllusionerMixin extends AbstractIllager implements RangedA
         super.onSyncedDataUpdated(accessor);
     }
 
-    @Override
-    protected void addAdditionalSaveData(final @NonNull ValueOutput output) {
+    @Inject(
+            method = "addAdditionalSaveData",
+            at = @At("TAIL")
+    )
+    private void injectAddAdditionalSaveData(final ValueOutput output, final CallbackInfo ci) {
         super.addAdditionalSaveData(output);
         output.putBoolean("IsBaby", this.isBaby());
     }
 
-    @Override
-    protected void readAdditionalSaveData(final @NonNull ValueInput input) {
+    @Inject(
+            method = "readAdditionalSaveData",
+            at = @At("TAIL")
+    )
+    private void injectReadAdditionalSaveData(final ValueInput input, final CallbackInfo ci) {
         super.readAdditionalSaveData(input);
         this.setBaby(input.getBooleanOr("IsBaby", false));
     }
@@ -99,10 +108,10 @@ public abstract class IllusionerMixin extends AbstractIllager implements RangedA
 
         SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
         if (groupData == null) {
-            groupData = new IllusionerGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new IronGolemGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof IllusionerGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof IronGolemGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 

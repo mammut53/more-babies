@@ -1,4 +1,4 @@
-package io.github.mammut53.more_babies.mixin.world.entity.monster;
+package io.github.mammut53.more_babies.mixin.world.entity.monster.illager;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.illager.AbstractIllager;
