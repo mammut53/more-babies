@@ -5,10 +5,12 @@ import io.github.mammut53.more_babies.MoreBabies;
 import io.github.mammut53.more_babies.client.model.animal.golem.BabyIronGolemModel;
 import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
 import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
+import io.github.mammut53.more_babies.client.model.monster.creeper.BabyCreeperModel;
 import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
 import io.github.mammut53.more_babies.client.model.monster.illager.BabyIllagerModel;
 import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.resources.Identifier;
@@ -18,6 +20,8 @@ import java.util.Map;
 public class MoreBabiesModelLayers {
 
     public static final ModelLayerLocation BLAZE_BABY = register("blaze_baby");
+    public static final ModelLayerLocation CREEPER_BABY = register("creeper_baby");
+    public static final ModelLayerLocation CREEPER_BABY_ARMOR = register("creeper_baby_armor");
     public static final ModelLayerLocation ENDERMAN_BABY = register("enderman");
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
@@ -29,6 +33,8 @@ public class MoreBabiesModelLayers {
 
     public static final Map<ModelLayerLocation, LayerDefinition> LAYERS = ImmutableMap.<ModelLayerLocation, LayerDefinition>builder()
             .put(BLAZE_BABY, BabyBlazeModel.createBodyLayer())
+            .put(CREEPER_BABY, BabyCreeperModel.createBodyLayer(CubeDeformation.NONE))
+            .put(CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)))
             .put(ENDERMAN_BABY, BabyEndermanModel.createBodyLayer())
             .put(EVOKER_BABY, BabyIllagerModel.createBodyLayer())
             .put(ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer())
