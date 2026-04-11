@@ -1,0 +1,69 @@
+package io.github.mammut53.more_babies.client.model.geom;
+
+import com.google.common.collect.ImmutableMap;
+import io.github.mammut53.more_babies.client.model.BabyHumanoidModel;
+import io.github.mammut53.more_babies.client.model.animal.golem.BabyIronGolemModel;
+import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
+import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
+import io.github.mammut53.more_babies.client.model.monster.creeper.BabyCreeperModel;
+import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
+import io.github.mammut53.more_babies.client.model.monster.illager.BabyIllagerModel;
+import io.github.mammut53.more_babies.client.model.monster.skeleton.BabyBoggedModel;
+import io.github.mammut53.more_babies.client.model.monster.skeleton.BabySkeletonModel;
+import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshTransformer;
+import net.minecraft.client.renderer.entity.ArmorModelSet;
+
+import java.util.Map;
+
+public class MoreBabiesLayerDefinitions {
+
+    private static final CubeDeformation BABY_OUTER_ARMOR_DEFORMATION = new CubeDeformation(-0.1F, 0.5F, 0.3F);
+    private static final CubeDeformation BABY_INNER_ARMOR_DEFORMATION = new CubeDeformation(-0.1F, 0.3F, 0.3F);
+
+    private MoreBabiesLayerDefinitions() {
+        throw new UnsupportedOperationException();
+    }
+
+    public static Map<ModelLayerLocation, LayerDefinition> createRoots() {
+        final ImmutableMap.Builder<ModelLayerLocation, LayerDefinition> result = ImmutableMap.builder();
+
+        final ArmorModelSet<LayerDefinition> humanoidBabyArmor = HumanoidModel.createBabyArmorMeshSet(BABY_INNER_ARMOR_DEFORMATION, BABY_OUTER_ARMOR_DEFORMATION, PartPose.ZERO).map(mesh -> LayerDefinition.create(mesh, 64, 64));
+
+        final LayerDefinition babySkeletonBodyLayer = BabySkeletonModel.createBodyLayer();
+
+        result.put(MoreBabiesModelLayers.BLAZE_BABY, BabyBlazeModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.BOGGED_BABY, BabyBoggedModel.createBodyLayer());
+        MoreBabiesModelLayers.BOGGED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
+        result.put(MoreBabiesModelLayers.BOGGED_BABY_OUTER_LAYER, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
+        result.put(MoreBabiesModelLayers.CREEPER_BABY, BabyCreeperModel.createBodyLayer(CubeDeformation.NONE));
+        result.put(MoreBabiesModelLayers.CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)));
+        result.put(MoreBabiesModelLayers.ENDERMAN_BABY, BabyEndermanModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.EVOKER_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.IRON_GOLEM_BABY, BabyIronGolemModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.PARCHED_BABY, BabySkeletonModel.createSingleModelDualBodyLayer());
+        MoreBabiesModelLayers.PARCHED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
+        result.put(MoreBabiesModelLayers.PARCHED_OUTER_LAYER_BABY, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
+        result.put(MoreBabiesModelLayers.PILLAGER_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.SNOW_GOLEM_BABY, BabySnowGolemModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.SKELETON_BABY, babySkeletonBodyLayer);
+        MoreBabiesModelLayers.SKELETON_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
+        result.put(MoreBabiesModelLayers.STRAY, babySkeletonBodyLayer);
+        MoreBabiesModelLayers.STRAY_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
+        result.put(MoreBabiesModelLayers.STRAY_BABY_OUTER_LAYER, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
+        result.put(MoreBabiesModelLayers.VINDICATOR_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.WITCH_BABY, BabyWitchModel.createBodyLayer());
+        MeshTransformer witherSkeletonScale = MeshTransformer.scaling(1.2F);
+        result.put(MoreBabiesModelLayers.WITHER_SKELETON_BABY, babySkeletonBodyLayer.apply(witherSkeletonScale));
+        MoreBabiesModelLayers.WITHER_SKELETON_BABY_ARMOR.putFrom(humanoidBabyArmor.map(layer -> layer.apply(witherSkeletonScale)), result);
+
+        return result.build();
+    }
+
+}

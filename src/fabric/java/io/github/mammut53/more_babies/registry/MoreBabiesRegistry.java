@@ -1,6 +1,6 @@
 package io.github.mammut53.more_babies.registry;
 
-import io.github.mammut53.more_babies.client.model.geom.MoreBabiesModelLayers;
+import io.github.mammut53.more_babies.client.model.geom.MoreBabiesLayerDefinitions;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -14,7 +14,8 @@ public class MoreBabiesRegistry {
     }
 
     public static void registerModelLayers() {
-        for (final Map.Entry<ModelLayerLocation, LayerDefinition> entry : MoreBabiesModelLayers.LAYERS.entrySet()) {
+        final Map<ModelLayerLocation, LayerDefinition> layers = MoreBabiesLayerDefinitions.createRoots();
+        for (final Map.Entry<ModelLayerLocation, LayerDefinition> entry : layers.entrySet()) {
             ModelLayerRegistry.registerModelLayer(entry.getKey(), entry::getValue);
         }
     }

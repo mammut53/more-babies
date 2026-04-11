@@ -1,49 +1,36 @@
 package io.github.mammut53.more_babies.client.model.geom;
 
-import com.google.common.collect.ImmutableMap;
 import io.github.mammut53.more_babies.MoreBabies;
-import io.github.mammut53.more_babies.client.model.animal.golem.BabyIronGolemModel;
-import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
-import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
-import io.github.mammut53.more_babies.client.model.monster.creeper.BabyCreeperModel;
-import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
-import io.github.mammut53.more_babies.client.model.monster.illager.BabyIllagerModel;
-import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.builders.CubeDeformation;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.resources.Identifier;
-
-import java.util.Map;
 
 public class MoreBabiesModelLayers {
 
     public static final ModelLayerLocation BLAZE_BABY = register("blaze_baby");
+    public static final ModelLayerLocation BOGGED_BABY = register("bogged_baby");
+    public static final ArmorModelSet<ModelLayerLocation> BOGGED_BABY_ARMOR = registerArmorSet("bogged_baby");
+    public static final ModelLayerLocation BOGGED_BABY_OUTER_LAYER = register("bogged_baby", "outer");
     public static final ModelLayerLocation CREEPER_BABY = register("creeper_baby");
     public static final ModelLayerLocation CREEPER_BABY_ARMOR = register("creeper_baby_armor");
     public static final ModelLayerLocation ENDERMAN_BABY = register("enderman");
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
     public static final ModelLayerLocation IRON_GOLEM_BABY = register("iron_golem_baby");
+    public static final ModelLayerLocation PARCHED_BABY = register("parched_baby");
+    public static final ArmorModelSet<ModelLayerLocation> PARCHED_BABY_ARMOR = registerArmorSet("parched_baby");
+    public static final ModelLayerLocation PARCHED_OUTER_LAYER_BABY = register("parched_baby", "outer");
     public static final ModelLayerLocation PILLAGER_BABY = register("pillager_baby");
     public static final ModelLayerLocation SNOW_GOLEM_BABY = register("snow_golem_baby");
+    public static final ModelLayerLocation SKELETON_BABY = register("skeleton_baby");
+    public static final ArmorModelSet<ModelLayerLocation> SKELETON_BABY_ARMOR = registerArmorSet("skeleton_baby");
+    public static final ModelLayerLocation STRAY = register("stray_baby");
+    public static final ArmorModelSet<ModelLayerLocation> STRAY_BABY_ARMOR = registerArmorSet("stray_baby");
+    public static final ModelLayerLocation STRAY_BABY_OUTER_LAYER = register("stray_baby", "outer");
     public static final ModelLayerLocation VINDICATOR_BABY = register("vindicator_baby");
     public static final ModelLayerLocation WITCH_BABY = register("witch_baby");
-
-    public static final Map<ModelLayerLocation, LayerDefinition> LAYERS = ImmutableMap.<ModelLayerLocation, LayerDefinition>builder()
-            .put(BLAZE_BABY, BabyBlazeModel.createBodyLayer())
-            .put(CREEPER_BABY, BabyCreeperModel.createBodyLayer(CubeDeformation.NONE))
-            .put(CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)))
-            .put(ENDERMAN_BABY, BabyEndermanModel.createBodyLayer())
-            .put(EVOKER_BABY, BabyIllagerModel.createBodyLayer())
-            .put(ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer())
-            .put(IRON_GOLEM_BABY, BabyIronGolemModel.createBodyLayer())
-            .put(PILLAGER_BABY, BabyIllagerModel.createBodyLayer())
-            .put(SNOW_GOLEM_BABY, BabySnowGolemModel.createBodyLayer())
-            .put(VINDICATOR_BABY, BabyIllagerModel.createBodyLayer())
-            .put(WITCH_BABY, BabyWitchModel.createBodyLayer())
-            .build();
+    public static final ModelLayerLocation WITHER_SKELETON_BABY = register("wither_skeleton_baby");
+    public static final ArmorModelSet<ModelLayerLocation> WITHER_SKELETON_BABY_ARMOR = registerArmorSet("wither_skeleton");
 
     private static ModelLayerLocation register(final String model) {
         return register(model, "main");
