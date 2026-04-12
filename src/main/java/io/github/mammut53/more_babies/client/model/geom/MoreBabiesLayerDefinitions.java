@@ -17,6 +17,8 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshTransformer;
+import net.minecraft.client.model.monster.piglin.AbstractPiglinModel;
+import net.minecraft.client.model.monster.piglin.BabyPiglinModel;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 
 import java.util.Map;
@@ -25,6 +27,9 @@ public class MoreBabiesLayerDefinitions {
 
     private static final CubeDeformation BABY_OUTER_ARMOR_DEFORMATION = new CubeDeformation(-0.1F, 0.5F, 0.3F);
     private static final CubeDeformation BABY_INNER_ARMOR_DEFORMATION = new CubeDeformation(-0.1F, 0.3F, 0.3F);
+    private static final CubeDeformation BABY_PIGLIN_INNER_ARMOR_DEFORMATION = new CubeDeformation(0.7F);
+    private static final CubeDeformation BABY_PIGLIN_OUTER_ARMOR_DEFORMATION = new CubeDeformation(0.7F);
+    private static final PartPose BABY_PIGLIN_ARMOR_ARM_OFFSET = new PartPose(0.5F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
     private MoreBabiesLayerDefinitions() {
         throw new UnsupportedOperationException();
@@ -33,7 +38,17 @@ public class MoreBabiesLayerDefinitions {
     public static Map<ModelLayerLocation, LayerDefinition> createRoots() {
         final ImmutableMap.Builder<ModelLayerLocation, LayerDefinition> result = ImmutableMap.builder();
 
-        final ArmorModelSet<LayerDefinition> humanoidBabyArmor = HumanoidModel.createBabyArmorMeshSet(BABY_INNER_ARMOR_DEFORMATION, BABY_OUTER_ARMOR_DEFORMATION, PartPose.ZERO).map(mesh -> LayerDefinition.create(mesh, 64, 64));
+        final ArmorModelSet<LayerDefinition> humanoidBabyArmor = HumanoidModel.createBabyArmorMeshSet(
+                BABY_INNER_ARMOR_DEFORMATION,
+                BABY_OUTER_ARMOR_DEFORMATION,
+                PartPose.ZERO
+        ).map(mesh -> LayerDefinition.create(mesh, 64, 64));
+
+        final ArmorModelSet<LayerDefinition> piglinBabyArmor = AbstractPiglinModel.createBabyArmorMeshSet(
+                        BABY_PIGLIN_INNER_ARMOR_DEFORMATION,
+                        BABY_PIGLIN_OUTER_ARMOR_DEFORMATION,
+                        BABY_PIGLIN_ARMOR_ARM_OFFSET
+        ).map(mesh -> LayerDefinition.create(mesh, 64, 64));
 
         final LayerDefinition babySkeletonBodyLayer = BabySkeletonModel.createBodyLayer();
 
@@ -50,6 +65,8 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.PARCHED_BABY, BabySkeletonModel.createSingleModelDualBodyLayer());
         MoreBabiesModelLayers.PARCHED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.PARCHED_OUTER_LAYER_BABY, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
+        result.put(MoreBabiesModelLayers.PIGLIN_BRUTE_BABY, BabyPiglinModel.createBodyLayer());
+        MoreBabiesModelLayers.PIGLIN_BRUTE_BABY_ARMOR.putFrom(piglinBabyArmor, result);
         result.put(MoreBabiesModelLayers.PILLAGER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.SNOW_GOLEM_BABY, BabySnowGolemModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.SKELETON_BABY, babySkeletonBodyLayer);
