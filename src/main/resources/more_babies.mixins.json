@@ -7,6 +7,7 @@
   "mixins": [
     "world.entity.animal.golem.IronGolemMixin",
     "world.entity.animal.golem.SnowGolemMixin",
+    "world.entity.animal.nautilus.ZombieNautilusMixin",
     "world.entity.monster.BlazeMixin",
     "world.entity.monster.CreeperMixin",
     "world.entity.monster.EnderManMixin",
@@ -48,6 +49,7 @@
     "client.renderer.entity.WanderingTraderRendererMixin",
     "client.renderer.entity.WitchRendererMixin",
     "client.renderer.entity.WitherSkeletonRendererMixin",
+    "client.renderer.entity.ZombieNautilusRendererMixin",
     "client.renderer.entity.layers.CarriedBlockLayerMixin",
     "client.renderer.entity.layers.CreeperPowerLayerMixin",
     "client.renderer.entity.layers.EnderEyesLayerMixin",

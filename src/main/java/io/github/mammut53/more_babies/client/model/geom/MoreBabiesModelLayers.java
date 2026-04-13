@@ -17,6 +17,8 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
     public static final ModelLayerLocation IRON_GOLEM_BABY = register("iron_golem_baby");
+    public static final ModelLayerLocation ZOMBIE_NAUTILUS_BABY = register("zombie_nautilus_baby");
+    public static final ModelLayerLocation ZOMBIE_NAUTILUS_CORAL_BABY = register("zombie_nautilus_coral_baby");
     public static final ModelLayerLocation PARCHED_BABY = register("parched_baby");
     public static final ArmorModelSet<ModelLayerLocation> PARCHED_BABY_ARMOR = registerArmorSet("parched_baby");
     public static final ModelLayerLocation PARCHED_OUTER_LAYER_BABY = register("parched_baby", "outer");

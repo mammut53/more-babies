@@ -12,6 +12,7 @@ import io.github.mammut53.more_babies.client.model.monster.skeleton.BabyBoggedMo
 import io.github.mammut53.more_babies.client.model.monster.skeleton.BabySkeletonModel;
 import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.animal.nautilus.NautilusModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
@@ -62,6 +63,8 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.EVOKER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.IRON_GOLEM_BABY, BabyIronGolemModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.ZOMBIE_NAUTILUS_BABY, NautilusModel.createBabyBodyLayer());
+        result.put(MoreBabiesModelLayers.ZOMBIE_NAUTILUS_CORAL_BABY, NautilusModel.createBabyBodyLayer());
         result.put(MoreBabiesModelLayers.PARCHED_BABY, BabySkeletonModel.createSingleModelDualBodyLayer());
         MoreBabiesModelLayers.PARCHED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.PARCHED_OUTER_LAYER_BABY, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
