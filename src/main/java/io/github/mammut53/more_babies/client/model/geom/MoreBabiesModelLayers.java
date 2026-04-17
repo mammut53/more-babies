@@ -25,9 +25,10 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation PIGLIN_BRUTE_BABY = register("piglin_brute_baby");
     public static final ArmorModelSet<ModelLayerLocation> PIGLIN_BRUTE_BABY_ARMOR = registerArmorSet("piglin_brute_baby");
     public static final ModelLayerLocation PILLAGER_BABY = register("pillager_baby");
-    public static final ModelLayerLocation SNOW_GOLEM_BABY = register("snow_golem_baby");
+    public static final ModelLayerLocation SHULKER_BABY = register("shulker_baby");
     public static final ModelLayerLocation SKELETON_BABY = register("skeleton_baby");
     public static final ArmorModelSet<ModelLayerLocation> SKELETON_BABY_ARMOR = registerArmorSet("skeleton_baby");
+    public static final ModelLayerLocation SNOW_GOLEM_BABY = register("snow_golem_baby");
     public static final ModelLayerLocation STRAY = register("stray_baby");
     public static final ArmorModelSet<ModelLayerLocation> STRAY_BABY_ARMOR = registerArmorSet("stray_baby");
     public static final ModelLayerLocation STRAY_BABY_OUTER_LAYER = register("stray_baby", "outer");
