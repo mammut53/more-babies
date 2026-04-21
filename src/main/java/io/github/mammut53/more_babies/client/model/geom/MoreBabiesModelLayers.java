@@ -15,6 +15,7 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation CREEPER_BABY_ARMOR = register("creeper_baby_armor");
     public static final ModelLayerLocation ENDERMAN_BABY = register("enderman");
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
+    public static final ModelLayerLocation GHAST_BABY = register("ghast_baby");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
     public static final ModelLayerLocation IRON_GOLEM_BABY = register("iron_golem_baby");
     public static final ModelLayerLocation ZOMBIE_NAUTILUS_BABY = register("zombie_nautilus_baby");

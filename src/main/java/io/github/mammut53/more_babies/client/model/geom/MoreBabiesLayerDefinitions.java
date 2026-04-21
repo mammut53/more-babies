@@ -13,12 +13,14 @@ import io.github.mammut53.more_babies.client.model.monster.skeleton.BabyBoggedMo
 import io.github.mammut53.more_babies.client.model.monster.skeleton.BabySkeletonModel;
 import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.animal.ghast.HappyGhastModel;
 import net.minecraft.client.model.animal.nautilus.NautilusModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshTransformer;
+import net.minecraft.client.model.monster.ghast.GhastModel;
 import net.minecraft.client.model.monster.piglin.AbstractPiglinModel;
 import net.minecraft.client.model.monster.piglin.BabyPiglinModel;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
@@ -62,6 +64,7 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)));
         result.put(MoreBabiesModelLayers.ENDERMAN_BABY, BabyEndermanModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.EVOKER_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.GHAST_BABY, GhastModel.createBodyLayer().apply(HappyGhastModel.BABY_TRANSFORMER));
         result.put(MoreBabiesModelLayers.ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.IRON_GOLEM_BABY, BabyIronGolemModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.ZOMBIE_NAUTILUS_BABY, NautilusModel.createBabyBodyLayer());
