@@ -1,9 +1,14 @@
 package io.github.mammut53.more_babies.client.model.geom;
 
+import com.google.common.collect.ImmutableMap;
 import io.github.mammut53.more_babies.MoreBabies;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 import net.minecraft.resources.Identifier;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MoreBabiesModelLayers {
 
@@ -11,6 +16,7 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation BOGGED_BABY = register("bogged_baby");
     public static final ArmorModelSet<ModelLayerLocation> BOGGED_BABY_ARMOR = registerArmorSet("bogged_baby");
     public static final ModelLayerLocation BOGGED_BABY_OUTER_LAYER = register("bogged_baby", "outer");
+    public static final ModelLayerLocation CAVE_SPIDER_BABY = register("cave_spider_baby");
     public static final ModelLayerLocation CREEPER_BABY = register("creeper_baby");
     public static final ModelLayerLocation CREEPER_BABY_ARMOR = register("creeper_baby_armor");
     public static final ModelLayerLocation ENDERMAN_BABY = register("enderman");
@@ -30,6 +36,7 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation SKELETON_BABY = register("skeleton_baby");
     public static final ArmorModelSet<ModelLayerLocation> SKELETON_BABY_ARMOR = registerArmorSet("skeleton_baby");
     public static final ModelLayerLocation SNOW_GOLEM_BABY = register("snow_golem_baby");
+    public static final ModelLayerLocation SPIDER_BABY = register("spider_baby");
     public static final ModelLayerLocation STRAY = register("stray_baby");
     public static final ArmorModelSet<ModelLayerLocation> STRAY_BABY_ARMOR = registerArmorSet("stray_baby");
     public static final ModelLayerLocation STRAY_BABY_OUTER_LAYER = register("stray_baby", "outer");
@@ -37,6 +44,15 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation WITCH_BABY = register("witch_baby");
     public static final ModelLayerLocation WITHER_SKELETON_BABY = register("wither_skeleton_baby");
     public static final ArmorModelSet<ModelLayerLocation> WITHER_SKELETON_BABY_ARMOR = registerArmorSet("wither_skeleton");
+
+    public static final Map<ModelLayerLocation, ModelLayerLocation> SPIDER_MAP = createSpiderBabyMap();
+
+    private static Map<ModelLayerLocation, ModelLayerLocation> createSpiderBabyMap() {
+        final Map<ModelLayerLocation, ModelLayerLocation> result = new HashMap<>();
+        result.put(ModelLayers.SPIDER, SPIDER_BABY);
+        result.put(ModelLayers.CAVE_SPIDER, CAVE_SPIDER_BABY);
+        return ImmutableMap.copyOf(result);
+    }
 
     private static ModelLayerLocation register(final String model) {
         return register(model, "main");

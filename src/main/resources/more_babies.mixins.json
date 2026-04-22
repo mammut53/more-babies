@@ -26,6 +26,8 @@
     "world.entity.monster.skeleton.SkeletonMixin",
     "world.entity.monster.skeleton.StrayMixin",
     "world.entity.monster.skeleton.WitherSkeletonMixin",
+    "world.entity.monster.spider.CaveSpiderMixin",
+    "world.entity.monster.spider.SpiderMixin",
     "world.entity.npc.wanderingtrader.WanderingTraderMixin"
   ],
   "client": [
@@ -36,6 +38,7 @@
     "client.renderer.entity.AgeableMobRendererMixin",
     "client.renderer.entity.BlazeRendererMixin",
     "client.renderer.entity.BoggedRendererMixin",
+    "client.renderer.entity.CaveSpiderRendererMixin",
     "client.renderer.entity.CreeperRendererMixin",
     "client.renderer.entity.EndermanRendererMixin",
     "client.renderer.entity.EntityRenderersMixin",
@@ -49,6 +52,7 @@
     "client.renderer.entity.ShulkerRendererMixin",
     "client.renderer.entity.SkeletonRendererMixin",
     "client.renderer.entity.SnowGolemRendererMixin",
+    "client.renderer.entity.SpiderRendererMixin",
     "client.renderer.entity.StrayRendererMixin",
     "client.renderer.entity.VindicatorRendererMixin",
     "client.renderer.entity.WanderingTraderRendererMixin",
@@ -60,7 +64,8 @@
     "client.renderer.entity.layers.EnderEyesLayerMixin",
     "client.renderer.entity.layers.EyesLayerMixin",
     "client.renderer.entity.layers.SkeletonClothingLayerMixin",
-    "client.renderer.entity.layers.SnowGolemHeadLayerMixin"
+    "client.renderer.entity.layers.SnowGolemHeadLayerMixin",
+    "client.renderer.entity.layers.SpiderEyesLayerMixin"
   ],
   "server": [],
   "injectors": {

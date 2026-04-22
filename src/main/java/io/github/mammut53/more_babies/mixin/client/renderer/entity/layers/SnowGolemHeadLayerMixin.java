@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(SnowGolemHeadLayer.class)
 public abstract class SnowGolemHeadLayerMixin extends RenderLayer<SnowGolemRenderState, SnowGolemModel> {
 
-    public SnowGolemHeadLayerMixin(final RenderLayerParent<SnowGolemRenderState, SnowGolemModel> renderer) {
+    protected SnowGolemHeadLayerMixin(final RenderLayerParent<SnowGolemRenderState, SnowGolemModel> renderer) {
         super(renderer);
     }
 
