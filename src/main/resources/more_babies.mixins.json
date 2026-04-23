@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "example.mixins.refmap.json",
   "mixins": [
+    "world.entity.animal.camel.CamelHuskMixin",
     "world.entity.animal.golem.IronGolemMixin",
     "world.entity.animal.golem.SnowGolemMixin",
     "world.entity.animal.nautilus.ZombieNautilusMixin",
@@ -38,6 +39,7 @@
     "client.renderer.entity.AgeableMobRendererMixin",
     "client.renderer.entity.BlazeRendererMixin",
     "client.renderer.entity.BoggedRendererMixin",
+    "client.renderer.entity.CamelHuskRendererMixin",
     "client.renderer.entity.CaveSpiderRendererMixin",
     "client.renderer.entity.CreeperRendererMixin",
     "client.renderer.entity.EndermanRendererMixin",
