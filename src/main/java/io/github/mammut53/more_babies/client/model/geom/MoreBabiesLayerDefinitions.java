@@ -55,14 +55,14 @@ public class MoreBabiesLayerDefinitions {
                         BABY_PIGLIN_ARMOR_ARM_OFFSET
         ).map(mesh -> LayerDefinition.create(mesh, 64, 64));
 
-        final LayerDefinition babySkeletonBodyLayer = BabySkeletonModel.createBodyLayer();
-        final LayerDefinition babySpiderBodyLayer = BabySpiderModel.createSpiderBodyLayer();
+        final LayerDefinition skeletonBabyBodyLayer = BabySkeletonModel.createBodyLayer();
+        final LayerDefinition spiderBabyBodyLayer = BabySpiderModel.createSpiderBodyLayer();
 
         result.put(MoreBabiesModelLayers.BLAZE_BABY, BabyBlazeModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.BOGGED_BABY, BabyBoggedModel.createBodyLayer());
         MoreBabiesModelLayers.BOGGED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.BOGGED_BABY_OUTER_LAYER, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
-        result.put(MoreBabiesModelLayers.CAVE_SPIDER_BABY, babySpiderBodyLayer.apply(MeshTransformer.scaling(0.7F)));
+        result.put(MoreBabiesModelLayers.CAVE_SPIDER_BABY, spiderBabyBodyLayer.apply(MeshTransformer.scaling(0.7F)));
         result.put(MoreBabiesModelLayers.CREEPER_BABY, BabyCreeperModel.createBodyLayer(CubeDeformation.NONE));
         result.put(MoreBabiesModelLayers.CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)));
         result.put(MoreBabiesModelLayers.ENDERMAN_BABY, BabyEndermanModel.createBodyLayer());
@@ -79,17 +79,17 @@ public class MoreBabiesLayerDefinitions {
         MoreBabiesModelLayers.PIGLIN_BRUTE_BABY_ARMOR.putFrom(piglinBabyArmor, result);
         result.put(MoreBabiesModelLayers.PILLAGER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.SHULKER_BABY, BabyShulkerModel.createBodyLayer());
-        result.put(MoreBabiesModelLayers.SKELETON_BABY, babySkeletonBodyLayer);
+        result.put(MoreBabiesModelLayers.SKELETON_BABY, skeletonBabyBodyLayer);
         MoreBabiesModelLayers.SKELETON_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.SNOW_GOLEM_BABY, BabySnowGolemModel.createBodyLayer());
-        result.put(MoreBabiesModelLayers.SPIDER_BABY, babySpiderBodyLayer);
-        result.put(MoreBabiesModelLayers.STRAY, babySkeletonBodyLayer);
+        result.put(MoreBabiesModelLayers.SPIDER_BABY, spiderBabyBodyLayer);
+        result.put(MoreBabiesModelLayers.STRAY, skeletonBabyBodyLayer);
         MoreBabiesModelLayers.STRAY_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.STRAY_BABY_OUTER_LAYER, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
         result.put(MoreBabiesModelLayers.VINDICATOR_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.WITCH_BABY, BabyWitchModel.createBodyLayer());
         MeshTransformer witherSkeletonScale = MeshTransformer.scaling(1.2F);
-        result.put(MoreBabiesModelLayers.WITHER_SKELETON_BABY, babySkeletonBodyLayer.apply(witherSkeletonScale));
+        result.put(MoreBabiesModelLayers.WITHER_SKELETON_BABY, skeletonBabyBodyLayer.apply(witherSkeletonScale));
         MoreBabiesModelLayers.WITHER_SKELETON_BABY_ARMOR.putFrom(humanoidBabyArmor.map(layer -> layer.apply(witherSkeletonScale)), result);
 
         return result.build();
