@@ -19,9 +19,11 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation CAVE_SPIDER_BABY = register("cave_spider_baby");
     public static final ModelLayerLocation CREEPER_BABY = register("creeper_baby");
     public static final ModelLayerLocation CREEPER_BABY_ARMOR = register("creeper_baby_armor");
+    public static final ModelLayerLocation ELDER_GUARDIAN = register("elder_guardian");
     public static final ModelLayerLocation ENDERMAN_BABY = register("enderman");
     public static final ModelLayerLocation EVOKER_BABY = register("evoker_baby");
     public static final ModelLayerLocation GHAST_BABY = register("ghast_baby");
+    public static final ModelLayerLocation GUARDIAN = register("guardian");
     public static final ModelLayerLocation ILLUSIONER_BABY = register("illusioner_baby");
     public static final ModelLayerLocation IRON_GOLEM_BABY = register("iron_golem_baby");
     public static final ModelLayerLocation ZOMBIE_NAUTILUS_BABY = register("zombie_nautilus_baby");
@@ -45,7 +47,15 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation WITHER_SKELETON_BABY = register("wither_skeleton_baby");
     public static final ArmorModelSet<ModelLayerLocation> WITHER_SKELETON_BABY_ARMOR = registerArmorSet("wither_skeleton");
 
+    public static final Map<ModelLayerLocation, ModelLayerLocation> GUARDIAN_MAP = createGuardianBabyMap();
     public static final Map<ModelLayerLocation, ModelLayerLocation> SPIDER_MAP = createSpiderBabyMap();
+
+    private static Map<ModelLayerLocation, ModelLayerLocation> createGuardianBabyMap() {
+        final Map<ModelLayerLocation, ModelLayerLocation> result = new HashMap<>();
+        result.put(ModelLayers.ELDER_GUARDIAN, ELDER_GUARDIAN);
+        result.put(ModelLayers.GUARDIAN, GUARDIAN);
+        return ImmutableMap.copyOf(result);
+    }
 
     private static Map<ModelLayerLocation, ModelLayerLocation> createSpiderBabyMap() {
         final Map<ModelLayerLocation, ModelLayerLocation> result = new HashMap<>();
