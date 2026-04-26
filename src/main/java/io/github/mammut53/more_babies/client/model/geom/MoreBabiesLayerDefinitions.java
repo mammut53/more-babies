@@ -25,6 +25,7 @@ import net.minecraft.client.model.geom.builders.MeshTransformer;
 import net.minecraft.client.model.monster.ghast.GhastModel;
 import net.minecraft.client.model.monster.piglin.AbstractPiglinModel;
 import net.minecraft.client.model.monster.piglin.BabyPiglinModel;
+import net.minecraft.client.model.monster.zombie.BabyZombieModel;
 import net.minecraft.client.renderer.entity.ArmorModelSet;
 
 import java.util.Map;
@@ -56,6 +57,7 @@ public class MoreBabiesLayerDefinitions {
                         BABY_PIGLIN_ARMOR_ARM_OFFSET
         ).map(mesh -> LayerDefinition.create(mesh, 64, 64));
 
+        final LayerDefinition babyZombieLayer = BabyZombieModel.createBodyLayer(CubeDeformation.NONE);
         final LayerDefinition skeletonBabyBodyLayer = BabySkeletonModel.createBodyLayer();
         final LayerDefinition spiderBabyBodyLayer = BabySpiderModel.createSpiderBodyLayer();
 
@@ -70,6 +72,9 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.ENDERMAN_BABY, BabyEndermanModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.EVOKER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.GHAST_BABY, GhastModel.createBodyLayer().apply(HappyGhastModel.BABY_TRANSFORMER));
+        final MeshTransformer giantScale = MeshTransformer.scaling(6.0F);
+        result.put(MoreBabiesModelLayers.GIANT_BABY, babyZombieLayer.apply(giantScale));
+        MoreBabiesModelLayers.GIANT_BABY_ARMOR.putFrom(humanoidBabyArmor.map(layer -> layer.apply(giantScale)), result);
         result.put(MoreBabiesModelLayers.GUARDIAN, BabyGuardianModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.ILLUSIONER_BABY, BabyIllagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.IRON_GOLEM_BABY, BabyIronGolemModel.createBodyLayer());
