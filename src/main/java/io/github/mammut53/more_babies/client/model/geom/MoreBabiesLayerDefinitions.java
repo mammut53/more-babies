@@ -9,6 +9,7 @@ import io.github.mammut53.more_babies.client.model.monster.creeper.BabyCreeperMo
 import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
 import io.github.mammut53.more_babies.client.model.monster.guardian.BabyGuardianModel;
 import io.github.mammut53.more_babies.client.model.monster.illager.BabyIllagerModel;
+import io.github.mammut53.more_babies.client.model.monster.ravager.BabyRavagerModel;
 import io.github.mammut53.more_babies.client.model.monster.shulker.BabyShulkerModel;
 import io.github.mammut53.more_babies.client.model.monster.skeleton.BabyBoggedModel;
 import io.github.mammut53.more_babies.client.model.monster.skeleton.BabySkeletonModel;
@@ -86,6 +87,7 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.PIGLIN_BRUTE_BABY, BabyPiglinModel.createBodyLayer());
         MoreBabiesModelLayers.PIGLIN_BRUTE_BABY_ARMOR.putFrom(piglinBabyArmor, result);
         result.put(MoreBabiesModelLayers.PILLAGER_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.RAVAGER_BABY, BabyRavagerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.SHULKER_BABY, BabyShulkerModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.SKELETON_BABY, skeletonBabyBodyLayer);
         MoreBabiesModelLayers.SKELETON_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
