@@ -5,6 +5,7 @@ import io.github.mammut53.more_babies.client.model.BabyHumanoidModel;
 import io.github.mammut53.more_babies.client.model.animal.golem.BabyIronGolemModel;
 import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
 import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
+import io.github.mammut53.more_babies.client.model.monster.breeze.BabyBreezeModel;
 import io.github.mammut53.more_babies.client.model.monster.creeper.BabyCreeperModel;
 import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
 import io.github.mammut53.more_babies.client.model.monster.guardian.BabyGuardianModel;
@@ -66,6 +67,9 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.BOGGED_BABY, BabyBoggedModel.createBodyLayer());
         MoreBabiesModelLayers.BOGGED_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.BOGGED_BABY_OUTER_LAYER, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.2F), 0.0F), 64, 32));
+        result.put(MoreBabiesModelLayers.BREEZE_BABY, BabyBreezeModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.BREEZE_BABY_WIND, BabyBreezeModel.createWindLayer());
+        result.put(MoreBabiesModelLayers.BREEZE_BABY_EYES, BabyBreezeModel.createEyesLayer());
         result.put(MoreBabiesModelLayers.CAVE_SPIDER_BABY, spiderBabyBodyLayer.apply(MeshTransformer.scaling(0.7F)));
         result.put(MoreBabiesModelLayers.CREEPER_BABY, BabyCreeperModel.createBodyLayer(CubeDeformation.NONE));
         result.put(MoreBabiesModelLayers.CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)));

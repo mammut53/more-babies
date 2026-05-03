@@ -16,6 +16,9 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation BOGGED_BABY = register("bogged_baby");
     public static final ArmorModelSet<ModelLayerLocation> BOGGED_BABY_ARMOR = registerArmorSet("bogged_baby");
     public static final ModelLayerLocation BOGGED_BABY_OUTER_LAYER = register("bogged_baby", "outer");
+    public static final ModelLayerLocation BREEZE_BABY = register("breeze_baby");
+    public static final ModelLayerLocation BREEZE_BABY_WIND = register("breeze_baby", "wind");
+    public static final ModelLayerLocation BREEZE_BABY_EYES = register("breeze_baby", "eyes");
     public static final ModelLayerLocation CAVE_SPIDER_BABY = register("cave_spider_baby");
     public static final ModelLayerLocation CREEPER_BABY = register("creeper_baby");
     public static final ModelLayerLocation CREEPER_BABY_ARMOR = register("creeper_baby_armor");
