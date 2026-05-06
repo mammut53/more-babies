@@ -15,6 +15,7 @@ import io.github.mammut53.more_babies.client.model.monster.shulker.BabyShulkerMo
 import io.github.mammut53.more_babies.client.model.monster.skeleton.BabyBoggedModel;
 import io.github.mammut53.more_babies.client.model.monster.skeleton.BabySkeletonModel;
 import io.github.mammut53.more_babies.client.model.monster.spider.BabySpiderModel;
+import io.github.mammut53.more_babies.client.model.monster.warden.BabyWardenModel;
 import io.github.mammut53.more_babies.client.model.monster.witch.BabyWitchModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.animal.ghast.HappyGhastModel;
@@ -101,6 +102,11 @@ public class MoreBabiesLayerDefinitions {
         MoreBabiesModelLayers.STRAY_BABY_ARMOR.putFrom(humanoidBabyArmor, result);
         result.put(MoreBabiesModelLayers.STRAY_BABY_OUTER_LAYER, LayerDefinition.create(BabyHumanoidModel.createMesh(new CubeDeformation(0.25F), 0.0F), 64, 32));
         result.put(MoreBabiesModelLayers.VINDICATOR_BABY, BabyIllagerModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.WARDEN_BABY, BabyWardenModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.WARDEN_BABY_TENDRILS, BabyWardenModel.createTendrilsLayer());
+        result.put(MoreBabiesModelLayers.WARDEN_BABY_HEART, BabyWardenModel.createHeartLayer());
+        result.put(MoreBabiesModelLayers.WARDEN_BABY_BIOLUMINESCENT, BabyWardenModel.createBioluminescentLayer());
+        result.put(MoreBabiesModelLayers.WARDEN_BABY_PULSATING_SPOTS, BabyWardenModel.createPulsatingSpotsLayer());
         result.put(MoreBabiesModelLayers.WITCH_BABY, BabyWitchModel.createBodyLayer());
         MeshTransformer witherSkeletonScale = MeshTransformer.scaling(1.2F);
         result.put(MoreBabiesModelLayers.WITHER_SKELETON_BABY, skeletonBabyBodyLayer.apply(witherSkeletonScale));

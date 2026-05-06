@@ -49,6 +49,11 @@ public class MoreBabiesModelLayers {
     public static final ArmorModelSet<ModelLayerLocation> STRAY_BABY_ARMOR = registerArmorSet("stray_baby");
     public static final ModelLayerLocation STRAY_BABY_OUTER_LAYER = register("stray_baby", "outer");
     public static final ModelLayerLocation VINDICATOR_BABY = register("vindicator_baby");
+    public static final ModelLayerLocation WARDEN_BABY = register("warden");
+    public static final ModelLayerLocation WARDEN_BABY_BIOLUMINESCENT = register("warden", "bioluminescent");
+    public static final ModelLayerLocation WARDEN_BABY_PULSATING_SPOTS = register("warden", "pulsating_spots");
+    public static final ModelLayerLocation WARDEN_BABY_TENDRILS = register("warden", "tendrils");
+    public static final ModelLayerLocation WARDEN_BABY_HEART = register("warden", "heart");
     public static final ModelLayerLocation WITCH_BABY = register("witch_baby");
     public static final ModelLayerLocation WITHER_SKELETON_BABY = register("wither_skeleton_baby");
     public static final ArmorModelSet<ModelLayerLocation> WITHER_SKELETON_BABY_ARMOR = registerArmorSet("wither_skeleton");
