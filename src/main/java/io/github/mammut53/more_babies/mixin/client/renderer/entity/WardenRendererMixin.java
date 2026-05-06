@@ -101,13 +101,12 @@ public abstract class WardenRendererMixin extends MobRenderer<Warden, WardenRend
     private void modifyConstructorAddLayer(final Args args, final EntityRendererProvider.Context context) {
         final RenderLayer<WardenRenderState, WardenModel> layer = args.get(0);
         if (layer instanceof LivingEntityEmissiveLayer<WardenRenderState, WardenModel> emissiveLayer) {
-            @SuppressWarnings("unchecked")
-            final BabyLivingEntityEmissiveLayer<WardenRenderState, WardenModel> babyEmissiveLayer = (BabyLivingEntityEmissiveLayer<WardenRenderState, WardenModel>) emissiveLayer;
+            @SuppressWarnings("unchecked") final BabyLivingEntityEmissiveLayer<WardenRenderState, WardenModel> babyEmissiveLayer = (BabyLivingEntityEmissiveLayer<WardenRenderState, WardenModel>) emissiveLayer;
             final Function<WardenRenderState, Identifier> originalTextureProvider = babyEmissiveLayer.more_babies$getOriginalTextureProvider();
             final Identifier originalTexture = originalTextureProvider.apply(new WardenRenderState());
-            final ModelLayerLocation babyTexture = more_babies$LAYER_TEXTURE_TO_MODEL_LAYER.get(originalTexture);
-            if (babyTexture != null) {
-                babyEmissiveLayer.more_babies$setBabyModel(new BabyWardenModel(context.bakeLayer(babyTexture)));
+            final ModelLayerLocation babyLayer = more_babies$LAYER_TEXTURE_TO_MODEL_LAYER.get(originalTexture);
+            if (babyLayer != null) {
+                babyEmissiveLayer.more_babies$setBabyModel(new BabyWardenModel(context.bakeLayer(babyLayer)));
             }
         }
     }
