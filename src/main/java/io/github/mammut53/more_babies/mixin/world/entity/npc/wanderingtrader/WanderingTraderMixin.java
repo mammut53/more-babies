@@ -17,7 +17,9 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 public abstract class WanderingTraderMixin extends AbstractVillager implements Consumable.OverrideConsumeSound {
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.99F).withEyeHeight(0.63F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
+            .scalable(0.49F, 0.99F)
+            .withEyeHeight(0.63F);
 
     protected WanderingTraderMixin(final EntityType<? extends AbstractVillager> type, final Level level) {
         super(type, level);

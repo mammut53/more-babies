@@ -18,8 +18,8 @@ public abstract class CaveSpiderMixin extends Spider {
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.35F, 0.25F)
-            .withEyeHeight(0.225F);
+            .scalable(0.5F, 0.3F)
+            .withEyeHeight(0.25F);
 
     protected CaveSpiderMixin(final EntityType<? extends Spider> type, final Level level) {
         super(type, level);

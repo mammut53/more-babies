@@ -28,12 +28,14 @@ public abstract class VindicatorMixin extends AbstractIllager {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(VindicatorMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.99F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
+            .scalable(0.49F, 0.99F)
+            .withEyeHeight(0.63F);
 
     protected VindicatorMixin(final EntityType<? extends AbstractIllager> type, final Level level) {
         super(type, level);

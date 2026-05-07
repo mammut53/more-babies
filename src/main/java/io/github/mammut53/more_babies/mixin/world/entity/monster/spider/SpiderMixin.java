@@ -39,7 +39,7 @@ public abstract class SpiderMixin extends Monster {
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
             .scalable(0.7F, 0.45F)
-            .withEyeHeight(0.325F);
+            .withEyeHeight(0.35F);
 
     protected SpiderMixin(final EntityType<? extends AbstractIllager> type, final Level level) {
         super(type, level);

@@ -27,7 +27,7 @@ public abstract class ParchedMixin extends AbstractSkeleton {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(ParchedMixin.class, EntityDataSerializers.BOOLEAN);
 

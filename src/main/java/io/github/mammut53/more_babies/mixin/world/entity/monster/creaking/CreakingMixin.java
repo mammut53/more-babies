@@ -36,8 +36,9 @@ public abstract class CreakingMixin extends Monster {
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(CreakingMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.7F, 1.99F)
-            .withEyeHeight(1.6F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
+            .scalable(0.7F, 1.99F)
+            .withEyeHeight(1.65F);
 
     protected CreakingMixin(final EntityType<? extends AbstractSkeleton> type, final Level level) {
         super(type, level);

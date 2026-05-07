@@ -22,7 +22,10 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Witch.class)
@@ -31,12 +34,14 @@ public abstract class WitchMixin extends Raider implements RangedAttackMob {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(WitchMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.99F).withEyeHeight(0.63F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
+            .scalable(0.49F, 0.99F)
+            .withEyeHeight(0.63F);
 
     protected WitchMixin(final EntityType<? extends Raider> type, final Level level) {
         super(type, level);

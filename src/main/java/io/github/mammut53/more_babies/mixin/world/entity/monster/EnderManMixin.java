@@ -32,12 +32,12 @@ public abstract class EnderManMixin extends Monster implements NeutralMob {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(EnderManMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.3F, 1.45F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.4F, 1.55F);
 
     protected EnderManMixin(final EntityType<? extends Monster> type, final Level level) {
         super(type, level);

@@ -30,12 +30,14 @@ public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.5F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
+    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(IronGolemMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.7F, 1.6F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
+            .scalable(0.7F, 1.65F)
+            .withEyeHeight(1.25F);
 
     protected IronGolemMixin(final EntityType<? extends AbstractGolem> type, final Level level) {
         super(type, level);
