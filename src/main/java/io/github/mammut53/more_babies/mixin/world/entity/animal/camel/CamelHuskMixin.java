@@ -5,6 +5,9 @@ import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.camel.CamelHusk;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CamelHusk.class)
 public abstract class CamelHuskMixin extends Camel {
@@ -13,9 +16,13 @@ public abstract class CamelHuskMixin extends Camel {
         super(type, level);
     }
 
-    @Override
-    public boolean isBaby() {
-        return super.isBaby();
+    @Inject(
+            method = "isBaby",
+            at = @At("RETURN"),
+            cancellable = true
+    )
+    private void injectIsBaby(final CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(super.isBaby());
     }
 
 }
