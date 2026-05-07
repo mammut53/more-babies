@@ -6,6 +6,7 @@ import io.github.mammut53.more_babies.client.model.animal.golem.BabyIronGolemMod
 import io.github.mammut53.more_babies.client.model.animal.golem.BabySnowGolemModel;
 import io.github.mammut53.more_babies.client.model.monster.blaze.BabyBlazeModel;
 import io.github.mammut53.more_babies.client.model.monster.breeze.BabyBreezeModel;
+import io.github.mammut53.more_babies.client.model.monster.creaking.BabyCreakingModel;
 import io.github.mammut53.more_babies.client.model.monster.creeper.BabyCreeperModel;
 import io.github.mammut53.more_babies.client.model.monster.enderman.BabyEndermanModel;
 import io.github.mammut53.more_babies.client.model.monster.guardian.BabyGuardianModel;
@@ -55,9 +56,9 @@ public class MoreBabiesLayerDefinitions {
         ).map(mesh -> LayerDefinition.create(mesh, 64, 64));
 
         final ArmorModelSet<LayerDefinition> piglinBabyArmor = AbstractPiglinModel.createBabyArmorMeshSet(
-                        BABY_PIGLIN_INNER_ARMOR_DEFORMATION,
-                        BABY_PIGLIN_OUTER_ARMOR_DEFORMATION,
-                        BABY_PIGLIN_ARMOR_ARM_OFFSET
+                BABY_PIGLIN_INNER_ARMOR_DEFORMATION,
+                BABY_PIGLIN_OUTER_ARMOR_DEFORMATION,
+                BABY_PIGLIN_ARMOR_ARM_OFFSET
         ).map(mesh -> LayerDefinition.create(mesh, 64, 64));
 
         final LayerDefinition babyZombieLayer = BabyZombieModel.createBodyLayer(CubeDeformation.NONE);
@@ -71,6 +72,8 @@ public class MoreBabiesLayerDefinitions {
         result.put(MoreBabiesModelLayers.BREEZE_BABY, BabyBreezeModel.createBodyLayer());
         result.put(MoreBabiesModelLayers.BREEZE_BABY_WIND, BabyBreezeModel.createWindLayer());
         result.put(MoreBabiesModelLayers.BREEZE_BABY_EYES, BabyBreezeModel.createEyesLayer());
+        result.put(MoreBabiesModelLayers.CREAKING_BABY, BabyCreakingModel.createBodyLayer());
+        result.put(MoreBabiesModelLayers.CREAKING_BABY_EYES, BabyCreakingModel.createEyesLayer());
         result.put(MoreBabiesModelLayers.CAVE_SPIDER_BABY, spiderBabyBodyLayer.apply(MeshTransformer.scaling(0.7F)));
         result.put(MoreBabiesModelLayers.CREEPER_BABY, BabyCreeperModel.createBodyLayer(CubeDeformation.NONE));
         result.put(MoreBabiesModelLayers.CREEPER_BABY_ARMOR, BabyCreeperModel.createBodyLayer(new CubeDeformation(1.0F)));
