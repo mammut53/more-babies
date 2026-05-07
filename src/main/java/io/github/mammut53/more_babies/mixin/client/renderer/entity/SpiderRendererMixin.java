@@ -43,7 +43,7 @@ public abstract class SpiderRendererMixin<T extends Spider> extends MobRenderer<
             at = @At("TAIL")
     )
     private void injectConstructor(final EntityRendererProvider.Context context, final ModelLayerLocation model, final CallbackInfo ci) {
-        final ModelLayerLocation babyModelLayer = MoreBabiesModelLayers.SPIDER_MAP.get(model);
+        final ModelLayerLocation babyModelLayer = MoreBabiesModelLayers.SPIDER_MODEL_LAYER_TO_BABY.get(model);
         final SpiderModel adultModel = new SpiderModel(context.bakeLayer(model));
         this.more_babies$model = new AdultAndBabyModelPair<>(
                 adultModel,

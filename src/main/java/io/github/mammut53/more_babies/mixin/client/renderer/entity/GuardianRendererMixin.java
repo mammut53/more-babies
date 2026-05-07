@@ -42,7 +42,7 @@ public abstract class GuardianRendererMixin extends MobRenderer<Guardian, Guardi
             at = @At("TAIL")
     )
     private void injectConstructor(final EntityRendererProvider.Context context, final float shadow, final ModelLayerLocation modelId, final CallbackInfo ci) {
-        final ModelLayerLocation babyModelLayer = MoreBabiesModelLayers.GUARDIAN_MAP.get(modelId);
+        final ModelLayerLocation babyModelLayer = MoreBabiesModelLayers.GUARDIAN_MODEL_LAYER_TO_BABY.get(modelId);
         final GuardianModel adultModel = new GuardianModel(context.bakeLayer(modelId));
         this.more_babies$model = new AdultAndBabyModelPair<>(
                 adultModel,

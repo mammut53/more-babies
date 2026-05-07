@@ -60,21 +60,21 @@ public class MoreBabiesModelLayers {
     public static final ModelLayerLocation WITHER_SKELETON_BABY = register("wither_skeleton_baby");
     public static final ArmorModelSet<ModelLayerLocation> WITHER_SKELETON_BABY_ARMOR = registerArmorSet("wither_skeleton_baby");
 
-    public static final Map<ModelLayerLocation, ModelLayerLocation> GUARDIAN_MAP = createGuardianBabyMap();
-    public static final Map<ModelLayerLocation, ModelLayerLocation> SPIDER_MAP = createSpiderBabyMap();
+    public static final Map<ModelLayerLocation, ModelLayerLocation> GUARDIAN_MODEL_LAYER_TO_BABY = ImmutableMap.copyOf(createGuardianBabyMap());
+    public static final Map<ModelLayerLocation, ModelLayerLocation> SPIDER_MODEL_LAYER_TO_BABY = ImmutableMap.copyOf(createSpiderBabyMap());
 
     private static Map<ModelLayerLocation, ModelLayerLocation> createGuardianBabyMap() {
         final Map<ModelLayerLocation, ModelLayerLocation> result = new HashMap<>();
         result.put(ModelLayers.ELDER_GUARDIAN, ELDER_GUARDIAN);
         result.put(ModelLayers.GUARDIAN, GUARDIAN);
-        return ImmutableMap.copyOf(result);
+        return result;
     }
 
     private static Map<ModelLayerLocation, ModelLayerLocation> createSpiderBabyMap() {
         final Map<ModelLayerLocation, ModelLayerLocation> result = new HashMap<>();
         result.put(ModelLayers.SPIDER, SPIDER_BABY);
         result.put(ModelLayers.CAVE_SPIDER, CAVE_SPIDER_BABY);
-        return ImmutableMap.copyOf(result);
+        return result;
     }
 
     private static ModelLayerLocation register(final String model) {
