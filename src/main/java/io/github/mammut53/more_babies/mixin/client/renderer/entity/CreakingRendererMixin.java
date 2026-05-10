@@ -40,7 +40,7 @@ public abstract class CreakingRendererMixin<T extends Creaking> extends MobRende
     @Unique
     private static final Identifier more_babies$TEXTURE_BABY_LOCATION = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/creaking/creaking_baby.png");
     @Unique
-    private static final Identifier more_babies$EYES_TEXTURE_BABY_LOCATION = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/creaking/creaking_eyes.png");
+    private static final Identifier more_babies$EYES_TEXTURE_BABY_LOCATION = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/creaking/creaking_baby_eyes.png");
 
     @Unique
     private static final Map<Identifier, ModelLayerLocation> more_babies$LAYER_TEXTURE_TO_MODEL_LAYER = Map.ofEntries(
