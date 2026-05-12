@@ -1,5 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.animal.golem;
 
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import io.github.mammut53.more_babies.world.entity.animal.golem.IronGolemGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -29,8 +30,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
-    @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(IronGolemMixin.class, EntityDataSerializers.BOOLEAN);
 
@@ -64,7 +63,12 @@ public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob
             if (speed != null) {
                 speed.removeModifier(more_babies$SPEED_MODIFIER_BABY_ID);
                 if (baby) {
-                    speed.addTransientModifier(more_babies$SPEED_MODIFIER_BABY);
+                    final AttributeModifier speedModifier = new AttributeModifier(
+                            more_babies$SPEED_MODIFIER_BABY_ID,
+                            MoreBabiesConfig.ironGolemBabySpeedModifier,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
+                    speed.addTransientModifier(speedModifier);
                 }
             }
         }
@@ -122,7 +126,7 @@ public abstract class IronGolemMixin extends AbstractGolem implements NeutralMob
 
     @Unique
     private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return random.nextFloat() < MoreBabiesConfig.ironGolemBabySpawnChance;
     }
 
 }

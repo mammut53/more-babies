@@ -1,5 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.spider;
 
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import io.github.mammut53.more_babies.world.entity.monster.spider.SpiderGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.illager.AbstractIllager;
+import net.minecraft.world.entity.monster.spider.CaveSpider;
 import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -31,8 +33,6 @@ public abstract class SpiderMixin extends Monster {
 
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
-    @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(SpiderMixin.class, EntityDataSerializers.BOOLEAN);
 
@@ -66,7 +66,14 @@ public abstract class SpiderMixin extends Monster {
             if (speed != null) {
                 speed.removeModifier(more_babies$SPEED_MODIFIER_BABY_ID);
                 if (baby) {
-                    speed.addTransientModifier(more_babies$SPEED_MODIFIER_BABY);
+                    final float amount = (((Spider)(Object) this) instanceof CaveSpider)
+                            ? MoreBabiesConfig.caveSpiderBabySpeedModifier : MoreBabiesConfig.spiderBabySpeedModifier;
+                    final AttributeModifier speedModifier = new AttributeModifier(
+                            more_babies$SPEED_MODIFIER_BABY_ID,
+                            amount,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
+                    speed.addTransientModifier(speedModifier);
                 }
             }
         }
@@ -118,7 +125,7 @@ public abstract class SpiderMixin extends Monster {
 
     @Unique
     private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return random.nextFloat() < MoreBabiesConfig.spiderBabySpawnChance;
     }
 
 }

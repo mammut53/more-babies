@@ -1,0 +1,134 @@
+package io.github.mammut53.more_babies.config;
+
+import eu.midnightdust.lib.config.MidnightConfig;
+
+@SuppressWarnings("java:S1444")
+public class MoreBabiesConfig extends MidnightConfig {
+    public static final String SPAWN_CHANCES = "spawn_chances";
+    public static final String SPEED_MODIFIERS = "speed_modifiers";
+
+    @Comment(category = SPAWN_CHANCES)
+    public static Comment spacer0;
+    @Comment(category = SPAWN_CHANCES, centered = true)
+    public static Comment spawnChancesText;
+    @Comment(category = SPAWN_CHANCES)
+    public static Comment spacer1;
+
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float blazeBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float boggedBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float breezeBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float camelHuskBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float caveSpiderBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float creakingBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float creeperBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float elderGuardianBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float endermanBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float evokerBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float ghastBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float giantBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float guardianBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float illusionerBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float ironGolemBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float parchedBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float piglinBruteBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float pillagerBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float ravagerBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float shulkerBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float skeletonBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float snowGolemBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float spiderBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float strayBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float vindicatorBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float wanderingTraderBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float wardenBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float witchBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float witherSkeletonBabySpawnChance = 0.05f;
+    @Entry(category = SPAWN_CHANCES, isSlider = true, min = 0f, max = 1f)
+    public static float zombieNautilusBabySpawnChance = 0.05f;
+
+    @Comment(category = SPEED_MODIFIERS)
+    public static Comment spacer2;
+    @Comment(category = SPEED_MODIFIERS, centered = true)
+    public static Comment speedModifiersText;
+    @Comment(category = SPEED_MODIFIERS)
+    public static Comment spacer3;
+
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float blazeBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float boggedBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float breezeBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float caveSpiderBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float creakingBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float creeperBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float endermanBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float evokerBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float giantBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float guardianBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float illusionerBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float ironGolemBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float parchedBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float piglinBruteBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float pillagerBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float ravagerBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float skeletonBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float snowGolemBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float spiderBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float strayBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float vindicatorBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float wardenBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float witchBabySpeedModifier = 0.2f;
+    @Entry(category = SPEED_MODIFIERS, isSlider = true, min = -1f, max = 1f)
+    public static float witherSkeletonBabySpeedModifier = 0.2f;
+
+}

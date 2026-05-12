@@ -1,5 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster;
 
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import io.github.mammut53.more_babies.world.entity.monster.ravager.RavagerGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -33,8 +34,6 @@ public abstract class RavagerMixin extends Raider {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
-    @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(RavagerMixin.class, EntityDataSerializers.BOOLEAN);
 
     protected RavagerMixin(final EntityType<? extends Raider> type, final Level level) {
@@ -60,7 +59,12 @@ public abstract class RavagerMixin extends Raider {
             if (speed != null) {
                 speed.removeModifier(more_babies$SPEED_MODIFIER_BABY_ID);
                 if (baby) {
-                    speed.addTransientModifier(more_babies$SPEED_MODIFIER_BABY);
+                    final AttributeModifier speedModifier = new AttributeModifier(
+                            more_babies$SPEED_MODIFIER_BABY_ID,
+                            MoreBabiesConfig.ravagerBabySpeedModifier,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
+                    speed.addTransientModifier(speedModifier);
                 }
             }
         }
@@ -111,7 +115,7 @@ public abstract class RavagerMixin extends Raider {
 
     @Unique
     private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return random.nextFloat() < MoreBabiesConfig.ravagerBabySpawnChance;
     }
 
 }

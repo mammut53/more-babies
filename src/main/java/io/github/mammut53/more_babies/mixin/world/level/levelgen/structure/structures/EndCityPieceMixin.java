@@ -1,5 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.level.levelgen.structure.structures;
 
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Shulker;
@@ -23,7 +24,7 @@ public abstract class EndCityPieceMixin {
         if (entity instanceof final Shulker sentry) {
             final Level level = sentry.level();
             final RandomSource random = level.getRandom();
-            sentry.setBaby(random.nextFloat() < 0.05F);
+            sentry.setBaby(random.nextFloat() < MoreBabiesConfig.shulkerBabySpawnChance);
         }
         return entity;
     }

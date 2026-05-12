@@ -28,6 +28,15 @@ repositories {
     unimined.spongeMaven()
     unimined.modrinthMaven()
     unimined.wagYourMaven("releases")
+
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
+
+    maven {
+        url = "https://maven.midnightdust.eu/releases"
+    }
 }
 
 unimined.minecraft(sourceSets.main) {
@@ -85,14 +94,16 @@ unimined.minecraft(sourceSets.fabric) {
         }
     }
 }
-/*
+
 unimined.minecraft(sourceSets.neoforge) {
     combineWith(sourceSets.main)
 
     neoForge() {
         loader neoforge_version
         mixinConfig("${mod_id}.mixins.json", "${mod_id}-neoforge.mixins.json")
-        accessTransformer aw2at("${projectDir}/src/main/resources/${mod_id}.classtweaker")
+        // transformer via Fabric seems to not work do to the switch to classtweakers
+        //accessTransformer aw2at("${projectDir}/src/main/resources/${mod_id}.classtweaker")
+        accessTransformer "${projectDir}/src/neoforge/resources/META-INF/accesstransformer.cfg"
     }
 
     defaultRemapJar = true
@@ -122,7 +133,7 @@ unimined.minecraft(sourceSets.neoforge) {
             workingDir = file("$projectDir/run/neoforge/server")
         }
     }
-}*/
+}
 
 configurations {
     mainImplementation
@@ -131,9 +142,15 @@ configurations {
 dependencies {
     implementation "org.spongepowered:mixin:0.8.7-SNAPSHOT"
     implementation 'org.ow2.asm:asm:9.5'
+    implementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
 
     fabricModImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api}"
     fabricModImplementation "maven.modrinth:modmenu:${modmenu}"
+    fabricModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
+    fabricInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
+
+    neoforgeModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
+    neoforgeInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
 }
 
 processResources {
@@ -151,14 +168,18 @@ processFabricResources {
         expand project.properties
     }
 }
-/*
+
 processNeoforgeResources {
     inputs.property "version", version
 
     filesMatching("META-INF/neoforge.mods.toml") {
         expand project.properties
     }
-}*/
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 25
+}
 
 tasks.withType(Jar).configureEach {
     from("LICENSE") {}
@@ -167,7 +188,7 @@ tasks.withType(Jar).configureEach {
 tasks.named("remapFabricJar") {
     archiveFileName = "${mod_name}-${version}-fabric+mc${minecraft_version}.jar"
 }
-/*
+
 tasks.named("remapNeoforgeJar") {
     archiveFileName = "${mod_name}-${version}-neoforge+mc${minecraft_version}.jar"
-}*/
+}

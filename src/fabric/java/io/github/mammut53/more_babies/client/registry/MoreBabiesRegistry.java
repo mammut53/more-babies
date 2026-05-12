@@ -1,4 +1,4 @@
-package io.github.mammut53.more_babies.registry;
+package io.github.mammut53.more_babies.client.registry;
 
 import io.github.mammut53.more_babies.client.model.geom.MoreBabiesLayerDefinitions;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;

@@ -2,13 +2,15 @@ package io.github.mammut53.more_babies;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import net.fabricmc.api.ModInitializer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
 
-public class MoreBabiesFabric implements ModInitializer {
+@Mod(MoreBabies.MOD_ID)
+public class MoreBabiesNeoForge {
 
-    @Override
-    public void onInitialize() {
+    public MoreBabiesNeoForge(final IEventBus modBus) {
         MidnightConfig.init(MoreBabies.MOD_ID, MoreBabiesConfig.class);
     }
 
 }
+

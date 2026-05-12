@@ -1,5 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster;
 
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import io.github.mammut53.more_babies.world.entity.monster.shulker.ShulkerGroupData;
 import net.minecraft.core.Direction;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -157,7 +158,7 @@ public abstract class ShulkerMixin extends AbstractGolem implements Enemy {
 
     @Unique
     private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return random.nextFloat() < MoreBabiesConfig.shulkerBabySpawnChance;
     }
 
 }

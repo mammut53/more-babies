@@ -1,13 +1,16 @@
 package io.github.mammut53.more_babies.mixin.world.entity.npc.wanderingtrader;
 
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Pose;
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.npc.villager.AbstractVillager;
 import net.minecraft.world.entity.npc.wanderingtrader.WanderingTrader;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,6 +42,25 @@ public abstract class WanderingTraderMixin extends AbstractVillager implements C
     @Override
     public @NonNull EntityDimensions getDefaultDimensions(final @NonNull Pose pose) {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
+    }
+
+    @Override
+    public AgeableMob getBreedOffspring(final @NonNull ServerLevel level, final @NonNull AgeableMob partner) {
+        return EntityType.WANDERING_TRADER.create(level, EntitySpawnReason.BREEDING);
+    }
+
+    // TODO finalizeSpawn make mixin safer
+
+    @Override
+    public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
+        SpawnGroupData groupData = spawnGroupData;
+        if (groupData == null) {
+            final AgeableMobGroupData ageableMobGroupData = new AgeableMobGroupData(MoreBabiesConfig.wanderingTraderBabySpawnChance);
+            ageableMobGroupData.increaseGroupSizeByOne();
+            groupData = ageableMobGroupData;
+        }
+
+        return super.finalizeSpawn(level, difficulty, spawnReason, groupData);
     }
 
 }

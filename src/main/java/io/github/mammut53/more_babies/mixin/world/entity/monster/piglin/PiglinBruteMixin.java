@@ -1,6 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.piglin;
 
-import io.github.mammut53.more_babies.world.entity.monster.piglin.PiglinGroupData;
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
+import io.github.mammut53.more_babies.world.entity.monster.piglin.PiglinBruteGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -18,16 +19,16 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PiglinBrute.class)
 public abstract class PiglinBruteMixin extends AbstractPiglin {
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
-    @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
     @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(PiglinBruteMixin.class, EntityDataSerializers.BOOLEAN);
 
@@ -60,7 +61,12 @@ public abstract class PiglinBruteMixin extends AbstractPiglin {
             if (speed != null) {
                 speed.removeModifier(more_babies$SPEED_MODIFIER_BABY_ID);
                 if (baby) {
-                    speed.addTransientModifier(more_babies$SPEED_MODIFIER_BABY);
+                    final AttributeModifier speedModifier = new AttributeModifier(
+                            more_babies$SPEED_MODIFIER_BABY_ID,
+                            MoreBabiesConfig.piglinBruteBabySpeedModifier,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
+                    speed.addTransientModifier(speedModifier);
                 }
             }
         }
@@ -93,25 +99,25 @@ public abstract class PiglinBruteMixin extends AbstractPiglin {
     }
 
     // TODO finalizeSpawn make mixin safer
-
-    @Override
-    public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
+    @Inject(
+            method = "finalizeSpawn",
+            at = @At("RETURN")
+    )
+    private void injectFinalizeSpawn(final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final SpawnGroupData groupData, final CallbackInfoReturnable<SpawnGroupData> cir) {
         final RandomSource random = level.getRandom();
 
-        SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
-        if (groupData == null) {
-            groupData = new PiglinGroupData(more_babies$getSpawnAsBabyOdds(random));
+        SpawnGroupData spawnGroupData = cir.getReturnValue();
+        if (spawnGroupData == null) {
+            spawnGroupData = new PiglinBruteGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof PiglinGroupData(boolean isBaby) && isBaby) {
+        if (spawnGroupData instanceof PiglinBruteGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
-
-        return groupData;
     }
 
     @Unique
     private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return random.nextFloat() < MoreBabiesConfig.piglinBruteBabySpawnChance;
     }
 }

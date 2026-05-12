@@ -3,7 +3,6 @@
   "minVersion": "0.8",
   "package": "io.github.mammut53.more_babies.mixin",
   "compatibilityLevel": "JAVA_21",
-  "refmap": "example.mixins.refmap.json",
   "mixins": [
     "world.entity.animal.camel.CamelHuskMixin",
     "world.entity.animal.golem.IronGolemMixin",
@@ -36,7 +35,9 @@
     "world.entity.monster.spider.CaveSpiderMixin",
     "world.entity.monster.spider.SpiderMixin",
     "world.entity.monster.warden.WardenMixin",
-    "world.entity.npc.wanderingtrader.WanderingTraderMixin"
+    "world.entity.npc.wanderingtrader.WanderingTraderMixin",
+    "world.level.block.CarvedPumpkinBlockMixin",
+    "world.level.levelgen.structure.structures.EndCityPieceMixin"
   ],
   "client": [
     "client.model.animal.golem.SnowGolemModelMixin",

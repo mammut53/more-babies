@@ -1,5 +1,6 @@
 package io.github.mammut53.more_babies.mixin.world.entity.animal.golem;
 
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import io.github.mammut53.more_babies.world.entity.animal.golem.SnowGolemGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -31,8 +32,6 @@ public abstract class SnowGolemMixin extends AbstractGolem implements RangedAtta
     @Unique
     private static final Identifier more_babies$SPEED_MODIFIER_BABY_ID = Identifier.withDefaultNamespace("baby");
     @Unique
-    private static final AttributeModifier more_babies$SPEED_MODIFIER_BABY = new AttributeModifier(more_babies$SPEED_MODIFIER_BABY_ID, 0.2F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
-    @Unique
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(SnowGolemMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
@@ -63,7 +62,12 @@ public abstract class SnowGolemMixin extends AbstractGolem implements RangedAtta
             if (speed != null) {
                 speed.removeModifier(more_babies$SPEED_MODIFIER_BABY_ID);
                 if (baby) {
-                    speed.addTransientModifier(more_babies$SPEED_MODIFIER_BABY);
+                    final AttributeModifier speedModifier = new AttributeModifier(
+                            more_babies$SPEED_MODIFIER_BABY_ID,
+                            MoreBabiesConfig.snowGolemBabySpeedModifier,
+                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    );
+                    speed.addTransientModifier(speedModifier);
                 }
             }
         }
@@ -121,7 +125,7 @@ public abstract class SnowGolemMixin extends AbstractGolem implements RangedAtta
 
     @Unique
     private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return random.nextFloat() < MoreBabiesConfig.snowGolemBabySpawnChance;
     }
 
 }

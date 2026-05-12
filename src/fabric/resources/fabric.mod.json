@@ -17,6 +17,9 @@
   "entrypoints": {
     "main": [
       "io.github.mammut53.more_babies.MoreBabiesFabric"
+    ],
+    "client": [
+      "io.github.mammut53.more_babies.client.MoreBabiesFabricClient"
     ]
   },
   "mixins": [
@@ -26,11 +29,8 @@
   "depends": {
     "fabricloader": ">=0.17",
     "fabric-api": "*",
-    "minecraft": ">1.21.11",
+    "minecraft": ">=26.1",
     "java": ">=25"
-  },
-  "custom": {
-    "loom:injected_interfaces": {}
   },
   "accessWidener" : "more_babies.classtweaker"
 }

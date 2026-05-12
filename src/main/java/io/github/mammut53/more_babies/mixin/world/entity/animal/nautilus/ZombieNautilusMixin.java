@@ -1,11 +1,9 @@
 package io.github.mammut53.more_babies.mixin.world.entity.animal.nautilus;
 
-import io.github.mammut53.more_babies.world.entity.animal.nautilus.ZombieNautilusGroupData;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.RandomSource;
+import io.github.mammut53.more_babies.config.MoreBabiesConfig;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -16,48 +14,38 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ZombieNautilus.class)
 public abstract class ZombieNautilusMixin extends AbstractNautilus {
 
-    @Unique
-    private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(ZombieNautilusMixin.class, EntityDataSerializers.BOOLEAN);
-
     protected ZombieNautilusMixin(final EntityType<? extends AbstractNautilus> type, final Level level) {
         super(type, level);
     }
 
-    @Inject(
-            method = "defineSynchedData",
-            at = @At("TAIL")
-    )
-    private void injectDefineSynchedData(final SynchedEntityData.Builder entityData, final CallbackInfo ci) {
-        entityData.define(more_babies$DATA_BABY_ID, false);
-    }
-
     @Override
     public boolean isBaby() {
-        return this.getEntityData().get(more_babies$DATA_BABY_ID);
+        return super.isBaby();
     }
 
     @Override
     public void setBaby(final boolean baby) {
-        this.getEntityData().set(more_babies$DATA_BABY_ID, baby);
+        super.setBaby(baby);
     }
 
     @Override
-    public void onSyncedDataUpdated(final @NonNull EntityDataAccessor<?> accessor) {
-        if (more_babies$DATA_BABY_ID.equals(accessor)) {
-            this.refreshDimensions();
+    public ZombieNautilus getBreedOffspring(final @NonNull ServerLevel level, final @NonNull AgeableMob partner) {
+        final ZombieNautilus baby = EntityType.ZOMBIE_NAUTILUS.create(level, EntitySpawnReason.BREEDING);
+        if (baby != null && this.isTame()) {
+            baby.setOwnerReference(this.getOwnerReference());
+            baby.setTame(true, true);
         }
 
-        super.onSyncedDataUpdated(accessor);
+        return baby;
     }
 
     @Inject(
@@ -76,28 +64,21 @@ public abstract class ZombieNautilusMixin extends AbstractNautilus {
         this.setBaby(input.getBooleanOr("IsBaby", false));
     }
 
-    // TODO finalizeSpawn make mixin safer
-
-    @Override
-    public @NonNull SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
-        final RandomSource random = level.getRandom();
-
-        SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
-        if (groupData == null) {
-            // TODO ZombieNautilus groupData is always != null
-            groupData = new ZombieNautilusGroupData(more_babies$getSpawnAsBabyOdds(random));
+    @ModifyVariable(
+            method = "finalizeSpawn",
+            at = @At("HEAD"),
+            ordinal = 0,
+            argsOnly = true
+    )
+    private SpawnGroupData modifyFinalizeSpawnGroupData(final SpawnGroupData groupData, final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason) {
+        SpawnGroupData spawnGroupData = groupData;
+        if (spawnGroupData == null) {
+            final AgeableMobGroupData ageableMobGroupData = new AgeableMobGroupData(MoreBabiesConfig.zombieNautilusBabySpawnChance);
+            ageableMobGroupData.increaseGroupSizeByOne();
+            spawnGroupData = ageableMobGroupData;
         }
 
-        if (groupData instanceof ZombieNautilusGroupData(boolean isBaby) && isBaby) {
-            this.setBaby(true);
-        }
-
-        return groupData;
-    }
-
-    @Unique
-    private static boolean more_babies$getSpawnAsBabyOdds(final RandomSource random) {
-        return random.nextFloat() < 0.05F;
+        return spawnGroupData;
     }
 
 }
