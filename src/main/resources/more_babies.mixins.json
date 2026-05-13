@@ -35,6 +35,7 @@
     "world.entity.monster.spider.CaveSpiderMixin",
     "world.entity.monster.spider.SpiderMixin",
     "world.entity.monster.warden.WardenMixin",
+    "world.entity.monster.zombie.DrownedMixin",
     "world.entity.npc.wanderingtrader.WanderingTraderMixin",
     "world.level.block.CarvedPumpkinBlockMixin",
     "world.level.levelgen.structure.structures.EndCityPieceMixin"
