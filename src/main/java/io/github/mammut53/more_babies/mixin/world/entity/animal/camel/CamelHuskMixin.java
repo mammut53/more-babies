@@ -45,7 +45,12 @@ public abstract class CamelHuskMixin extends Camel {
         SpawnGroupData groupData = spawnGroupData;
         if (groupData == null) {
             final AgeableMobGroupData ageableMobGroupData = new AgeableMobGroupData(MoreBabiesConfig.camelHuskBabySpawnChance);
-            ageableMobGroupData.increaseGroupSizeByOne();
+            // The if-statement below is required to spawn a camel husk jockey as a baby camel husk, while
+            // still forcing spawn eggs to only spawn an adult camel husk when clicking on a block.
+            // This spawn egg behavior follows the one of other ageable mobs.
+            if (spawnReason == EntitySpawnReason.NATURAL) {
+                ageableMobGroupData.increaseGroupSizeByOne();
+            }
             groupData = ageableMobGroupData;
         }
 
