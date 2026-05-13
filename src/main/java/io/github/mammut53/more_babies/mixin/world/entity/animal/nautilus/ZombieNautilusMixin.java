@@ -74,7 +74,12 @@ public abstract class ZombieNautilusMixin extends AbstractNautilus {
         SpawnGroupData spawnGroupData = groupData;
         if (spawnGroupData == null) {
             final AgeableMobGroupData ageableMobGroupData = new AgeableMobGroupData(MoreBabiesConfig.zombieNautilusBabySpawnChance);
-            ageableMobGroupData.increaseGroupSizeByOne();
+            // The if-statement below is required to spawn a zombified nautilus jockey as a baby zombified nautilus,
+            // while still forcing spawn eggs to only spawn an adult zombified nautilus when clicking on a block.
+            // This spawn egg behavior follows the one of other ageable mobs.
+            if (spawnReason == EntitySpawnReason.JOCKEY || spawnReason == EntitySpawnReason.NATURAL || spawnReason == EntitySpawnReason.STRUCTURE) {
+                ageableMobGroupData.increaseGroupSizeByOne();
+            }
             spawnGroupData = ageableMobGroupData;
         }
 
