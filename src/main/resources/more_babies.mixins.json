@@ -87,6 +87,7 @@
     "client.renderer.entity.layers.CreeperPowerLayerMixin",
     "client.renderer.entity.layers.EnderEyesLayerMixin",
     "client.renderer.entity.layers.EyesLayerMixin",
+    "client.renderer.entity.layers.IronGolemFlowerLayerMixin",
     "client.renderer.entity.layers.LivingEntityEmissiveLayerMixin",
     "client.renderer.entity.layers.SkeletonClothingLayerMixin",
     "client.renderer.entity.layers.SnowGolemHeadLayerMixin",
