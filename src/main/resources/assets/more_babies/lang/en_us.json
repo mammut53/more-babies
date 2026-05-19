@@ -36,7 +36,7 @@
   "more_babies.midnightconfig.zombieNautilusBabySpawnChance": "Zombie Nautilus Baby Spawn Chance",
   "more_babies.midnightconfig.zombieNautilusCoralBabySpawnChance": "Zombie Nautilus Coral Baby Spawn Chance",
   "more_babies.midnightconfig.category.speed_modifiers": "Speed Modifiers",
-  "more_babies.midnightconfig.speedModifiersText": "Speed Modifiers (-1.0 - 1.0, where 0.0 is normal speed, 1.0 is double speed, and -1.0 is no movement)",
+  "more_babies.midnightconfig.speedModifiersText": "Speed Modifiers (-1.0 - 1.0, where 0.0 is normal base speed of the adult mob)",
   "more_babies.midnightconfig.blazeBabySpeedModifier": "Blaze Baby Speed Modifier",
   "more_babies.midnightconfig.boggedBabySpeedModifier": "Bogged Baby Speed Modifier",
   "more_babies.midnightconfig.breezeBabySpeedModifier": "Breeze Baby Speed Modifier",
