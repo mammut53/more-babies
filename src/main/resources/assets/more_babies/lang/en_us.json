@@ -1,4 +1,7 @@
 {
+  "item.more_babies.cursed_clock": "Cursed Clock",
+  "item.more_babies.cursed_clock_on_a_stick": "Cursed Clock On A Stick",
+  "item.more_babies.cursed_clock_on_a_stick.desc": "Can be used to convert adult mobs to babies and vice versa",
   "more_babies.midnightconfig.category.spawn_chances": "Spawn Chances",
   "more_babies.midnightconfig.spawnChancesText": "Spawn Chances (0.0 - 1.0, where 0.0 is 0% and 1.0 is 100%)",
   "more_babies.midnightconfig.blazeBabySpawnChance": "Blaze Baby Spawn Chance",

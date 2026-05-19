@@ -4,6 +4,7 @@
   "package": "io.github.mammut53.more_babies.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "world.entity.MobMixin",
     "world.entity.animal.camel.CamelHuskMixin",
     "world.entity.animal.golem.IronGolemMixin",
     "world.entity.animal.golem.SnowGolemMixin",
