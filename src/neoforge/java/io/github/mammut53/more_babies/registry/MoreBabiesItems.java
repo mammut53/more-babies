@@ -23,7 +23,7 @@ public class MoreBabiesItems {
             CursedClockOnAStickItem::new,
             () -> new Item.Properties()
                     .stacksTo(1)
-                    .durability(32)
+                    .durability(16)
     );
 
     public static void register(final IEventBus modBus) {
