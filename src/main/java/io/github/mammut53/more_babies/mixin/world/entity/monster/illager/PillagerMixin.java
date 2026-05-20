@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.illager;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.monster.illager.PillagerGroupData;
+import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -105,8 +105,6 @@ public abstract class PillagerMixin extends AbstractIllager {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    // TODO finalizeSpawn make mixin safer
-
     @Inject(
             method = "finalizeSpawn",
             at = @At("RETURN")
@@ -116,10 +114,10 @@ public abstract class PillagerMixin extends AbstractIllager {
 
         SpawnGroupData spawnGroupData = cir.getReturnValue();
         if (spawnGroupData == null) {
-            spawnGroupData = new PillagerGroupData(more_babies$getSpawnAsBabyOdds(random));
+            spawnGroupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (spawnGroupData instanceof PillagerGroupData(boolean isBaby) && isBaby) {
+        if (spawnGroupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
     }
@@ -130,3 +128,4 @@ public abstract class PillagerMixin extends AbstractIllager {
     }
 
 }
+

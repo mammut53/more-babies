@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.warden;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.monster.warden.WardenGroupData;
+import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -104,8 +104,6 @@ public abstract class WardenMixin extends Monster implements VibrationSystem {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    // TODO finalizeSpawn make mixin safer
-
     @Inject(
             method = "finalizeSpawn",
             at = @At("RETURN"),
@@ -116,10 +114,10 @@ public abstract class WardenMixin extends Monster implements VibrationSystem {
 
         SpawnGroupData groupData = cir.getReturnValue();
         if (groupData == null) {
-            groupData = new WardenGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof WardenGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 

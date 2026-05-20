@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.monster.shulker.ShulkerGroupData;
+import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
 import net.minecraft.core.Direction;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -138,18 +138,16 @@ public abstract class ShulkerMixin extends AbstractGolem implements Enemy {
          cir.setReturnValue(offset);
     }
 
-    // TODO finalizeSpawn make mixin safer
-
     @Override
     public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
         final RandomSource random = level.getRandom();
 
         SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
         if (groupData == null) {
-            groupData = new ShulkerGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof ShulkerGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 

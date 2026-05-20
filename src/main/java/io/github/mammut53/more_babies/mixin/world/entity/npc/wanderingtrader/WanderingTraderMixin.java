@@ -49,8 +49,6 @@ public abstract class WanderingTraderMixin extends AbstractVillager implements C
         return EntityType.WANDERING_TRADER.create(level, EntitySpawnReason.BREEDING);
     }
 
-    // TODO finalizeSpawn make mixin safer
-
     @Override
     public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
         SpawnGroupData groupData = spawnGroupData;
@@ -64,3 +62,4 @@ public abstract class WanderingTraderMixin extends AbstractVillager implements C
     }
 
 }
+

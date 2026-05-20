@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.skeleton;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.monster.skeleton.StrayGroupData;
+import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -95,18 +95,16 @@ public abstract class StrayMixin extends AbstractSkeleton {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    // TODO finalizeSpawn make mixin safer
-
     @Override
     public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
         final RandomSource random = level.getRandom();
 
         SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
         if (groupData == null) {
-            groupData = new StrayGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof StrayGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 

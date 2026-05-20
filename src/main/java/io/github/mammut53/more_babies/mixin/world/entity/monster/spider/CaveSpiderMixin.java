@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.spider;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.monster.spider.CaveSpiderGroupData;
+import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
@@ -31,18 +31,16 @@ public abstract class CaveSpiderMixin extends Spider {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    // TODO finalizeSpawn make mixin safer
-
     @Override
     public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
         final RandomSource random = level.getRandom();
 
         SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
         if (groupData == null) {
-            groupData = new CaveSpiderGroupData(more_babies$getSpawnAsBabyOdds(random));
+            groupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof CaveSpiderGroupData(boolean isBaby) && isBaby) {
+        if (groupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
 
@@ -55,3 +53,4 @@ public abstract class CaveSpiderMixin extends Spider {
     }
 
 }
+

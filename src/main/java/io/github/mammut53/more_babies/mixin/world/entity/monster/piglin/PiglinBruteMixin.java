@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.piglin;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.monster.piglin.PiglinBruteGroupData;
+import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -98,7 +98,6 @@ public abstract class PiglinBruteMixin extends AbstractPiglin {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    // TODO finalizeSpawn make mixin safer
     @Inject(
             method = "finalizeSpawn",
             at = @At("RETURN")
@@ -108,10 +107,10 @@ public abstract class PiglinBruteMixin extends AbstractPiglin {
 
         SpawnGroupData spawnGroupData = cir.getReturnValue();
         if (spawnGroupData == null) {
-            spawnGroupData = new PiglinBruteGroupData(more_babies$getSpawnAsBabyOdds(random));
+            spawnGroupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (spawnGroupData instanceof PiglinBruteGroupData(boolean isBaby) && isBaby) {
+        if (spawnGroupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
     }
@@ -121,3 +120,4 @@ public abstract class PiglinBruteMixin extends AbstractPiglin {
         return random.nextFloat() < MoreBabiesConfig.piglinBruteBabySpawnChance;
     }
 }
+
