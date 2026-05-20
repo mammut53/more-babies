@@ -10,9 +10,11 @@ import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CaveSpider.class)
 public abstract class CaveSpiderMixin extends Spider {
@@ -31,20 +33,21 @@ public abstract class CaveSpiderMixin extends Spider {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    @Override
-    public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
+    @Inject(
+            method = "finalizeSpawn",
+            at = @At("RETURN")
+    )
+    public void injectFinalizeSpawn(final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final SpawnGroupData groupData, final CallbackInfoReturnable<SpawnGroupData> cir) {
         final RandomSource random = level.getRandom();
 
-        SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
-        if (groupData == null) {
-            groupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
+        SpawnGroupData spawnGroupData = cir.getReturnValue();
+        if (spawnGroupData == null) {
+            spawnGroupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
         }
 
-        if (groupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
+        if (spawnGroupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
             this.setBaby(true);
         }
-
-        return groupData;
     }
 
     @Unique

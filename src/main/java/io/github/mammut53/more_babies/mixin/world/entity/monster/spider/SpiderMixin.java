@@ -1,7 +1,7 @@
 package io.github.mammut53.more_babies.mixin.world.entity.monster.spider;
 
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
-import io.github.mammut53.more_babies.world.entity.BabySpawnGroupData;
+import io.github.mammut53.more_babies.world.entity.spider.BabySpiderEffectsGroupData;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,12 +21,13 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.NonNull;
-import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Spider.class)
 public abstract class SpiderMixin extends Monster {
@@ -105,20 +106,32 @@ public abstract class SpiderMixin extends Monster {
         return this.isBaby() ? more_babies$BABY_DIMENSIONS : super.getDefaultDimensions(pose);
     }
 
-    @Override
-    public SpawnGroupData finalizeSpawn(final @NonNull ServerLevelAccessor level, final @NonNull DifficultyInstance difficulty, final @NonNull EntitySpawnReason spawnReason, @Nullable final SpawnGroupData spawnGroupData) {
-        final RandomSource random = level.getRandom();
-
-        SpawnGroupData groupData = super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
-        if (groupData == null) {
-            groupData = new BabySpawnGroupData(more_babies$getSpawnAsBabyOdds(random));
+    @ModifyVariable(
+            method = "finalizeSpawn",
+            at = @At("STORE"),
+            name = "groupData",
+            ordinal = 0,
+            argsOnly = true
+    )
+    public SpawnGroupData modifyFinalizeSpawnGroupData(final SpawnGroupData groupData) {
+        if (groupData instanceof Spider.SpiderEffectsGroupData spiderEffectsGroupData) {
+            final RandomSource random = this.level().getRandom();
+            final BabySpiderEffectsGroupData babyGroupData = new BabySpiderEffectsGroupData(more_babies$getSpawnAsBabyOdds(random));
+            babyGroupData.effect = spiderEffectsGroupData.effect;
+            return babyGroupData;
         }
+        return groupData;
+    }
 
-        if (groupData instanceof BabySpawnGroupData(boolean isBaby) && isBaby) {
+    @Inject(
+            method = "finalizeSpawn",
+            at = @At("RETURN")
+    )
+    public void injectFinalizeSpawnReturn(final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, final SpawnGroupData groupData, final CallbackInfoReturnable<SpawnGroupData> cir) {
+        final SpawnGroupData spawnGroupData = cir.getReturnValue();
+        if (spawnGroupData instanceof BabySpiderEffectsGroupData babySpiderEffectsGroupData && babySpiderEffectsGroupData.isBaby()) {
             this.setBaby(true);
         }
-
-        return groupData;
     }
 
     @Unique
