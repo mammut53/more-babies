@@ -101,7 +101,7 @@ public abstract class CreakingRendererMixin<T extends Creaking> extends MobRende
     )
     private void modifyConstructorLivingEntityEmissiveLayer(final Args args, final EntityRendererProvider.Context context) {
         final Function<CreakingRenderState, Identifier> originalTextureProvider = args.get(1);
-        final Function<CreakingRenderState, Identifier> textureProvider = (state) -> {
+        final Function<CreakingRenderState, Identifier> textureProvider = state -> {
             final Identifier originalTexture = originalTextureProvider.apply(state);
             return state.isBaby ? more_babies$LAYER_TEXTURE_TO_BABY_LAYER_TEXTURE.getOrDefault(originalTexture, originalTexture) : originalTexture;
         };

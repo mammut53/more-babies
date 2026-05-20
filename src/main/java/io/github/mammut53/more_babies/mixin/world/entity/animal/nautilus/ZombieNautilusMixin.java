@@ -28,11 +28,13 @@ public abstract class ZombieNautilusMixin extends AbstractNautilus {
     }
 
     @Override
+    @SuppressWarnings("java:S1185")
     public boolean isBaby() {
         return super.isBaby();
     }
 
     @Override
+    @SuppressWarnings("java:S1185")
     public void setBaby(final boolean baby) {
         super.setBaby(baby);
     }

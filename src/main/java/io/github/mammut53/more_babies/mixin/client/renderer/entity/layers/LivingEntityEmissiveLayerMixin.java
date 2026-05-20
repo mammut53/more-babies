@@ -29,7 +29,7 @@ public abstract class LivingEntityEmissiveLayerMixin<S extends LivingEntityRende
     @Unique
     private M more_babies$babyModel;
 
-    protected LivingEntityEmissiveLayerMixin(final RenderLayerParent<S, M> renderer, final Function<S, Identifier> textureProvider) {
+    protected LivingEntityEmissiveLayerMixin(final RenderLayerParent<S, M> renderer) {
         super(renderer);
     }
 

@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class EvokerRendererMixin extends IllagerRenderer<Vindicator, EvokerRenderState> {
 
     @Shadow
-    private static final Identifier EVOKER_ILLAGER = Identifier.withDefaultNamespace("textures/entity/illager/evoker.png");;
+    private static final Identifier EVOKER_ILLAGER = Identifier.withDefaultNamespace("textures/entity/illager/evoker.png");
     @Unique
     private static final Identifier more_babies$BABY_EVOKER_ILLAGER = Identifier.fromNamespaceAndPath(MoreBabies.MOD_ID, "textures/entity/illager/evoker_baby.png");
 
@@ -56,7 +56,7 @@ public abstract class EvokerRendererMixin extends IllagerRenderer<Vindicator, Ev
     }
 
     @Override
-    protected float getShadowRadius(final EvokerRenderState state) {
+    protected float getShadowRadius(final @NonNull EvokerRenderState state) {
         float radius = super.getShadowRadius(state);
         return state.isBaby ? radius * 0.5F : radius;
     }

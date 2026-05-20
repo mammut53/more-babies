@@ -13,13 +13,13 @@ import org.jspecify.annotations.NonNull;
 
 public class BabyShulkerModel extends ShulkerModel {
 
-    private final ModelPart lid;
-    private final ModelPart head;
+    private final ModelPart lidPart;
+    private final ModelPart headPart;
 
     public BabyShulkerModel(final ModelPart root) {
         super(root);
-        this.lid = root.getChild("lid");
-        this.head = root.getChild("head");
+        this.lidPart = root.getChild("lid");
+        this.headPart = root.getChild("head");
     }
 
     private static MeshDefinition createShellMesh() {
@@ -53,15 +53,15 @@ public class BabyShulkerModel extends ShulkerModel {
             extra = Mth.sin(state.ageInTicks * 0.1F) * 0.7F;
         }
 
-        this.lid.setPos(0.0F, 20.0F + Mth.sin(bs) * 4.0F + extra, 0.0F);
+        this.lidPart.setPos(0.0F, 20.0F + Mth.sin(bs) * 4.0F + extra, 0.0F);
         if (state.peekAmount > 0.3F) {
-            this.lid.yRot = q * q * q * q * (float) Math.PI * 0.125F;
+            this.lidPart.yRot = q * q * q * q * (float) Math.PI * 0.125F;
         } else {
-            this.lid.yRot = 0.0F;
+            this.lidPart.yRot = 0.0F;
         }
 
-        this.head.xRot = state.xRot * (float) (Math.PI / 180.0);
-        this.head.yRot = (state.yHeadRot - 180.0F - state.yBodyRot) * (float) (Math.PI / 180.0);
+        this.headPart.xRot = state.xRot * (float) (Math.PI / 180.0);
+        this.headPart.yRot = (state.yHeadRot - 180.0F - state.yBodyRot) * (float) (Math.PI / 180.0);
     }
 
 }
