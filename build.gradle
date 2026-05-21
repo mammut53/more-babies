@@ -182,7 +182,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 tasks.withType(Jar).configureEach {
-    from("LICENSE") {}
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from("LICENSE")
 }
 
 tasks.named("remapFabricJar") {
