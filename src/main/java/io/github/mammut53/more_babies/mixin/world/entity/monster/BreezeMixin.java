@@ -36,7 +36,7 @@ public abstract class BreezeMixin extends Monster {
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.4F, 0.99F)
+            .scalable(0.4F, 0.98F)
             .withEyeHeight(0.6726F);
 
     protected BreezeMixin(final EntityType<? extends Monster> type, final Level level) {

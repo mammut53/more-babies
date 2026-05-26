@@ -21,7 +21,7 @@ public abstract class WanderingTraderMixin extends AbstractVillager implements C
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.49F, 0.99F)
+            .scalable(0.49F, 0.98F)
             .withEyeHeight(0.63F);
 
     protected WanderingTraderMixin(final EntityType<? extends AbstractVillager> type, final Level level) {
@@ -46,7 +46,7 @@ public abstract class WanderingTraderMixin extends AbstractVillager implements C
 
     @Override
     public AgeableMob getBreedOffspring(final @NonNull ServerLevel level, final @NonNull AgeableMob partner) {
-        return EntityType.WANDERING_TRADER.create(level, EntitySpawnReason.BREEDING);
+        return EntityTypes.WANDERING_TRADER.create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override

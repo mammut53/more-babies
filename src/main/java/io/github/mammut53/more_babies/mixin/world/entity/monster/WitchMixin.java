@@ -39,7 +39,7 @@ public abstract class WitchMixin extends Raider implements RangedAttackMob {
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.49F, 0.99F)
+            .scalable(0.49F, 0.98F)
             .withEyeHeight(0.63F);
 
     protected WitchMixin(final EntityType<? extends Raider> type, final Level level) {

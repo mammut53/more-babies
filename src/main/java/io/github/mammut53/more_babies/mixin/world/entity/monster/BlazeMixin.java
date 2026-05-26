@@ -35,7 +35,7 @@ public abstract class BlazeMixin extends Monster {
     private static final EntityDataAccessor<Boolean> more_babies$DATA_BABY_ID = SynchedEntityData.defineId(BlazeMixin.class, EntityDataSerializers.BOOLEAN);
 
     @Unique
-    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.99F);
+    private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions.scalable(0.49F, 0.98F);
 
     protected BlazeMixin(final EntityType<? extends Monster> type, final Level level) {
         super(type, level);

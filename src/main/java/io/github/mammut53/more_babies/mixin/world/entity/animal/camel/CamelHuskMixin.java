@@ -3,10 +3,7 @@ package io.github.mammut53.more_babies.mixin.world.entity.animal.camel;
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.camel.CamelHusk;
 import net.minecraft.world.level.Level;
@@ -26,17 +23,17 @@ public abstract class CamelHuskMixin extends Camel {
     }
 
     @Inject(
-            method = "isBaby",
+            method = "canBeABaby",
             at = @At("RETURN"),
             cancellable = true
     )
     private void injectIsBaby(final CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(super.isBaby());
+        cir.setReturnValue(true);
     }
 
     @Override
     public Camel getBreedOffspring(final @NonNull ServerLevel level, final @NonNull AgeableMob partner) {
-        return EntityType.CAMEL_HUSK.create(level, EntitySpawnReason.BREEDING);
+        return EntityTypes.CAMEL_HUSK.create(level, EntitySpawnReason.BREEDING);
     }
 
     @Override

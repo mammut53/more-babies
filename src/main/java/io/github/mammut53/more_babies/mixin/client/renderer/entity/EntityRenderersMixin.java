@@ -27,8 +27,8 @@ public abstract class EntityRenderersMixin {
             ),
             index = 1,
             slice = @Slice(
-                    from = @At(value = "FIELD", opcode = Opcodes.GETSTATIC, target = "Lnet/minecraft/world/entity/EntityType;PIGLIN_BRUTE:Lnet/minecraft/world/entity/EntityType;"),
-                    to = @At(value = "FIELD", opcode = Opcodes.GETSTATIC, target = "Lnet/minecraft/world/entity/EntityType;PILLAGER:Lnet/minecraft/world/entity/EntityType;")
+                    from = @At(value = "FIELD", opcode = Opcodes.GETSTATIC, target = "Lnet/minecraft/world/entity/EntityTypes;PIGLIN_BRUTE:Lnet/minecraft/world/entity/EntityType;"),
+                    to = @At(value = "FIELD", opcode = Opcodes.GETSTATIC, target = "Lnet/minecraft/world/entity/EntityTypes;PILLAGER:Lnet/minecraft/world/entity/EntityType;")
             )
     )
     private static EntityRendererProvider<? extends AbstractPiglin> injectPiglinBruteRegister(final EntityRendererProvider<? extends AbstractPiglin> input) {

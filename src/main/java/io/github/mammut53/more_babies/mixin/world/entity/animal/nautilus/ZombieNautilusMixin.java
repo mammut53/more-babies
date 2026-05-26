@@ -3,10 +3,7 @@ package io.github.mammut53.more_babies.mixin.world.entity.animal.nautilus;
 import io.github.mammut53.more_babies.config.MoreBabiesConfig;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.nautilus.AbstractNautilus;
 import net.minecraft.world.entity.animal.nautilus.ZombieNautilus;
 import net.minecraft.world.level.Level;
@@ -19,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ZombieNautilus.class)
 public abstract class ZombieNautilusMixin extends AbstractNautilus {
@@ -27,21 +25,18 @@ public abstract class ZombieNautilusMixin extends AbstractNautilus {
         super(type, level);
     }
 
-    @Override
-    @SuppressWarnings("java:S1185")
-    public boolean isBaby() {
-        return super.isBaby();
-    }
-
-    @Override
-    @SuppressWarnings("java:S1185")
-    public void setBaby(final boolean baby) {
-        super.setBaby(baby);
+    @Inject(
+            method = "canBeABaby",
+            at = @At("RETURN"),
+            cancellable = true
+    )
+    private void injectIsBaby(final CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(true);
     }
 
     @Override
     public ZombieNautilus getBreedOffspring(final @NonNull ServerLevel level, final @NonNull AgeableMob partner) {
-        final ZombieNautilus baby = EntityType.ZOMBIE_NAUTILUS.create(level, EntitySpawnReason.BREEDING);
+        final ZombieNautilus baby = EntityTypes.ZOMBIE_NAUTILUS.create(level, EntitySpawnReason.BREEDING);
         if (baby != null && this.isTame()) {
             baby.setOwnerReference(this.getOwnerReference());
             baby.setTame(true, true);

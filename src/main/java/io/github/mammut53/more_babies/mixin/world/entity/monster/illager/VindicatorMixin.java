@@ -35,7 +35,7 @@ public abstract class VindicatorMixin extends AbstractIllager {
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.49F, 0.99F)
+            .scalable(0.49F, 0.98F)
             .withEyeHeight(0.63F);
 
     protected VindicatorMixin(final EntityType<? extends AbstractIllager> type, final Level level) {

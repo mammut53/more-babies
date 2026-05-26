@@ -34,7 +34,7 @@ public abstract class IllusionerMixin extends AbstractIllager implements RangedA
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.49F, 0.99F)
+            .scalable(0.49F, 0.98F)
             .withEyeHeight(0.63F);
 
     protected IllusionerMixin(final EntityType<? extends AbstractIllager> type, final Level level) {

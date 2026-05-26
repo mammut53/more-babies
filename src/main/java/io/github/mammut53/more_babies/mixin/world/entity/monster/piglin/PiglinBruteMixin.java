@@ -34,7 +34,7 @@ public abstract class PiglinBruteMixin extends AbstractPiglin {
 
     @Unique
     private static final EntityDimensions more_babies$BABY_DIMENSIONS = EntityDimensions
-            .scalable(0.49F, 0.99F)
+            .scalable(0.49F, 0.98F)
             .withEyeHeight(0.78F)
             .withAttachments(EntityAttachments.builder().attach(EntityAttachment.VEHICLE, 0.0F, 0.1875F, 0.0F));
 
