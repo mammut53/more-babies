@@ -20,9 +20,11 @@ java {
 
 sourceSets {
     fabric
+    neoforge
 }
 
 repositories {
+    unimined.neoForgedMaven()
     unimined.spongeMaven()
     unimined.modrinthMaven()
     unimined.wagYourMaven("releases")
@@ -32,6 +34,9 @@ repositories {
         url = "https://maven.terraformersmc.com/"
     }
 
+    maven {
+        url = "https://maven.midnightdust.eu/releases"
+    }
 }
 
 unimined.minecraft(sourceSets.main) {
@@ -90,7 +95,7 @@ unimined.minecraft(sourceSets.fabric) {
     }
 }
 
-/*unimined.minecraft(sourceSets.neoforge) {
+unimined.minecraft(sourceSets.neoforge) {
     combineWith(sourceSets.main)
 
     neoForge() {
@@ -128,7 +133,7 @@ unimined.minecraft(sourceSets.fabric) {
             workingDir = file("$projectDir/run/neoforge/server")
         }
     }
-}*/
+}
 
 configurations {
     mainImplementation
@@ -137,19 +142,19 @@ configurations {
 dependencies {
     implementation "org.spongepowered:mixin:0.8.7-SNAPSHOT"
     implementation 'org.ow2.asm:asm:9.5'
-    // implementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
+    implementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
 
     fabricModImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api}"
-    /*fabricModImplementation "maven.modrinth:modmenu:${modmenu}"
+    fabricModImplementation "maven.modrinth:modmenu:${modmenu}"
     fabricModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
     fabricInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
 
     neoforgeModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
-    neoforgeInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"*/
+    neoforgeInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
 }
 
 processResources {
-    inputs.property "version", version
+    inputs.property "version", "${minecraft_version}+${version}"
 
     filesMatching("pack.mcmeta") {
         expand project.properties
@@ -157,20 +162,20 @@ processResources {
 }
 
 processFabricResources {
-    inputs.property "version", version
+    inputs.property "version", "${minecraft_version}+${version}-fabric"
 
     filesMatching("fabric.mod.json") {
         expand project.properties
     }
 }
-/*
+
 processNeoforgeResources {
-    inputs.property "version", version
+    inputs.property "version", "${minecraft_version}+${version}-neoforge"
 
     filesMatching("META-INF/neoforge.mods.toml") {
         expand project.properties
     }
-}*/
+}
 
 tasks.withType(JavaCompile).configureEach {
     options.release = 25
@@ -182,9 +187,9 @@ tasks.withType(Jar).configureEach {
 }
 
 tasks.named("remapFabricJar") {
-    archiveFileName = "${mod_name}-${version}-fabric+mc${minecraft_version}.jar"
+    archiveFileName = "more-babies-${minecraft_version}+${version}-fabric.jar"
 }
-/*
+
 tasks.named("remapNeoforgeJar") {
-    archiveFileName = "${mod_name}-${version}-neoforge+mc${minecraft_version}.jar"
-}*/
+    archiveFileName = "more-babies-${minecraft_version}+${version}-neoforge.jar"
+}

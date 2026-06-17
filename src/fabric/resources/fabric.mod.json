@@ -27,9 +27,9 @@
     "more_babies-fabric.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.17",
+    "fabricloader": ">=0.19.2",
     "fabric-api": "*",
-    "minecraft": ">=26.2-alpha.8",
+    "minecraft": ">=26.2",
     "java": ">=25"
   },
   "accessWidener" : "more_babies.classtweaker"
