@@ -147,10 +147,8 @@ dependencies {
     fabricModImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api}"
     fabricModImplementation "maven.modrinth:modmenu:${modmenu}"
     fabricModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
-    fabricInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
 
     neoforgeModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
-    neoforgeInclude "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
 }
 
 processResources {
@@ -187,9 +185,9 @@ tasks.withType(Jar).configureEach {
 }
 
 tasks.named("remapFabricJar") {
-    archiveFileName = "${mod_name}-${version}-fabric+mc${minecraft_version}.jar"
+    archiveFileName = "more-babies-${minecraft_version}+${version}-fabric.jar"
 }
 
 tasks.named("remapNeoforgeJar") {
-    archiveFileName = "${mod_name}-${version}-neoforge+mc${minecraft_version}.jar"
+    archiveFileName = "more-babies-${minecraft_version}+${version}-neoforge.jar"
 }

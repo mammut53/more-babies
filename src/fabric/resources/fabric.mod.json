@@ -30,7 +30,8 @@
     "fabricloader": ">=0.17",
     "fabric-api": "*",
     "minecraft": ">=26.1",
-    "java": ">=25"
+    "java": ">=25",
+    "midnightlib": ">=1.9.3"
   },
   "accessWidener" : "more_babies.classtweaker"
 }
