@@ -52,6 +52,12 @@ unimined.minecraft(sourceSets.main) {
         defaultRemapJar = false
     }
 
+    // Temporary 26.3 Unimined workaround
+    includeGlobs.set(
+            includeGlobs.indexOf("paulscode/sound/**"),
+            "com/mojang/renderpearl/**"
+    )
+
     runs {
         off = true
     }
@@ -95,7 +101,7 @@ unimined.minecraft(sourceSets.fabric) {
     }
 }
 
-unimined.minecraft(sourceSets.neoforge) {
+/*unimined.minecraft(sourceSets.neoforge) {
     combineWith(sourceSets.main)
 
     neoForge() {
@@ -133,7 +139,7 @@ unimined.minecraft(sourceSets.neoforge) {
             workingDir = file("$projectDir/run/neoforge/server")
         }
     }
-}
+}*/
 
 configurations {
     mainImplementation
@@ -142,13 +148,13 @@ configurations {
 dependencies {
     implementation "org.spongepowered:mixin:0.8.7-SNAPSHOT"
     implementation 'org.ow2.asm:asm:9.5'
-    implementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
+    // implementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
 
     fabricModImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api}"
-    fabricModImplementation "maven.modrinth:modmenu:${modmenu}"
-    fabricModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
+    // fabricModImplementation "maven.modrinth:modmenu:${modmenu}"
+    // fabricModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-fabric"
 
-    neoforgeModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
+    // neoforgeModImplementation "eu.midnightdust:midnightlib:${project.midnightlib_version}-neoforge"
 }
 
 processResources {
@@ -167,13 +173,13 @@ processFabricResources {
     }
 }
 
-processNeoforgeResources {
+/*processNeoforgeResources {
     inputs.property "version", "${minecraft_version}+${version}-neoforge"
 
     filesMatching("META-INF/neoforge.mods.toml") {
         expand project.properties
     }
-}
+}*/
 
 tasks.withType(JavaCompile).configureEach {
     options.release = 25
@@ -188,6 +194,6 @@ tasks.named("remapFabricJar") {
     archiveFileName = "more-babies-${minecraft_version}+${version}-fabric.jar"
 }
 
-tasks.named("remapNeoforgeJar") {
+/*tasks.named("remapNeoforgeJar") {
     archiveFileName = "more-babies-${minecraft_version}+${version}-neoforge.jar"
-}
+}*/

@@ -5,7 +5,6 @@ import io.github.mammut53.more_babies.client.model.geom.MoreBabiesModelLayers;
 import net.minecraft.client.model.AdultAndBabyModelPair;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.monster.zombie.AbstractZombieModel;
 import net.minecraft.client.model.monster.zombie.BabyZombieModel;
 import net.minecraft.client.model.monster.zombie.GiantZombieModel;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -37,7 +36,7 @@ public abstract class GiantMobRendererMixin extends MobRenderer<Giant, ZombieRen
     @Unique
     @Final
     @Mutable
-    private AdultAndBabyModelPair<AbstractZombieModel<ZombieRenderState>> more_babies$model;
+    private AdultAndBabyModelPair<HumanoidModel<ZombieRenderState>> more_babies$model;
 
     protected GiantMobRendererMixin(final EntityRendererProvider.Context context, final HumanoidModel<ZombieRenderState> model, final float shadow) {
         super(context, model, shadow);
@@ -63,8 +62,8 @@ public abstract class GiantMobRendererMixin extends MobRenderer<Giant, ZombieRen
     )
     private boolean redirectConstructorAddLayer(final GiantMobRenderer instance, final RenderLayer<ZombieRenderState, HumanoidModel<ZombieRenderState>> renderLayer, final EntityRendererProvider.Context context, final float scale) {
         if (renderLayer instanceof HumanoidArmorLayer<?,?,?>) {
-            final ArmorModelSet<AbstractZombieModel<ZombieRenderState>> adultArmor = ArmorModelSet.bake(ModelLayers.GIANT_ARMOR, context.getModelSet(), GiantZombieModel::new);
-            final ArmorModelSet<AbstractZombieModel<ZombieRenderState>> babyArmor = ArmorModelSet.bake(MoreBabiesModelLayers.GIANT_BABY_ARMOR, context.getModelSet(), BabyZombieModel::new);
+            final ArmorModelSet<HumanoidModel<ZombieRenderState>> adultArmor = ArmorModelSet.bake(ModelLayers.GIANT_ARMOR, context.getModelSet(), GiantZombieModel::new);
+            final ArmorModelSet<HumanoidModel<ZombieRenderState>> babyArmor = ArmorModelSet.bake(MoreBabiesModelLayers.GIANT_BABY_ARMOR, context.getModelSet(), BabyZombieModel::new);
             return this.addLayer(new HumanoidArmorLayer<>(instance, adultArmor, babyArmor, context.getEquipmentRenderer()));
         }
 
