@@ -21,6 +21,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -113,14 +114,14 @@ public abstract class SpiderMixin extends Monster {
             ordinal = 0,
             argsOnly = true
     )
-    public SpawnGroupData modifyFinalizeSpawnGroupData(final SpawnGroupData groupData) {
-        if (groupData instanceof Spider.SpiderEffectsGroupData spiderEffectsGroupData) {
-            final RandomSource random = this.level().getRandom();
+    public SpawnGroupData modifyFinalizeSpawnGroupData(final SpawnGroupData spawnGroupData, final ServerLevelAccessor level, final DifficultyInstance difficulty, final EntitySpawnReason spawnReason, @Nullable SpawnGroupData groupData) {
+        if (spawnGroupData instanceof Spider.SpiderEffectsGroupData spiderEffectsGroupData) {
+            final RandomSource random = level.getRandom();
             final BabySpiderEffectsGroupData babyGroupData = new BabySpiderEffectsGroupData(more_babies$getSpawnAsBabyOdds(random));
             babyGroupData.effect = spiderEffectsGroupData.effect;
             return babyGroupData;
         }
-        return groupData;
+        return spawnGroupData;
     }
 
     @Inject(
