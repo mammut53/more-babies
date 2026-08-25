@@ -14,7 +14,7 @@
     "world.entity.monster.BreezeMixin",
     "world.entity.monster.CreeperMixin",
     "world.entity.monster.ElderGuardianMixin",
-    "world.entity.monster.EnderManMixin",
+    "world.entity.monster.EndermanMixin",
     "world.entity.monster.GhastMixin",
     "world.entity.monster.GhastShootFireballGoalMixin",
     "world.entity.monster.GiantMixin",

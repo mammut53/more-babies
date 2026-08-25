@@ -38,7 +38,7 @@ public abstract class IronGolemFlowerLayerMixin extends RenderLayer<IronGolemRen
                 poseStack.translate(0.5F, 0.5F, 0.5F);
                 final float scale = 1.0F;
                 poseStack.scale(scale, scale, scale);
-                poseStack.mulPose(Axis.XP.rotationDegrees(-90.0F));
+                poseStack.rotateDegrees(Axis.XP, -90.0F);
                 poseStack.translate(-0.15625F, -0.34375F, -1.40625F);
                 state.flowerBlock.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, state.outlineColor);
                 poseStack.popPose();

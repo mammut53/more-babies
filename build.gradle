@@ -78,7 +78,7 @@ unimined.minecraft(sourceSets.fabric) {
 
         config("client") {
             jvmArgs += "-XX:+AllowEnhancedClassRedefinition"
-            args += ["--quickPlaySingleplayer", "More Babies Test World 26_2"]
+            args += ["--quickPlaySingleplayer", "More Babies Test World 26_3"]
 
             def mixinJar = configurations.runtimeClasspath.files.find { it.name.contains("mixin") }
             if (mixinJar != null) {
